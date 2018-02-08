@@ -1,19 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withTracker } from 'meteor/react-meteor-data';
-import './styles.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { withTracker } from "meteor/react-meteor-data";
+import "./styles.css";
 
-import { Players } from '../../api/players';
+import { Players } from "../../api/players";
 
-import { Meteor } from 'meteor/meteor';
-import BlueButton from '../components/BlueButton';
-import GreenButton from '../components/GreenButton';
-import PurpleButton from '../components/PurpleButton';
-import RedButton from '../components/RedButton';
-import NextUpDisplay from "../components/NextUpDisplay"
-import AccountsWrapper from '../components/AccountsWrapper';
-
-
+import { Meteor } from "meteor/meteor";
+import BlueButton from "../components/BlueButton";
+import GreenButton from "../components/GreenButton";
+import PurpleButton from "../components/PurpleButton";
+import RedButton from "../components/RedButton";
+import NextUpDisplay from "../components/NextUpDisplay";
+import AccountsWrapper from "../components/AccountsWrapper";
 
 class App extends Component {
 	constructor() {
@@ -23,9 +21,9 @@ class App extends Component {
     }
 	}
 
-	render() {
+  render() {
     const randomArray = (length, max) => {
-      return Array.apply(null, Array(length)).map(function () {
+      return Array.apply(null, Array(length)).map(function() {
         return Math.round(Math.random() * max);
       });
     }
@@ -66,9 +64,9 @@ class App extends Component {
 }
 
 export default withTracker(() => {
-	return {
-		currentUser: Meteor.user(),
-		currentUserId: Meteor.userId(),
-		players: Players.find({}).fetch()
-	};
+  return {
+    currentUser: Meteor.user(),
+    currentUserId: Meteor.userId(),
+    players: Players.find({}).fetch()
+  };
 })(App);
