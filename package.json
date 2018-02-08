@@ -6,11 +6,20 @@
     "test": "meteor test --once --driver-package meteortesting:mocha"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@babel/runtime": "^7.0.0-beta.39",
     "bcrypt": "^1.0.3",
+=======
+    "@babel/runtime": "^7.0.0-beta.36",
+<<<<<<< HEAD
+    "bcrypt": "^1.0.3",
+    "meteor-node-stubs": "^0.3.2"
+=======
+>>>>>>> 64968acb7c8cd9e7b1a42c1cb366be311310dec2
     "meteor-node-stubs": "^0.3.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
+>>>>>>> 39e74f6032008103a57d9f2b2f0a6a608d33cb05
   },
   "devDependencies": {
     "chai": "^4.1.2"
