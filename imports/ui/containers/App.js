@@ -35,10 +35,10 @@ class App extends Component {
 					</div>
 
 					<div className="div3">
-						<div className="green-button" />
+						<GreenButton />
 					</div>
 					<div className="div4">
-						<div className="purple-button" />
+						<PurpleButton />
 					</div>
 				</div>
 			</div>
