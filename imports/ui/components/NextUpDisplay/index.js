@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-function colorizeAnswer(answer) {
+function colorizeAnswer({ answer }) {
   if (answer == 0) {
     return <div className="red-answer">red</div>;
   }
@@ -10,6 +10,7 @@ function colorizeAnswer(answer) {
   if (answer == 2) {
     return <div className="green-answer">green</div>;
   } else {
+    console.log(answer);
     return <div className="purple-answer">purple</div>;
   }
 }
