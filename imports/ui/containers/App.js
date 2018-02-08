@@ -42,7 +42,7 @@ class App extends Component {
 				</div>
 				<div className="bottom-wrapper">
 					<div className="div1">
-						<RedButton answer={answer} turn={this.state.turn} onClick={nextTurn}/>
+						<RedButton answer={answer} turn={this.state.turn}/>
 					</div>
 
 					<div className="div2">
