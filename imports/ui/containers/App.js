@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import './styles.css';
 
-import { Signals } from '../../api/signals';
+import { Players } from '../../api/players';
 
 import { Meteor } from 'meteor/meteor';
+
+import AccountsWrapper from "../components/AccountsWrapper";
 
 class App extends Component {
 	constructor() {
@@ -14,6 +16,10 @@ class App extends Component {
 
 	render() {
 		return (
+			<div className="app-wrapper">
+        <div className="login-wrapper">
+          <AccountsWrapper />
+        </div>
 			<div className="input-wrapper">
 				<div className="top-wrapper">
 					<div className="top-left">COMING UP: (icon) (icon) (icon) (icon)</div>
@@ -36,6 +42,7 @@ class App extends Component {
 					</div>
 				</div>
 			</div>
+			</div>
 		);
 	}
 }
@@ -44,6 +51,6 @@ export default withTracker(() => {
 	return {
 		currentUser: Meteor.user(),
 		currentUserId: Meteor.userId(),
-		signals: Signals.find({}).fetch()
+		players: Players.find({}).fetch()
 	};
 })(App);
