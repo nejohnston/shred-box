@@ -14,7 +14,32 @@ class App extends Component{
   }
 
   render(){
-    return <div>ShredBox</div>
+    return
+    <div className="input-wrapper">
+    <div className="top-wrapper"> 
+      
+      <div className="top-left">COMING UP: (icon) (icon) (icon) (icon)</div>
+      <div className="top-right">SCORE :  1/12 </div>
+    
+    </div>
+    <div className="bottom-wrapper">
+    
+        <div className="div1">
+          <div className="red-button"></div> 
+        </div>
+      
+        <div className="div2">
+          <div className="blue-button"></div>
+        </div>
+      
+        <div className="div3">
+          <div className="green-button"></div>
+        </div>
+        <div className="div4">PURPLE BUTTON</div>
+    
+    </div>
+  </div>
+  
   }
 
 
