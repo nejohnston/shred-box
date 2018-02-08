@@ -1,14 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const BlueButton = ({ blueInput }) => (
-  <div onClick={blueInput} className="blue-button">
+
+
+
+const blueClicked = () => {
+
+  let answer = "2"
+  if (answer === "1") {
+
+  console.log("correct")
+  } else {
+    console.log("wrong")
+  }
+};
+
+const BlueButton = ({  }) => (
+  <div onClick={blueClicked} className="blue-button">
+  
     Blue
   </div>
 );
 
-BlueButton.propTypes = {
-  blueInput: PropTypes.func.isRequired
-};
+// BlueButton.propTypes = {
+//   blueInput: PropTypes.func.isRequired
+// };
 
 export default BlueButton;

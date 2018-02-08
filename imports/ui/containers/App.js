@@ -1,3 +1,4 @@
+<< << << < HEAD
 import React, {
 	Component
 } from "react";
@@ -5,7 +6,17 @@ import PropTypes from "prop-types";
 import {
 	withTracker
 } from "meteor/react-meteor-data";
-import "./styles.css";
+import "./styles.css"; ===
+=== =
+import React, {
+	Component
+} from 'react';
+import PropTypes from 'prop-types';
+import {
+	withTracker
+} from 'meteor/react-meteor-data';
+import './styles.css'; >>>
+>>> > e5f12b403a7b8f8f9ad57faed8576f0ceb63dffe
 
 import {
 	Players
@@ -19,37 +30,27 @@ import GreenButton from "../components/GreenButton";
 import PurpleButton from "../components/PurpleButton";
 import RedButton from "../components/RedButton";
 
-import AccountsWrapper from "../components/AccountsWrapper";
+import AccountsWrapper from '../components/AccountsWrapper';
 
 class App extends Component {
 	constructor() {
 		super();
 	}
 
-	// handleClick(buttonColor) {
-	//   console.log(buttonColor)
-	// }
 	render() {
 		return ( <
-			div className = "app-wrapper" >
-			<
-			div className = "login-wrapper" >
-			<
-			AccountsWrapper / >
-			<
-			/div> <
 			div className = "input-wrapper" >
 			<
 			div className = "top-wrapper" >
 			<
-			div className = "top-left" > < /div> <
+			div className = "top-left" > COMING UP: (icon)(icon)(icon)(icon) < /div> <
 			div className = "top-right" > SCORE: 1 / 12 < /div> <
 			/div> <
 			div className = "bottom-wrapper" >
 			<
 			div className = "div1" >
 			<
-			div className = "red-button" / >
+			RedButton / >
 			<
 			/div>
 
@@ -70,7 +71,6 @@ class App extends Component {
 			<
 			div className = "purple-button" / >
 			<
-			/div> <
 			/div> <
 			/div> <
 			/div>
