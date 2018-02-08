@@ -17,7 +17,10 @@ import AccountsWrapper from '../components/AccountsWrapper';
 
 class App extends Component {
 	constructor() {
-		super();
+    super();
+    this.state = {
+      turn: 1
+    }
 	}
 
 	render() {
@@ -26,34 +29,35 @@ class App extends Component {
         return Math.round(Math.random() * max);
       });
     }
-    let turn = 0;
     let array = randomArray(4,3);
-    let answer = array[0 + turn];
+    let answer = array[0 + this.state.turn];
+ 
     
+  
     console.log(answer)
 		return (  
       
 			<div className="input-wrapper">
 				<div className="top-wrapper">
 					<div className="top-left">
-            <NextUpDisplay answer={answer} turn={turn}/>
+            <NextUpDisplay answer={answer} turn={this.state.turn}/>
           </div>
 					<div className="top-right">SCORE : 1/12 </div>
 				</div>
 				<div className="bottom-wrapper">
 					<div className="div1">
-						<RedButton answer={answer} turn={turn}/>
+						<RedButton answer={answer} turn={this.state.turn} onClick={nextTurn}/>
 					</div>
 
 					<div className="div2">
-						<BlueButton answer={answer}/>
+						<BlueButton answer={answer} turn={this.state.turn}/>
 					</div>
 
 					<div className="div3">
-						<GreenButton answer={answer}/>
+						<GreenButton answer={answer} turn={this.state.turn}/>
 					</div>
 					<div className="div4">
-						<PurpleButton answer={answer} />
+						<PurpleButton answer={answer} turn={this.state.turn}/>
 					</div>
 				</div>
 			</div>

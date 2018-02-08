@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const purpleClicked = answer => {
   console.log(answer);
   if (answer === 3) {
-    console.log("correct");
+    alert("correct");
   } else {
     console.log("wrong");
   }

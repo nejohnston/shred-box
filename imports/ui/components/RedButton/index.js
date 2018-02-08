@@ -5,7 +5,7 @@ const redClicked = (answer, turn) => {
 
   if (answer === 0) {
    
-  console.log("correct")
+    alert("correct");
   console.log(turn)
   } else {
     console.log("wrong")

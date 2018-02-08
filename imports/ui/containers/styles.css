@@ -110,3 +110,39 @@ body {
 .purple-button:hover {
     box-shadow: 0 0 28px rgb(231, 113, 225);
 }
+
+.blue-answer {
+    background-color: blue;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.red-answer {
+    background-color: red;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.green-answer {
+    background-color: green;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.purple-answer {
+    background-color: purple;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.correct {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 200px;
+}

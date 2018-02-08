@@ -5,7 +5,8 @@ import PropTypes from "prop-types";
 const blueClicked = (answer) => {
   console.log(answer)
   if (answer === 1) {
-  console.log("correct")
+    alert("correct");
+ 
   } else {
     console.log("wrong")
   }
@@ -16,7 +17,6 @@ const BlueButton = ({answer}) => (
   
   className="blue-button">
 
-    Blue
   </div>
 );
 

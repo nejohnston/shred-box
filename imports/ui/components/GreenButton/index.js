@@ -1,11 +1,15 @@
-import React from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
+import Correct from '../Correct'
+import { Meteor } from 'meteor/meteor';
 
 const greenClicked = (answer) => {
   console.log(answer)
   if (answer === 2) {
-  console.log("correct")
-  } else {
+  alert("correct");
+
+  } 
+  else {
     console.log("wrong")
   }
 };
