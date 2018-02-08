@@ -12,7 +12,10 @@ class App extends Component {
 		super();
 	}
 
-	render() {
+// handleClick(buttonColor) {
+//   console.log(buttonColor)
+// }
+// 	render() {
 		return (
 			<div className="input-wrapper">
 				<div className="top-wrapper">
