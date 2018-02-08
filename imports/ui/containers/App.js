@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withTracker } from "meteor/react-meteor-data";
 import "./styles.css";
-
 import { Players } from "../../api/players";
-
 import { Meteor } from "meteor/meteor";
 import BlueButton from "../components/BlueButton";
 import GreenButton from "../components/GreenButton";
