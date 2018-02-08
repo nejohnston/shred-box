@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-function colorizeAnswer(answer) {
+function colorizeAnswer({answer}) {
   if (answer == 0) {
     return <div className="red-answer">red</div>;
   }

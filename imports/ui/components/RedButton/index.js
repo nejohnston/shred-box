@@ -9,7 +9,7 @@ const redClicked = (answer, turn) => {
   console.log(turn)
   } else {
     console.log("wrong")
-    turn = turn + 1;
+    
     console.log(turn)
   }
 };
