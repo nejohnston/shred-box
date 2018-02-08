@@ -6,16 +6,10 @@
 		"test": "meteor test --once --driver-package meteortesting:mocha"
 	},
 	"dependencies": {
-<<<<<<< HEAD
-		"@babel/runtime": "^7.0.0-beta.36",
-		"bcrypt": "^1.0.3",
-		"meteor-node-stubs": "^0.3.2",
-=======
 		"@babel/runtime": "^7.0.0-beta.39",
 		"bcrypt": "^1.0.3",
 		"meteor-node-stubs": "^0.3.2",
 		"prop-types": "^15.6.0",
->>>>>>> 3122a66e18de55e247dc485ad5711e9fea0a9e0c
 		"react": "^16.2.0",
 		"react-dom": "^16.2.0"
 	},
