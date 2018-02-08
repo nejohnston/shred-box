@@ -7,5 +7,5 @@ function randomArray(length, max) {
     return Math.round(Math.random() * max);
   });
 }
-console.log(randomArray(4, 1))
+console.log(randomArray(4, 3))
 export const Players = new Mongo.Collection("players");

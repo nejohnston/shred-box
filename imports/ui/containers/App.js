@@ -1,11 +1,19 @@
-import React, { Component } from "react";
+import React, {
+	Component
+} from "react";
 import PropTypes from "prop-types";
-import { withTracker } from "meteor/react-meteor-data";
+import {
+	withTracker
+} from "meteor/react-meteor-data";
 import "./styles.css";
 
-import { Players } from '../../api/players';
+import {
+	Players
+} from '../../api/players';
 
-import { Meteor } from "meteor/meteor";
+import {
+	Meteor
+} from "meteor/meteor";
 import BlueButton from "../components/BlueButton";
 import GreenButton from "../components/GreenButton";
 import PurpleButton from "../components/PurpleButton";
@@ -14,42 +22,58 @@ import RedButton from "../components/RedButton";
 import AccountsWrapper from "../components/AccountsWrapper";
 
 class App extends Component {
-  constructor() {
-    super();
-  }
+	constructor() {
+		super();
+	}
 
-// handleClick(buttonColor) {
-//   console.log(buttonColor)
-// }
+	// handleClick(buttonColor) {
+	//   console.log(buttonColor)
+	// }
 	render() {
-		return (
-			<div className="app-wrapper">
-        <div className="login-wrapper">
-          <AccountsWrapper />
-        </div>
-			<div className="input-wrapper">
-				<div className="top-wrapper">
-					<div className="top-left">COMING UP: (icon) (icon) (icon) (icon)</div>
-					<div className="top-right">SCORE : 1/12 </div>
-				</div>
-				<div className="bottom-wrapper">
-					<div className="div1">
-						<div className="red-button" />
-					</div>
+		return ( <
+			div className = "app-wrapper" >
+			<
+			div className = "login-wrapper" >
+			<
+			AccountsWrapper / >
+			<
+			/div> <
+			div className = "input-wrapper" >
+			<
+			div className = "top-wrapper" >
+			<
+			div className = "top-left" > < /div> <
+			div className = "top-right" > SCORE: 1 / 12 < /div> <
+			/div> <
+			div className = "bottom-wrapper" >
+			<
+			div className = "div1" >
+			<
+			div className = "red-button" / >
+			<
+			/div>
 
-          <div className="div2">
-            <BlueButton />
-          </div>
+			<
+			div className = "div2" >
+			<
+			BlueButton / >
+			<
+			/div>
 
-					<div className="div3">
-						<div className="green-button" />
-					</div>
-					<div className="div4">
-						<div className="purple-button" />
-					</div>
-				</div>
-			</div>
-			</div>
+			<
+			div className = "div3" >
+			<
+			div className = "green-button" / >
+			<
+			/div> <
+			div className = "div4" >
+			<
+			div className = "purple-button" / >
+			<
+			/div> <
+			/div> <
+			/div> <
+			/div>
 		);
 	}
 }
