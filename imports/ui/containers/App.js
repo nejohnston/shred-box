@@ -14,7 +14,7 @@ class App extends Component{
   }
 
   render(){
-    return
+    return (
     <div className="input-wrapper">
     <div className="top-wrapper"> 
       
@@ -39,7 +39,7 @@ class App extends Component{
     
     </div>
   </div>
-  
+    )
   }
 
 
