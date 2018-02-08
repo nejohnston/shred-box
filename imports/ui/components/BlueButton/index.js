@@ -6,7 +6,8 @@ import PropTypes from "prop-types";
 
 const blueClicked = () => {
 
-  let answer = "2"
+  let answer = "1";
+  
   if (answer === "1") {
 
   console.log("correct")
