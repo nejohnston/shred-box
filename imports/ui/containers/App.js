@@ -1,19 +1,26 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withTracker } from 'meteor/react-meteor-data';
-import './styles.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { withTracker } from "meteor/react-meteor-data";
+import "./styles.css";
 
 import { Players } from '../../api/players';
 
-import { Meteor } from 'meteor/meteor';
+import { Meteor } from "meteor/meteor";
+import BlueButton from "../components/BlueButton";
+import GreenButton from "../components/GreenButton";
+import PurpleButton from "../components/PurpleButton";
+import RedButton from "../components/RedButton";
 
 import AccountsWrapper from "../components/AccountsWrapper";
 
 class App extends Component {
-	constructor() {
-		super();
-	}
+  constructor() {
+    super();
+  }
 
+// handleClick(buttonColor) {
+//   console.log(buttonColor)
+// }
 	render() {
 		return (
 			<div className="app-wrapper">
@@ -30,9 +37,9 @@ class App extends Component {
 						<div className="red-button" />
 					</div>
 
-					<div className="div2">
-						<div className="blue-button" />
-					</div>
+          <div className="div2">
+            <BlueButton />
+          </div>
 
 					<div className="div3">
 						<div className="green-button" />

@@ -30,9 +30,9 @@ body {
 
 .bottom-wrapper {
     display: grid;
-    background-color: pink;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
+    background-color: white;
 }
 
 .div1 {
@@ -41,13 +41,18 @@ body {
     align-items: center;
     grid-column: 1/2;
     grid-row: 1/2;
-    background-color: red;
+    background-color: white;
 }
 
 .red-button {
-    width: 80%;
+    width: 50%;
     height: 80%;
     border-radius: 50%;
+    background-color: red;
+}
+
+.red-button:hover {
+    box-shadow: 0 0 28px rgb(219, 99, 99);
 }
 
 .div2 {
@@ -55,7 +60,17 @@ body {
     justify-content: center;
     align-items: center;
     grid-column: 2/3;
+}
+
+.blue-button {
+    width: 50%;
+    height: 80%;
+    border-radius: 50%;
     background-color: blue;
+}
+
+.blue-button:hover {
+    box-shadow: 0 0 28px rgb(113, 115, 231);
 }
 
 .div3 {
@@ -64,7 +79,17 @@ body {
     align-items: center;
     grid-column: 1/2;
     grid-row: 2/3;
+}
+
+.green-button {
+    width: 50%;
+    height: 80%;
+    border-radius: 50%;
     background-color: green;
+}
+
+.green-button:hover {
+    box-shadow: 0 0 28px rgb(113, 231, 113);
 }
 
 .div4 {
@@ -73,5 +98,15 @@ body {
     align-items: center;
     grid-column: 2/3;
     grid-row: 2/3;
-    background-color: violet;
+}
+
+.purple-button {
+    width: 50%;
+    height: 80%;
+    border-radius: 50%;
+    background-color: purple;
+}
+
+.purple-button:hover {
+    box-shadow: 0 0 28px rgb(231, 113, 225);
 }
