@@ -30,7 +30,8 @@ class App extends Component {
     let array = randomArray(4,3);
     let answer = array[0];
     
-		return (
+    console.log(answer)
+		return (  
       
 			<div className="input-wrapper">
 				<div className="top-wrapper">
@@ -39,7 +40,7 @@ class App extends Component {
 				</div>
 				<div className="bottom-wrapper">
 					<div className="div1">
-						<RedButton/>
+						<RedButton answer={answer}/>
 					</div>
 
 					<div className="div2">
@@ -47,10 +48,10 @@ class App extends Component {
 					</div>
 
 					<div className="div3">
-						<GreenButton />
+						<GreenButton answer={answer}/>
 					</div>
 					<div className="div4">
-						<PurpleButton />
+						<PurpleButton answer={answer} />
 					</div>
 				</div>
 			</div>
