@@ -13,13 +13,25 @@ import RedButton from '../components/RedButton';
 
 import AccountsWrapper from '../components/AccountsWrapper';
 
+
+
 class App extends Component {
 	constructor() {
 		super();
 	}
 
 	render() {
+    const randomArray = (length, max) => {
+      return Array.apply(null, Array(length)).map(function () {
+        return Math.round(Math.random() * max);
+      });
+    }
+    
+    let array = randomArray(4,3);
+    let answer = array[0];
+    
 		return (
+      
 			<div className="input-wrapper">
 				<div className="top-wrapper">
 					<div className="top-left">COMING UP: (icon) (icon) (icon) (icon)</div>
@@ -27,11 +39,11 @@ class App extends Component {
 				</div>
 				<div className="bottom-wrapper">
 					<div className="div1">
-						<RedButton />
+						<RedButton/>
 					</div>
 
 					<div className="div2">
-						<BlueButton />
+						<BlueButton answer={answer}/>
 					</div>
 
 					<div className="div3">

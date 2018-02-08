@@ -7,8 +7,8 @@ const PurpleButton = ({ purpleInput }) => (
   </div>
 );
 
-PurpleButton.propTypes = {
-  purpleInput: PropTypes.func.isRequired
-};
+// PurpleButton.propTypes = {
+//   purpleInput: PropTypes.func.isRequired
+// };
 
 export default PurpleButton;

@@ -2,23 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 
 
-
-
-const blueClicked = () => {
-
-  let answer = "1";
+const blueClicked = (answer) => {
   
-  if (answer === "1") {
-
+  if (answer === 1) {
   console.log("correct")
   } else {
     console.log("wrong")
   }
 };
 
-const BlueButton = ({  }) => (
-  <div onClick={blueClicked} className="blue-button">
-  
+const BlueButton = ({answer}) => (
+  <div onClick={blueClicked(answer)} className="blue-button">
+
     Blue
   </div>
 );

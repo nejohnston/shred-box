@@ -7,8 +7,8 @@ const GreenButton = ({ greenInput }) => (
   </div>
 );
 
-GreenButton.propTypes = {
-  greenInput: PropTypes.func.isRequired
-};
+// GreenButton.propTypes = {
+//   greenInput: PropTypes.func.isRequired
+// };
 
 export default GreenButton;
