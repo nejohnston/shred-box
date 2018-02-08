@@ -10,9 +10,8 @@ const redClicked = (answer) => {
   }
 };
 
-const RedButton = ({answer}) => (
+const RedButton = ({answer, turn}) => (
   <div onClick={() => {redClicked(answer)}}
-  
   className="red-button">
   </div>
 );

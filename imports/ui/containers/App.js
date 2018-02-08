@@ -26,9 +26,9 @@ class App extends Component {
         return Math.round(Math.random() * max);
       });
     }
-    
+    let turn = 0;
     let array = randomArray(4,3);
-    let answer = array[0];
+    let answer = array[0 + i];
     
     console.log(answer)
 		return (  
@@ -40,7 +40,7 @@ class App extends Component {
 				</div>
 				<div className="bottom-wrapper">
 					<div className="div1">
-						<RedButton answer={answer}/>
+						<RedButton answer={answer} turn={turn}/>
 					</div>
 
 					<div className="div2">
