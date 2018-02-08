@@ -27,6 +27,19 @@ class App extends Component {
 
     let array = randomArray(4, 3);
     let answer = array[0];
+    
+    console.log(answer)
+		return (  
+      
+			<div className="input-wrapper">
+				<div className="top-wrapper">
+					<div className="top-left">COMING UP: (icon) (icon) (icon) (icon)</div>
+					<div className="top-right">SCORE : 1/12 </div>
+				</div>
+				<div className="bottom-wrapper">
+					<div className="div1">
+						<RedButton answer={answer}/>
+					</div>
 
     return (
       <div className="input-wrapper">
@@ -43,16 +56,16 @@ class App extends Component {
             <BlueButton answer={answer} />
           </div>
 
-          <div className="div3">
-            <GreenButton />
-          </div>
-          <div className="div4">
-            <PurpleButton />
-          </div>
-        </div>
-      </div>
-    );
-  }
+					<div className="div3">
+						<GreenButton answer={answer}/>
+					</div>
+					<div className="div4">
+						<PurpleButton answer={answer} />
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
 
 export default withTracker(() => {
