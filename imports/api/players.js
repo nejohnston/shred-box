@@ -24,7 +24,6 @@ Meteor.methods({
       );
     }
    
-   
     users.map(userid => {
       // console.log(userid);
       // currUser = Players.find({_id: userid}).fetch();

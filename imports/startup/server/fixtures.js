@@ -18,6 +18,14 @@ Meteor.startup(() => {
       user: { userId: defaultUser, turn: false }
     });
   }
+  const users = Meteor.users
+    .find({})
+    .fetch()
+    .map(user => user._id);
+  users.forEach(user => {
+    Players.insert({
+      user: { userId: user._id, turn: false }
+    });
+  });
 
-  // console.log(Players.find().fetch());
 });
