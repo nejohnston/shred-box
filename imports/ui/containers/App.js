@@ -10,12 +10,15 @@ import PurpleButton from "../components/PurpleButton";
 import RedButton from "../components/RedButton";
 import NextUpDisplay from "../components/NextUpDisplay";
 import AccountsWrapper from "../components/AccountsWrapper";
+import ScoreBoard from "../components/ScoreBoard";
+
 
 class App extends Component {
 	constructor() {
     super();
     this.state = {
-      turn: 1
+      turn: 1,
+      score: 0
     }
 	}
 
@@ -38,22 +41,24 @@ class App extends Component {
 					<div className="top-left">
             <NextUpDisplay answer={answer} turn={this.state.turn}/>
           </div>
-					<div className="top-right">SCORE : 1/12 </div>
+					<div className="top-right">
+            <ScoreBoard turn={this.state.turn} score={this.state.score} />
+          </div>
 				</div>
 				<div className="bottom-wrapper">
 					<div className="div1">
-						<RedButton answer={answer} turn={this.state.turn}/>
+						<RedButton answer={answer} />
 					</div>
 
 					<div className="div2">
-						<BlueButton answer={answer} turn={this.state.turn}/>
+						<BlueButton answer={answer} />
 					</div>
 
 					<div className="div3">
-						<GreenButton answer={answer} turn={this.state.turn}/>
+						<GreenButton answer={answer} />
 					</div>
 					<div className="div4">
-						<PurpleButton answer={answer} turn={this.state.turn}/>
+						<PurpleButton answer={answer}/>
 					</div>
 				</div>
 			</div>

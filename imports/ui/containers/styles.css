@@ -4,9 +4,9 @@ body {
 
 .input-wrapper {
     margin: 0 auto;
-    background-color: grey;
     height: 100vh;
     width: 100vw;
+    max-width: 800px;
     display: grid;
     grid-template-rows: 100px 500px;
 }
@@ -19,13 +19,11 @@ body {
 .top-left {
     width: 50%;
     height: 100%;
-    background: yellow;
 }
 
 .top-right {
     width: 50%;
     height: 100%;
-    background-color: goldenrod;
 }
 
 .bottom-wrapper {
@@ -33,6 +31,7 @@ body {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     background-color: white;
+    border: 4px solid grey;
 }
 
 .div1 {
@@ -48,7 +47,16 @@ body {
     width: 50%;
     height: 80%;
     border-radius: 50%;
-    background-color: red;
+    background: rgb(255, 50, 50);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(255, 50, 50, 1) 0%, rgba(201, 0, 0, 1) 57%, rgba(255, 170, 170, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255, 50, 50, 1) 0%, rgba(201, 0, 0, 1) 57%, rgba(255, 170, 170, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255, 50, 50, 1) 0%, rgba(201, 0, 0, 1) 57%, rgba(255, 170, 170, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3232', endColorstr='#ffaaaa', GradientType=0);
+    /* IE6-9 */
 }
 
 .red-button:hover {
@@ -66,7 +74,15 @@ body {
     width: 50%;
     height: 80%;
     border-radius: 50%;
-    background-color: blue;
+    background: rgb(34, 46, 173);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(34, 46, 173, 1) 1%, rgba(0, 5, 63, 1) 57%, rgba(170, 179, 255, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(34, 46, 173, 1) 1%, rgba(0, 5, 63, 1) 57%, rgba(170, 179, 255, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(34, 46, 173, 1) 1%, rgba(0, 5, 63, 1) 57%, rgba(170, 179, 255, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#222ead', endColorstr='#aab3ff', GradientType=0);
 }
 
 .blue-button:hover {
@@ -85,7 +101,15 @@ body {
     width: 50%;
     height: 80%;
     border-radius: 50%;
-    background-color: green;
+    background: rgb(51, 181, 0);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(51, 181, 0, 1) 1%, rgba(6, 61, 0, 1) 57%, rgba(175, 255, 170, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(51, 181, 0, 1) 1%, rgba(6, 61, 0, 1) 57%, rgba(175, 255, 170, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(51, 181, 0, 1) 1%, rgba(6, 61, 0, 1) 57%, rgba(175, 255, 170, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33b500', endColorstr='#afffaa', GradientType=0);
 }
 
 .green-button:hover {
@@ -104,7 +128,15 @@ body {
     width: 50%;
     height: 80%;
     border-radius: 50%;
-    background-color: purple;
+    background: rgb(142, 0, 130);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(142, 0, 130, 1) 1%, rgba(43, 0, 56, 1) 57%, rgba(255, 91, 235, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(142, 0, 130, 1) 1%, rgba(43, 0, 56, 1) 57%, rgba(255, 91, 235, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(142, 0, 130, 1) 1%, rgba(43, 0, 56, 1) 57%, rgba(255, 91, 235, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8e0082', endColorstr='#ff5beb', GradientType=0);
 }
 
 .purple-button:hover {
@@ -145,4 +177,28 @@ body {
     left: 50%;
     width: 400px;
     height: 200px;
+}
+
+.scoreboard {
+    height: 90%;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.score {
+    padding: 8px;
+    width: 40%;
+    height: 80%;
+    background: lightgoldenrodyellow;
+    border: 1px solid black;
+}
+
+.turn {
+    padding: 8px;
+    width: 40%;
+    height: 80%;
+    background: lightgoldenrodyellow;
+    border: 1px solid black;
 }
