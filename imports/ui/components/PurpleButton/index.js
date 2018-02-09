@@ -4,9 +4,11 @@ import PropTypes from "prop-types";
 const purpleClicked = answer => {
   console.log(answer);
   if (answer === 3) {
-    alert("correct");
+    const snd = new Audio("GreenPerc2.wav"); // buffers automatically when created
+    snd.play();
   } else {
-    console.log("wrong");
+    const snd = new Audio("record-scratch.mp3"); // buffers automatically when created
+    snd.play();
   }
 };
 

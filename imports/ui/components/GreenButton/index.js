@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Correct from '../Correct'
 import { Meteor } from 'meteor/meteor';
 // var Sound = require('react-sound').default;
-import Sound from 'react-sound';
+
 
 const greenClicked = (answer) => {
   console.log(answer)
