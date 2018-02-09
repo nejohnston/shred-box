@@ -2,6 +2,11 @@ import { Mongo } from "meteor/mongo";
 
 export const Players = new Mongo.Collection("players");
 
+const users = Meteor.users
+.find({})
+.fetch()
+.map(user => user._id);
+
 export function randomArray(length, max) {
   return Array.apply(null, Array(length)).map(function() {
     return Math.round(Math.random() * max);
@@ -18,13 +23,10 @@ Meteor.methods({
         "You must log in to play!"
       );
     }
-    const users = Meteor.users
-      .find({})
-      .fetch()
-      .map(user => user._id);
-    // console.log(users);
+   
+   
     users.map(userid => {
-      console.log(userid);
+      // console.log(userid);
       // currUser = Players.find({_id: userid}).fetch();
       if (!this.isSimulation) {
         Meteor.setTimeout(function() {
