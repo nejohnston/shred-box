@@ -3,27 +3,34 @@ body {
 }
 
 .input-wrapper {
+    font-family: 'Oswald', sans-serif;
     margin: 0 auto;
-    height: 100vh;
-    width: 100vw;
-    max-width: 800px;
+    height: 70%;
+    width: 66%;
     display: grid;
-    grid-template-rows: 100px 500px;
+    grid-template-rows: 1fr 5fr;
+    box-shadow: -6px 13px 93px 0px rgba(0, 0, 0, 0.75);
 }
 
 .top-wrapper {
     display: flex;
     flex-direction: row;
+    border: 1px solid rgb(172, 172, 172);
 }
 
 .top-left {
+    display: flex;
+    justify-content: left;
+    align-items: center;
     width: 50%;
-    height: 100%;
+    background-color: #FFAB00;
+    padding-left: 88px;
 }
 
 .top-right {
     width: 50%;
     height: 100%;
+    background-color: #FFAB00;
 }
 
 .bottom-wrapper {
@@ -31,7 +38,7 @@ body {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     background-color: white;
-    border: 4px solid grey;
+    border: 1px solid rgb(216, 216, 216);
 }
 
 .div1 {
@@ -44,8 +51,8 @@ body {
 }
 
 .red-button {
-    width: 50%;
-    height: 80%;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     background: rgb(255, 50, 50);
     /* Old browsers */
@@ -71,8 +78,8 @@ body {
 }
 
 .blue-button {
-    width: 50%;
-    height: 80%;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     background: rgb(34, 46, 173);
     /* Old browsers */
@@ -95,11 +102,12 @@ body {
     align-items: center;
     grid-column: 1/2;
     grid-row: 2/3;
+    padding-left: 28%;
 }
 
 .green-button {
-    width: 50%;
-    height: 80%;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     background: rgb(51, 181, 0);
     /* Old browsers */
@@ -122,11 +130,12 @@ body {
     align-items: center;
     grid-column: 2/3;
     grid-row: 2/3;
+    padding-right: 28%;
 }
 
 .purple-button {
-    width: 50%;
-    height: 80%;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     background: rgb(142, 0, 130);
     /* Old browsers */
@@ -145,29 +154,29 @@ body {
 
 .blue-answer {
     background-color: blue;
-    height: 100px;
-    width: 100px;
+    height: 44px;
+    width: 44px;
     border-radius: 50%;
 }
 
 .red-answer {
     background-color: red;
-    height: 100px;
-    width: 100px;
+    height: 44px;
+    width: 44px;
     border-radius: 50%;
 }
 
 .green-answer {
     background-color: green;
-    height: 100px;
-    width: 100px;
+    height: 44px;
+    width: 44px;
     border-radius: 50%;
 }
 
 .purple-answer {
     background-color: purple;
-    height: 100px;
-    width: 100px;
+    height: 44px;
+    width: 44px;
     border-radius: 50%;
 }
 
@@ -191,14 +200,29 @@ body {
     padding: 8px;
     width: 40%;
     height: 80%;
-    background: lightgoldenrodyellow;
-    border: 1px solid black;
+    color: white;
+    font-size: 24px;
 }
 
 .turn {
     padding: 8px;
     width: 40%;
     height: 80%;
-    background: lightgoldenrodyellow;
-    border: 1px solid black;
+    color: white;
+    font-size: 24px;
+}
+
+.background {
+    height: 100vh;
+    width: 100vw;
+    padding-top: 88px;
+    background: rgb(255, 252, 252);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(255, 252, 252, 1) 1%, rgba(255, 255, 255, 1) 40%, rgba(252, 180, 0, 1) 82%, rgba(229, 0, 0, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255, 252, 252, 1) 1%, rgba(255, 255, 255, 1) 40%, rgba(252, 180, 0, 1) 82%, rgba(229, 0, 0, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255, 252, 252, 1) 1%, rgba(255, 255, 255, 1) 40%, rgba(252, 180, 0, 1) 82%, rgba(229, 0, 0, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffcfc', endColorstr='#e50000', GradientType=0);
 }

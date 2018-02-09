@@ -1,23 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-
-const blueClicked = (answer) => {
-  console.log(answer)
+const blueClicked = answer => {
+  console.log(answer);
   if (answer === 1) {
-    alert("correct");
- 
+    const snd = new Audio("BaiscKick2.wav"); // buffers automatically when created
+    snd.play();
   } else {
-    console.log("wrong")
+    const snd = new Audio("BaiscKick2.wav"); // buffers automatically when created
+    snd.play();
+    console.log("wrong");
   }
 };
 
-const BlueButton = ({answer}) => (
-  <div onClick={() => {blueClicked(answer)}}
-  
-  className="blue-button">
-
-  </div>
+const BlueButton = ({ answer }) => (
+  <div
+    onClick={() => {
+      blueClicked(answer);
+    }}
+    className="blue-button"
+  />
 );
 
 // BlueButton.propTypes = {

@@ -12,11 +12,20 @@ import NextUpDisplay from "../components/NextUpDisplay";
 import AccountsWrapper from "../components/AccountsWrapper";
 import ScoreBoard from "../components/ScoreBoard";
 
+
+const randomArray = (length, max) => {
+  return Array.apply(null, Array(length)).map(function() {
+    return Math.round(Math.random() * max);
+  });
+};
+const array = randomArray(12, 3);
+let answer = [array[0],array[1],array[2],array[3]]
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      turn: 1,
+      turn: 0,
       score: 0
     };
   }
@@ -27,19 +36,13 @@ class App extends Component {
 	// 	: '';
     
   // }
+
   render() {
     const turnUp = () => {
       let nextturn = this.state.turn + 1;
       this.setState({ turn: nextturn });
     };
-
-    const randomArray = (length, max) => {
-      return Array.apply(null, Array(length)).map(function() {
-        return Math.round(Math.random() * max);
-      });
-    };
-    let array = randomArray(14, 3);
-    let answer = array[0 + this.state.turn];
+    // let answer = array[0 + this.state.turn];
 
 	
     // handleClick(buttonColor) {
@@ -51,15 +54,16 @@ class App extends Component {
     // return (
     //
 
+    console.log(answer);
     return (
-      <div className="app-wrapper">
-        <div className="login-wrapper">
-          <AccountsWrapper />
-        </div>
+      <div className="background">
         <div className="input-wrapper">
           <div className="top-wrapper">
             <div className="top-left">
-              <NextUpDisplay answer={answer} turn={this.state.turn} />
+            <NextUpDisplay answer={answer[this.state.turn]} turn={this.state.turn} />
+            <NextUpDisplay answer={answer[this.state.turn+1]} turn={this.state.turn} />
+            <NextUpDisplay answer={answer[this.state.turn+2]} turn={this.state.turn} />
+            <NextUpDisplay answer={answer[this.state.turn+3]} turn={this.state.turn} />
             </div>
             <div className="top-right">
               <ScoreBoard turn={this.state.turn} score={this.state.score} />
@@ -67,18 +71,18 @@ class App extends Component {
           </div>
           <div className="bottom-wrapper">
             <div className="div1" onClick={turnUp}>
-              <RedButton answer={answer} />
+              <RedButton answer={answer[this.state.turn]} />
             </div>
 
             <div className="div2" onClick={turnUp}>
-              <BlueButton answer={answer} />
+              <BlueButton answer={answer[this.state.turn]} />
             </div>
 
             <div className="div3" onClick={turnUp}>
-              <GreenButton answer={answer} />
+              <GreenButton answer={answer[this.state.turn]} />
             </div>
             <div className="div4" onClick={turnUp}>
-              <PurpleButton answer={answer} />
+              <PurpleButton answer={answer[this.state.turn]} />
             </div>
           </div>
         </div>
