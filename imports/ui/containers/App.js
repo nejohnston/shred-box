@@ -20,9 +20,7 @@ class App extends Component {
       score: 0
     };
   }
-  componentDidMount() {
-    // console.log(this.props.players);
-  }
+
   render() {
     const turnUp = () => {
       let nextturn = this.state.turn + 1;
@@ -47,21 +45,21 @@ class App extends Component {
             <div className="top-right">
               <ScoreBoard turn={this.state.turn} score={this.state.score} />
             </div>
-            <div className="bottom-wrapper">
-              <div className="div1" onClick={turnUp}>
-                <RedButton answer={answer} />
-              </div>
+          </div>
+          <div className="bottom-wrapper">
+            <div className="div1" onClick={turnUp}>
+              <RedButton answer={answer} />
+            </div>
 
-              <div className="div2" onClick={turnUp}>
-                <BlueButton answer={answer} />
-              </div>
+            <div className="div2" onClick={turnUp}>
+              <BlueButton answer={answer} />
+            </div>
 
-              <div className="div3" onClick={turnUp}>
-                <GreenButton answer={answer} />
-              </div>
-              <div className="div4" onClick={turnUp}>
-                <PurpleButton answer={answer} />
-              </div>
+            <div className="div3" onClick={turnUp}>
+              <GreenButton answer={answer} />
+            </div>
+            <div className="div4" onClick={turnUp}>
+              <PurpleButton answer={answer} />
             </div>
           </div>
         </div>
