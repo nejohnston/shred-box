@@ -26,7 +26,6 @@ class App extends Component {
       let nextturn = this.state.turn + 1;
       this.setState({ turn: nextturn });
     };
-
     const randomArray = (length, max) => {
       return Array.apply(null, Array(length)).map(function() {
         return Math.round(Math.random() * max);
