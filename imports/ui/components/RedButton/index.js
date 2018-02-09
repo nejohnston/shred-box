@@ -2,22 +2,26 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const redClicked = (answer, turn) => {
-
   if (answer === 0) {
-   
-    alert("correct");
-  console.log(turn)
+    const snd = new Audio("ThunderKick.wav"); // buffers automatically when created
+    snd.play();
+
+    console.log(turn);
   } else {
-    console.log("wrong")
-    
-    console.log(turn)
+    console.log("wrong");
+    const snd = new Audio("ThunderKick.wav"); // buffers automatically when created
+    snd.play();
+    console.log(turn);
   }
 };
 
-const RedButton = ({answer, turn}) => (
-  <div onClick={() => {redClicked(answer)}}
-  className="red-button">
-  </div>
+const RedButton = ({ answer, turn }) => (
+  <div
+    onClick={() => {
+      redClicked(answer);
+    }}
+    className="red-button"
+  />
 );
 
 export default RedButton;
