@@ -35,8 +35,6 @@ body {
     width: 50%;
     background-color: #ffab00;
     padding-left: 88px;
-    opacity: 0;
-    animation: fadeout 2s;
 }
 
 .top-right {
@@ -257,4 +255,6 @@ body {
 .answer-box {
     display: flex;
     flex-direction: row;
+    animation: fadeout 3s;
+    opacity: 0;
 }
