@@ -7,8 +7,8 @@ const purpleClicked = answer => {
     const snd = new Audio("GreenPerc2.wav"); // buffers automatically when created
     snd.play();
   } else {
-    const snd = new Audio("record-scratch.mp3"); // buffers automatically when created
-    snd.play();
+    const errorsnd = new Audio("record-scratch.mp3"); // buffers automatically when created
+    errorsnd.play();
   }
 };
 
