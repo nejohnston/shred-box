@@ -42,7 +42,8 @@ class App extends Component {
 
   render() {
 if (this.state.turn > 3) {
-  alert("game over")
+  let restartTurn = 0;
+  this.setState({ turn: restartTurn });
 }
     const turnUp = () => {
       let nextturn = this.state.turn + 1;
@@ -72,10 +73,15 @@ if (this.state.turn > 3) {
         <div className="input-wrapper">
           <div className="top-wrapper">
             <div className="top-left">
+
+            {(this.state.turn=== 0) ?(
+              <div className="answer-box">
             <NextUpDisplay answer={answer[this.state.turn]} turn={this.state.turn} />
             <NextUpDisplay answer={answer[this.state.turn+1]} turn={this.state.turn} />
             <NextUpDisplay answer={answer[this.state.turn+2]} turn={this.state.turn} />
             <NextUpDisplay answer={answer[this.state.turn+3]} turn={this.state.turn} />
+            </div>): ''}
+
             </div>
             <div className="top-right">
               <ScoreBoard turn={this.state.turn} score={this.state.score} />
