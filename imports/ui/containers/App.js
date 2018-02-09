@@ -23,12 +23,18 @@ class App extends Component {
 	}
 
   render() {
+
+    const turnUp = () => {
+      let nextturn = this.state.turn + 1
+      this.setState({ turn: nextturn });
+    }
+
     const randomArray = (length, max) => {
       return Array.apply(null, Array(length)).map(function() {
         return Math.round(Math.random() * max);
       });
     }
-    let array = randomArray(4,3);
+    let array = randomArray(14,3);
     let answer = array[0 + this.state.turn];
  
     
@@ -38,26 +44,26 @@ class App extends Component {
       
 			<div className="input-wrapper">
 				<div className="top-wrapper">
-					<div className="top-left">
-            <NextUpDisplay answer={answer} turn={this.state.turn}/>
+					<div className="top-left" >
+            <NextUpDisplay answer={answer} turn={this.state.turn} />
           </div>
 					<div className="top-right">
             <ScoreBoard turn={this.state.turn} score={this.state.score} />
           </div>
 				</div>
 				<div className="bottom-wrapper">
-					<div className="div1">
+					<div className="div1" onClick={turnUp}>
 						<RedButton answer={answer} />
 					</div>
 
-					<div className="div2">
+					<div className="div2"  onClick={turnUp}>
 						<BlueButton answer={answer} />
 					</div>
 
-					<div className="div3">
+					<div className="div3"  onClick={turnUp}>
 						<GreenButton answer={answer} />
 					</div>
-					<div className="div4">
+					<div className="div4"  onClick={turnUp}>
 						<PurpleButton answer={answer}/>
 					</div>
 				</div>
