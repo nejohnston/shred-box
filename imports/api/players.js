@@ -1,9 +1,8 @@
 import { Mongo } from "meteor/mongo";
 
-export const Players = new Mongo.Collection("players");
-// console.log(randomArray(4, 1));
+export const Players = new Mongo.Collection('players');
 
-function randomArray(length, max) {
+export function randomArray(length, max) {
   return Array.apply(null, Array(length)).map(function() {
     return Math.round(Math.random() * max);
   });

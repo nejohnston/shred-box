@@ -1,14 +1,25 @@
-import React from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
+import Correct from '../Correct'
+import { Meteor } from 'meteor/meteor';
 
-const GreenButton = ({ greenInput }) => (
-  <div onClick={greenInput} className="green-button">
-    Green
+const greenClicked = (answer) => {
+  console.log(answer)
+  if (answer === 2) {
+  alert("correct");
+
+  } 
+  else {
+    console.log("wrong")
+  }
+};
+const GreenButton = ({answer}) => (
+  <div onClick={() => {greenClicked(answer)}}
+  
+  className="green-button">
+
+  
   </div>
 );
-
-GreenButton.propTypes = {
-  greenInput: PropTypes.func.isRequired
-};
 
 export default GreenButton;

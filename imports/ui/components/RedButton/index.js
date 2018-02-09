@@ -1,14 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const RedButton = ({ redInput }) => (
-  <div onClick={redInput} className="red-button">
-    Red
+const redClicked = (answer, turn) => {
+
+  if (answer === 0) {
+   
+    alert("correct");
+  console.log(turn)
+  } else {
+    console.log("wrong")
+    
+    console.log(turn)
+  }
+};
+
+const RedButton = ({answer, turn}) => (
+  <div onClick={() => {redClicked(answer)}}
+  className="red-button">
   </div>
 );
-
-RedButton.propTypes = {
-  redInput: PropTypes.func.isRequired
-};
 
 export default RedButton;

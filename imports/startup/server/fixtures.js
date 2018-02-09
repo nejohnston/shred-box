@@ -20,7 +20,7 @@ Meteor.startup(() => {
 
   }
 
-  console.log(Players.find().fetch());
+  // console.log(Players.find().fetch());
   
   
 });
