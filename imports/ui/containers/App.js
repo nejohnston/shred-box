@@ -35,42 +35,40 @@ class App extends Component {
       });
     };
     let array = randomArray(14, 3);
-    let answer = array[0 + this.state.turn];
- 
-    
-  
-    console.log(answer)
-		return (  
+    let answer = [array[0], array[1], array[2], array[3]];
+
+    console.log(answer);
+    return (
       <div className="background">
-			<div className="input-wrapper">
-				<div className="top-wrapper">
-					<div className="top-left" >
-            <NextUpDisplay answer={answer} turn={this.state.turn} />
-          </div>
-					<div className="top-right">
-            <ScoreBoard turn={this.state.turn} score={this.state.score} />
-          </div>
-          <div className="bottom-wrapper">
-            <div className="div1" onClick={turnUp}>
-              <RedButton answer={answer} />
+        <div className="input-wrapper">
+          <div className="top-wrapper">
+            <div className="top-left">
+              <NextUpDisplay answer={answer} turn={this.state.turn} />
             </div>
-
-            <div className="div2" onClick={turnUp}>
-              <BlueButton answer={answer} />
+            <div className="top-right">
+              <ScoreBoard turn={this.state.turn} score={this.state.score} />
             </div>
+            <div className="bottom-wrapper">
+              <div className="div1" onClick={turnUp}>
+                <RedButton answer={answer} />
+              </div>
 
-					<div className="div3"  onClick={turnUp}>
-						<GreenButton answer={answer} />
-					</div>
-					<div className="div4"  onClick={turnUp}>
-						<PurpleButton answer={answer}/>
-					</div>
-				</div>
-			</div>
+              <div className="div2" onClick={turnUp}>
+                <BlueButton answer={answer} />
+              </div>
+
+              <div className="div3" onClick={turnUp}>
+                <GreenButton answer={answer} />
+              </div>
+              <div className="div4" onClick={turnUp}>
+                <PurpleButton answer={answer} />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      </div>
-		);
-	}
+    );
+  }
 }
 
 export default withTracker(() => {
