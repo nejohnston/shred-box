@@ -20,9 +20,13 @@ class App extends Component {
       score: 0
     };
   }
-  componentDidMount() {
-    // console.log(this.props.players);
-  }
+  // componentDidMount() {
+	// 	const isLoggedIn = this.props.currentUserId;
+	// 	isLoggedIn? 
+	// 	console.log(this.props.players)
+	// 	: '';
+    
+  // }
   render() {
     const turnUp = () => {
       let nextturn = this.state.turn + 1;
@@ -37,13 +41,13 @@ class App extends Component {
     let array = randomArray(14, 3);
     let answer = array[0 + this.state.turn];
 
-    console.log(answer);
+	
     // handleClick(buttonColor) {
     //   console.log(buttonColor)
     // }
 
     // console.log();
-    // Meteor.call('players.timeoutLoop');
+    Meteor.call('players.timeoutLoop');
     // return (
     //
 
