@@ -229,8 +229,8 @@ body {
 }
 
 .background {
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     padding-top: 88px;
     background: rgb(255, 252, 252);
     /* Old browsers */

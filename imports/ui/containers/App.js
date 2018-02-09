@@ -57,6 +57,11 @@ class App extends Component {
 
 
     return (
+      <div className="app-wrapper">
+        <div className="login-wrapper">
+          <AccountsWrapper />
+        </div>
+      
       <div className="background">
         <div className="input-wrapper">
           <div className="top-wrapper">
@@ -87,6 +92,7 @@ class App extends Component {
             </div>
           </div>
         </div>
+      </div>
       </div>
     );
   }
