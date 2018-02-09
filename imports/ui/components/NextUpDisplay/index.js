@@ -12,7 +12,7 @@ function colorizeAnswer({answer}) {
   if (answer == 2) {
     return <div className="green-answer" />;
   } else {
-    console.log(value);
+    
     return <div className="purple-answer" />;
     // }
   }
