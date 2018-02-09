@@ -22,7 +22,7 @@ const randomArray = (length, max) => {
 
 const array = randomArray(12, 3);
 let answer = array
-//  [array[0],array[1],array[2],array[3]]
+
 
 class App extends Component {
   constructor() {
@@ -45,9 +45,15 @@ if (this.state.turn > 3) {
   let restartTurn = 0;
   this.setState({ turn: restartTurn });
 }
+if (this.state.turn  > 11) {
+  alert("Game over, you idiot.")
+}
     const turnUp = () => {
-      let nextturn = this.state.turn + 1;
-      this.setState({ turn: nextturn });
+      let nextTurn = this.state.turn + 1;
+      let nextScore = this.state.score +1;
+      this.setState({ turn: nextTurn,
+      score: nextScore
+      });
     };
     // let answer = array[0 + this.state.turn];
 
@@ -76,10 +82,10 @@ if (this.state.turn > 3) {
 
             {(this.state.turn=== 0) ?(
               <div className="answer-box">
-            <NextUpDisplay answer={answer[this.state.turn]} turn={this.state.turn} />
-            <NextUpDisplay answer={answer[this.state.turn+1]} turn={this.state.turn} />
-            <NextUpDisplay answer={answer[this.state.turn+2]} turn={this.state.turn} />
-            <NextUpDisplay answer={answer[this.state.turn+3]} turn={this.state.turn} />
+            <NextUpDisplay answer={answer[this.state.score]} turn={this.state.score} />
+            <NextUpDisplay answer={answer[this.state.score+1]} turn={this.state.score} />
+            <NextUpDisplay answer={answer[this.state.score+2]} turn={this.state.score} />
+            <NextUpDisplay answer={answer[this.state.score+3]} turn={this.state.score} />
             </div>): ''}
 
             </div>
