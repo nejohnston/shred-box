@@ -14,8 +14,11 @@ Meteor.startup(() => {
 // console.log('first try', Players.find().fetch());
   Players.insert({
     remainingLives: "3",
-    users: [{ userId: defaultUser, turn: "0" }],
+    
   }); 
+  Players.insert({
+    user: { userId: defaultUser, turn: 0 },
+  })
   
 
   }

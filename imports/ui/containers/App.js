@@ -30,6 +30,13 @@ class App extends Component {
       score: 0
     };
   }
+  // componentDidMount() {
+	// 	const isLoggedIn = this.props.currentUserId;
+	// 	isLoggedIn? 
+	// 	console.log(this.props.players)
+	// 	: '';
+    
+  // }
 
   render() {
     const turnUp = () => {
@@ -37,6 +44,16 @@ class App extends Component {
       this.setState({ turn: nextturn });
     };
     // let answer = array[0 + this.state.turn];
+
+	
+    // handleClick(buttonColor) {
+    //   console.log(buttonColor)
+    // }
+
+    // console.log();
+    Meteor.call('players.timeoutLoop');
+    // return (
+    //
 
     console.log(answer);
     return (
