@@ -18,6 +18,7 @@ const randomArray = (length, max) => {
     return Math.round(Math.random() * max);
   });
 };
+
 const array = randomArray(12, 3);
 let answer = array
 //  [array[0],array[1],array[2],array[3]]
@@ -39,6 +40,9 @@ class App extends Component {
   // }
 
   render() {
+if (this.state.turn > 3) {
+  alert("game over")
+}
     const turnUp = () => {
       let nextturn = this.state.turn + 1;
       this.setState({ turn: nextturn });
@@ -57,12 +61,13 @@ class App extends Component {
 
 
     return (
+      <div className="background">
       <div className="app-wrapper">
         <div className="login-wrapper">
           <AccountsWrapper />
         </div>
       
-      <div className="background">
+     
         <div className="input-wrapper">
           <div className="top-wrapper">
             <div className="top-left">
