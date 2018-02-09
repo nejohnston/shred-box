@@ -32,8 +32,6 @@ body {
   width: 50%;
   background-color: #ffab00;
   padding-left: 88px;
-  opacity: 1;
-  animation: fadeout 4s;
 }
 
 .top-right {
@@ -332,4 +330,11 @@ body {
       endColorstr="#e50000",
       GradientType=0
     );
+}
+
+.answer-box {
+  display: flex;
+  flex-direction: row;
+  animation: fadeout 3s;
+  opacity: 0;
 }
