@@ -8,11 +8,12 @@ import Sound from 'react-sound';
 const greenClicked = (answer) => {
   console.log(answer)
   if (answer === 2) {
-    
+    const snd = new Audio("BlueHat.wav"); // buffers automatically when created
+     snd.play();
   } 
   else {
       
-      const snd = new Audio("BlueHat.wav"); // buffers automatically when created
+      const snd = new Audio("record-scratch.mp3"); // buffers automatically when created
      snd.play();
      
    
