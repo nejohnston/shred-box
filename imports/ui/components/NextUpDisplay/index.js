@@ -11,7 +11,6 @@ function colorizeAnswer({ answer }) {
     return <div className="green-answer" />;
   } else {
     return <div className="purple-answer" />;
-    console.log(answer);
   }
 }
 const NextUpDisplay = ({ answer }) => colorizeAnswer({ answer });
