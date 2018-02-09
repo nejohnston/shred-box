@@ -21,7 +21,14 @@ class App extends Component {
 // handleClick(buttonColor) {
 //   console.log(buttonColor)
 // }
+	componentDidMount(){
+		console.log(this.props.players)
+	}
+
+
 	render() {
+		// console.log();
+		// Meteor.call('players.timeoutLoop');
 		return (
 			<div className="app-wrapper">
         <div className="login-wrapper">
