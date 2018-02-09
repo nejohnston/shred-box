@@ -10,8 +10,8 @@ const greenClicked = answer => {
     const snd = new Audio("BlueHat.wav"); // buffers automatically when created
     snd.play();
   } else {
-    const snd = new Audio("record-scratch.mp3"); // buffers automatically when created
-    snd.play();
+    const errorsnd = new Audio("record-scratch.mp3"); // buffers automatically when created
+    errorsnd.play();
 
     console.log("wrong");
   }

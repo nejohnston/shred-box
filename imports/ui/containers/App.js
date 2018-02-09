@@ -19,7 +19,8 @@ const randomArray = (length, max) => {
   });
 };
 const array = randomArray(12, 3);
-let answer = [array[0],array[1],array[2],array[3]]
+let answer = array
+//  [array[0],array[1],array[2],array[3]]
 
 class App extends Component {
   constructor() {

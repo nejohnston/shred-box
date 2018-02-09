@@ -6,12 +6,12 @@ const redClicked = (answer, turn) => {
     const snd = new Audio("ThunderKick.wav"); // buffers automatically when created
     snd.play();
 
-    console.log(turn);
+   
   } else {
     console.log("wrong");
-    const snd = new Audio("ThunderKick.wav"); // buffers automatically when created
-    snd.play();
-    console.log(turn);
+    const errorsnd = new Audio("record-scratch.mp3"); // buffers automatically when created
+    errorsnd.play();
+   
   }
 };
 
