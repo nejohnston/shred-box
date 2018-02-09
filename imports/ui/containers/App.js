@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { withTracker } from "meteor/react-meteor-data";
 import "./styles.css";
 import { Players } from "../../api/players";
+import { Score } from "../../api/score";
 import { Meteor } from "meteor/meteor";
 import BlueButton from "../components/BlueButton";
 import GreenButton from "../components/GreenButton";
@@ -111,6 +112,7 @@ export default withTracker(() => {
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
-    players: Players.find({}).fetch()
+    players: Players.find({}).fetch(),
+    score: Score.find({}).fetch()
   };
 })(App);

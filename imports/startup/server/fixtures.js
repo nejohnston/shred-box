@@ -1,35 +1,23 @@
 import { Meteor } from "meteor/meteor";
 import { Accounts } from "meteor/accounts-base"; //for add default user
 import { Players } from "../../api/players";
+import { Score } from "../../api/score";
 
 Meteor.startup(() => {
-
   if (Meteor.users.find().count() === 0) {
-   
     let defaultUser = Accounts.createUser({
       email: "test@test.com",
-      password: "password",
+      password: "password"
       // user: insertUser,
     });
-// console.log('first try', Players.find().fetch());
-  Players.insert({
-    remainingLives: "3",
-    
-  }); 
-  Players.insert({
-    user: { userId: defaultUser, turn: 0 },
-  })
-  
-
+    // console.log('first try', Players.find().fetch());
+    Score.insert({
+      score: 3
+    });
+    Players.insert({
+      user: { userId: defaultUser, turn: false }
+    });
   }
 
   // console.log(Players.find().fetch());
-  
-  
 });
-
-
-
-
-
- 
