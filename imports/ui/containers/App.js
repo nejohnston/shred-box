@@ -41,7 +41,7 @@ class App extends Component {
   
     console.log(answer)
 		return (  
-      
+      <div className="background">
 			<div className="input-wrapper">
 				<div className="top-wrapper">
 					<div className="top-left" >
@@ -68,6 +68,7 @@ class App extends Component {
 					</div>
 				</div>
 			</div>
+      </div>
 		);
 	}
 }
