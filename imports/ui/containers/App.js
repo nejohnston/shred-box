@@ -32,7 +32,7 @@ class App extends Component {
         return Math.round(Math.random() * max);
       });
     };
-    let array = randomArray(14, 3);
+    let array = randomArray(4, 3);
     let answer = array[0 + this.state.turn];
 
     console.log(answer);
@@ -41,7 +41,8 @@ class App extends Component {
         <div className="input-wrapper">
           <div className="top-wrapper">
             <div className="top-left">
-              <NextUpDisplay answer={answer} turn={this.state.turn} />
+          
+              <NextUpDisplay answer={answer[i]} turn={this.state.turn} />
             </div>
             <div className="top-right">
               <ScoreBoard turn={this.state.turn} score={this.state.score} />

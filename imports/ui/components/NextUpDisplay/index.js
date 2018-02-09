@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-function colorizeAnswer({ answer }) {
+
+function colorizeAnswer({answer}) {
+ 
   if (answer == 0) {
     return <div className="red-answer" />;
   }
@@ -13,5 +15,6 @@ function colorizeAnswer({ answer }) {
     return <div className="purple-answer" />;
   }
 }
+
 const NextUpDisplay = ({ answer }) => colorizeAnswer({ answer });
 export default NextUpDisplay;
