@@ -92,10 +92,14 @@ body {
       endColorstr="#ffaaaa",
       GradientType=0
     );
+  box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 0.75);
   /* IE6-9 */
 }
 
-.red-button:hover {
+.red-button:active {
+  position: relative;
+  top: 8px;
+  left: 8px;
   box-shadow: 0 0 28px rgb(219, 99, 99);
 }
 
@@ -138,9 +142,13 @@ body {
       endColorstr="#aab3ff",
       GradientType=0
     );
+  box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 0.75);
 }
 
-.blue-button:hover {
+.blue-button:active {
+  position: relative;
+  top: 8px;
+  left: 8px;
   box-shadow: 0 0 28px rgb(113, 115, 231);
 }
 
@@ -185,9 +193,13 @@ body {
       endColorstr="#afffaa",
       GradientType=0
     );
+  box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 0.75);
 }
 
-.green-button:hover {
+.green-button:active {
+  position: relative;
+  top: 8px;
+  left: 8px;
   box-shadow: 0 0 28px rgb(113, 231, 113);
 }
 
@@ -232,9 +244,13 @@ body {
       endColorstr="#ff5beb",
       GradientType=0
     );
+  box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 0.75);
 }
 
-.purple-button:hover {
+.purple-button:active {
+  position: relative;
+  top: 8px;
+  left: 8px;
   box-shadow: 0 0 28px rgb(231, 113, 225);
 }
 
