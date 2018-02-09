@@ -2,15 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 function colorizeAnswer({ answer }) {
   if (answer == 0) {
-    return <div className="red-answer"></div>;
+    return <div className="red-answer" />;
   }
   if (answer == 1) {
-    return <div className="blue-answer"></div>;
+    return <div className="blue-answer" />;
   }
   if (answer == 2) {
-    return <div className="green-answer"></div>;
+    return <div className="green-answer" />;
   } else {
-    return <div className="purple-answer"></div>;
+    return <div className="purple-answer" />;
+    console.log(answer);
   }
 }
 const NextUpDisplay = ({ answer }) => colorizeAnswer({ answer });

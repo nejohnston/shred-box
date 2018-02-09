@@ -37,7 +37,6 @@ class App extends Component {
     let array = randomArray(14, 3);
     let answer = [array[0], array[1], array[2], array[3]];
 
-    console.log(answer);
     return (
       <div className="background">
         <div className="input-wrapper">
