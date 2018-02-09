@@ -6,7 +6,6 @@ const blueClicked = answer => {
   if (answer === 1) {
     const snd = new Audio("BaiscKick2.wav"); // buffers automatically when created
     snd.play();
-    alert("correct");
   } else {
     const snd = new Audio("BaiscKick2.wav"); // buffers automatically when created
     snd.play();

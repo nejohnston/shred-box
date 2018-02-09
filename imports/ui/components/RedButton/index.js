@@ -5,7 +5,7 @@ const redClicked = (answer, turn) => {
   if (answer === 0) {
     const snd = new Audio("ThunderKick.wav"); // buffers automatically when created
     snd.play();
-    alert("correct");
+
     console.log(turn);
   } else {
     console.log("wrong");
