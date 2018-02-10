@@ -10,8 +10,12 @@ function colorizeAnswer({ answer }) {
   }
   if (answer == 2) {
     return <div className="green-answer" />;
-  } else {
+  }
+  if (answer == 3) {
     return <div className="purple-answer" />;
+  }
+  else {
+    return <div>Whaaa?</div>
   }
 }
 

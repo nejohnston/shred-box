@@ -5,7 +5,7 @@ function ScoreBoard({turn, score }) {
   
     return (
     <div className="scoreboard">
-      <div className="score">Score : {score}</div>
+      <div className="score">Clicks : {score}</div>
       <div className="turn">Turn : {turn}</div>
     </div>
     )
