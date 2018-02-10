@@ -23,11 +23,11 @@ Meteor.methods({
         "You must be logged in to create a todo"
       );
     }
-    Songs.insert({
-      challenge: inputValue,
-      complete: false,
-      player: this.userId
-    });
+    const challengeArray = Array.from({ length: 4 }, () =>
+      Math.floor(Math.random() * 4)
+    );
+    console.log(challengeArray);
   }
   // User input of challenge array
+  // Array.from({length: 40}, () => Math.floor(Math.random() * 40));
 });
