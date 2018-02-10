@@ -2,6 +2,9 @@ import { Mongo } from "meteor/mongo";
 
 export const Players = new Mongo.Collection("players");
 
+const songArray = [{userid: "azByCoZDMZQjmRGDM", challenge: [0]}, {userid: "S7cixL6urAr7Bxopd", challenge: [1]}];
+
+
 const users = Meteor.users
 .find({})
 .fetch()
@@ -24,17 +27,22 @@ Meteor.methods({
       );
     }
    
-    users.map(userid => {
+    // users.map(userid => {
       // console.log(userid);
       // currUser = Players.find({_id: userid}).fetch();
-      if (!this.isSimulation) {
-        Meteor.setTimeout(function() {
-          Players.update(
-            { "user.userId": userid },
-            { $set: { "user.turn": 1 } }
-          );
-        }, 1000);
-      }
-    });
+      // if (!this.isSimulation) {
+        // songArray.map(el=>{
+          //  Meteor.setTimeout(function() {
+             return (songArray[0].challenge);
+          // Players.update(
+          //   { "user.userId": userid },
+          //   { $set: { "user.turn": 1 } }
+          // );
+        
+        // }, 1000);
+        // })
+       
+      // }
+    // });
   }
 });

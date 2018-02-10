@@ -31,11 +31,21 @@ class App extends Component {
     this.state = {
       turn: 0,
       score: 0
-    };
-  }
+		};
+		this.display = this.display.bind(this);
+		this.createChallengeArray = this.createChallengeArray.bind(this);
+	}
+	
   createChallengeArray() {
     Meteor.call("songs.createChallengeArray");
-  }
+	}
+	
+
+	display(){
+		// if (this.props.currentUserId ===)
+		Meteor.call("players.timeoutLoop");
+		// console.log(Meteor.call("players.timeoutLoop"));
+ }
   // componentDidMount() {
   // 	const isLoggedIn = this.props.currentUserId;
   // 	isLoggedIn?
@@ -45,6 +55,7 @@ class App extends Component {
   // }
 
   render() {
+		// console.log(this.display());
     if (this.state.turn > 3) {
       let restartTurn = 0;
       this.setState({ turn: restartTurn });
@@ -66,8 +77,9 @@ class App extends Component {
     //   console.log(buttonColor)
     // }
 
-    // console.log();
-    Meteor.call("players.timeoutLoop");
+		// console.log();
+	
+   
     // return (
     //
 
@@ -107,6 +119,8 @@ class App extends Component {
               <div className="top-right">
                 <ScoreBoard turn={this.state.turn} score={this.state.score} />
               </div>
+							{/* <p>{this.display()}</p> */}
+							<button onClick={this.display} />
               <button onClick={this.createChallengeArray} />
             </div>
             <div className="bottom-wrapper">
@@ -137,6 +151,7 @@ export default withTracker(() => {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
     players: Players.find({}).fetch(),
-    score: Score.find({}).fetch()
+		score: Score.find({}).fetch(),
+		songs: Songs.find({}).fetch(),
   };
 })(App);
