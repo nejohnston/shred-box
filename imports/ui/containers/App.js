@@ -120,7 +120,6 @@ export default withTracker(() => {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
     players: Players.find({}).fetch(),
-    score: Score.find({}).fetch(),
-    songs: Songs.find({}).fetch()
+    score: Score.find({}).fetch()
   };
 })(App);
