@@ -26,6 +26,11 @@ Meteor.methods({
     const challengeArray = Array.from({ length: 4 }, () =>
       Math.floor(Math.random() * 4)
     );
+    Songs.insert({
+      challenge: challengeArray,
+      complete: false,
+      owner: this.userId
+    });
     console.log(challengeArray);
   }
   // User input of challenge array
