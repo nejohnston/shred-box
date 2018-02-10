@@ -107,7 +107,10 @@ class App extends Component {
               <div className="top-right">
                 <ScoreBoard turn={this.state.turn} score={this.state.score} />
               </div>
-              <button onClick={this.createChallengeArray} />
+              <button
+                name="createChallengeArray"
+                onClick={this.createChallengeArray}
+              />
             </div>
             <div className="bottom-wrapper">
               <div className="div1" onClick={turnUp}>

@@ -12,7 +12,7 @@ if (Meteor.isServer) {
 Meteor.methods({
   // Need a method to create challenge array, this is the array of colors
   // each user will be inputting
-  "songs.createChallengeArray"(item) {
+  "songs.createChallengeArray"() {
     // CODE HERE
     // Checking just if there is a user, todo doesn't have
     // an owner b/c it hasn't been created duh
