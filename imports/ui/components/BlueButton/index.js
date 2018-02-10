@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const blueClicked = answer => {
+const blueClicked = (score, answer) => {
   console.log(answer);
   if (answer === 1) {
     const snd = new Audio("BaiscKick2.wav"); // buffers automatically when created
@@ -9,14 +9,15 @@ const blueClicked = answer => {
   } else {
     const errorsnd = new Audio("record-scratch.mp3"); // buffers automatically when created
     errorsnd.play();
-    console.log("wrong");
+    alert("GAME OVER, you got " + score + " correct answers!!")
+    
   }
 };
 
-const BlueButton = ({ answer }) => (
+const BlueButton = ({score, answer }) => (
   <div
     onClick={() => {
-      blueClicked(answer);
+      blueClicked(score, answer);
     }}
     className="blue-button"
   />

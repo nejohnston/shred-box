@@ -256,5 +256,5 @@ body {
     display: flex;
     flex-direction: row;
     animation: fadeout 3s;
-    opacity: 0;
+    opacity: 1;
 }

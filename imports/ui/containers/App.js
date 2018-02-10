@@ -20,7 +20,7 @@ const randomArray = (length, max) => {
   });
 };
 
-const array = randomArray(12, 3);
+const array = randomArray(42, 3);
 let answer = array
 
 
@@ -41,12 +41,10 @@ class App extends Component {
   // }
 
   render() {
+    console.log(answer)
 if (this.state.turn > 3) {
   let restartTurn = 0;
   this.setState({ turn: restartTurn });
-}
-if (this.state.turn  > 11) {
-  alert("Game over, you idiot.")
 }
     const turnUp = () => {
       let nextTurn = this.state.turn + 1;
@@ -80,12 +78,13 @@ if (this.state.turn  > 11) {
           <div className="top-wrapper">
             <div className="top-left">
 
-            {(this.state.turn=== 0) ?(
+
+            {(this.state.turn=== 0 ) ?(
               <div className="answer-box">
-            <NextUpDisplay answer={answer[this.state.score]} turn={this.state.score} />
-            <NextUpDisplay answer={answer[this.state.score+1]} turn={this.state.score} />
-            <NextUpDisplay answer={answer[this.state.score+2]} turn={this.state.score} />
-            <NextUpDisplay answer={answer[this.state.score+3]} turn={this.state.score} />
+            <NextUpDisplay answer={answer[this.state.score]}  />
+            <NextUpDisplay answer={answer[this.state.score+1]}  />
+            <NextUpDisplay answer={answer[this.state.score+2]}  />
+            <NextUpDisplay answer={answer[this.state.score+3]}  />
             </div>): ''}
 
             </div>
@@ -95,18 +94,18 @@ if (this.state.turn  > 11) {
           </div>
           <div className="bottom-wrapper">
             <div className="div1" onClick={turnUp}>
-              <RedButton answer={answer[this.state.turn]} />
+              <RedButton score={this.state.score} answer={answer[this.state.score]} />
             </div>
 
             <div className="div2" onClick={turnUp}>
-              <BlueButton answer={answer[this.state.turn]} />
+              <BlueButton score={this.state.score} answer={answer[this.state.score]} />
             </div>
 
             <div className="div3" onClick={turnUp}>
-              <GreenButton answer={answer[this.state.turn]} />
+              <GreenButton score={this.state.score} answer={answer[this.state.score]} />
             </div>
             <div className="div4" onClick={turnUp}>
-              <PurpleButton answer={answer[this.state.turn]} />
+              <PurpleButton score={this.state.score} answer={answer[this.state.score]} />
             </div>
           </div>
         </div>
