@@ -16,7 +16,17 @@ body {
     display: flex;
     flex-direction: row;
     border: 1px solid rgb(172, 172, 172);
-    background-color: #ffab00;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffaf4b+0,ff920a+100;Orange+3D+%231 */
+    background: rgb(255, 175, 75);
+    /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(255, 175, 75, 1) 0%, rgba(255, 146, 10, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255, 175, 75, 1) 0%, rgba(255, 146, 10, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255, 175, 75, 1) 0%, rgba(255, 146, 10, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', endColorstr='#ff920a', GradientType=0);
+    /* IE6-9 */
 }
 
 @keyframes fadeout {
@@ -33,14 +43,12 @@ body {
     justify-content: left;
     align-items: center;
     width: 50%;
-    background-color: #ffab00;
     padding-left: 88px;
 }
 
 .top-right {
     width: 50%;
     height: 100%;
-    background-color: #ffab00;
 }
 
 .bottom-wrapper {
@@ -48,6 +56,8 @@ body {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     background-color: white;
+    background-image: url("overlay.jpg");
+    opacity: 1;
     border: 1px solid rgb(216, 216, 216);
 }
 
@@ -57,14 +67,17 @@ body {
     align-items: center;
     grid-column: 1/2;
     grid-row: 1/2;
-    background-color: white;
 }
 
 .red-button {
-    width: 140px;
-    height: 140px;
+    z-index: 1000;
+    width: 12vw;
+    height: 12vw;
+    max-height: 175px;
+    max-width: 175px;
+    min-height: 120px;
+    min-width: 120px;
     border-radius: 50%;
-    background: rgb(255, 50, 50);
     /* Old browsers */
     background: -moz-linear-gradient( top, rgba(255, 50, 50, 1) 0%, rgba(201, 0, 0, 1) 57%, rgba(255, 170, 170, 1) 100%);
     /* FF3.6-15 */
@@ -73,7 +86,7 @@ body {
     background: linear-gradient( to bottom, rgba(255, 50, 50, 1) 0%, rgba(201, 0, 0, 1) 57%, rgba(255, 170, 170, 1) 100%);
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff3232", endColorstr="#ffaaaa", GradientType=0);
-    box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 1);
     /* IE6-9 */
 }
 
@@ -92,8 +105,12 @@ body {
 }
 
 .blue-button {
-    width: 140px;
-    height: 140px;
+    width: 12vw;
+    height: 12vw;
+    max-height: 175px;
+    max-width: 175px;
+    min-height: 120px;
+    min-width: 120px;
     border-radius: 50%;
     background: rgb(34, 46, 173);
     /* Old browsers */
@@ -124,8 +141,12 @@ body {
 }
 
 .green-button {
-    width: 140px;
-    height: 140px;
+    width: 12vw;
+    height: 12vw;
+    max-height: 175px;
+    max-width: 175px;
+    min-height: 120px;
+    min-width: 120px;
     border-radius: 50%;
     background: rgb(51, 181, 0);
     /* Old browsers */
@@ -156,8 +177,12 @@ body {
 }
 
 .purple-button {
-    width: 140px;
-    height: 140px;
+    width: 12vw;
+    height: 12vw;
+    max-height: 175px;
+    max-width: 175px;
+    min-height: 120px;
+    min-width: 120px;
     border-radius: 50%;
     background: rgb(142, 0, 130);
     /* Old browsers */
@@ -257,4 +282,11 @@ body {
     flex-direction: row;
     animation: fadeout 3s;
     opacity: 1;
+}
+
+.logo {
+    position: fixed;
+    top: 0%;
+    height: 170px;
+    left: 0%;
 }

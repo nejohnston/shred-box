@@ -4,7 +4,6 @@ import { withTracker } from "meteor/react-meteor-data";
 import "./styles.css";
 import { Players } from "../../api/players";
 import { Score } from "../../api/score";
-import { Songs } from "../../api/songs";
 import { Meteor } from "meteor/meteor";
 import BlueButton from "../components/BlueButton";
 import GreenButton from "../components/GreenButton";
@@ -21,7 +20,7 @@ const randomArray = (length, max) => {
 };
 
 const array = randomArray(42, 3);
-let answer = array;
+let answer = array
 
 class App extends Component {
   constructor() {
@@ -30,107 +29,85 @@ class App extends Component {
       turn: 0,
       score: 0
     };
-    this.display = this.display.bind(this);
-    this.createChallengeArray = this.createChallengeArray.bind(this);
-  }
-
-  createChallengeArray() {
-    Meteor.call("songs.createChallengeArray");
-  }
-
-  display() {
-    // if (this.props.currentUserId ===)
-    Meteor.call("players.timeoutLoop");
-    // console.log(Meteor.call("players.timeoutLoop"));
   }
   // componentDidMount() {
-  // 	const isLoggedIn = this.props.currentUserId;
-  // 	isLoggedIn?
-  // 	console.log(this.props.players)
-  // 	: '';
-
+	// 	const isLoggedIn = this.props.currentUserId;
+	// 	isLoggedIn? 
+	// 	console.log(this.props.players)
+	// 	: ''; 
   // }
 
   render() {
-    console.log(this.props.songs);
-    if (this.state.turn > 3) {
-      let restartTurn = 0;
-      this.setState({ turn: restartTurn });
-    }
+    console.log(answer)
+if (this.state.turn > 3) {
+  let restartTurn = 0;
+  this.setState({ turn: restartTurn });
+}
     const turnUp = () => {
       let nextTurn = this.state.turn + 1;
-      let nextScore = this.state.score + 1;
-      this.setState({
-        turn: nextTurn,
-        score: nextScore
+      let nextScore = this.state.score +1;
+      this.setState({ turn: nextTurn,
+      score: nextScore
       });
     };
     // let answer = array[0 + this.state.turn];
-
     // handleClick(buttonColor) {
     //   console.log(buttonColor)
     // }
 
     // console.log();
-
+    Meteor.call('players.timeoutLoop');
     // return (
     //
 
+
     return (
       <div className="background">
-        <div className="app-wrapper">
-          <div className="login-wrapper">
-            <AccountsWrapper />
-          </div>
+       <img className="logo" src="./logo.png"/>
+      <div className="app-wrapper">
+     
+        <div className="login-wrapper">
+          <AccountsWrapper />
+        </div>
+     
+     
+        <div className="input-wrapper">
+          <div className="top-wrapper">
+            <div className="top-left">
 
-          <div className="input-wrapper">
-            <div className="top-wrapper">
-              <div className="top-left">
-                {this.state.turn === 0 ? (
-                  <div className="answer-box">
-                    <NextUpDisplay answer={answer[this.state.score]} />
-                    <NextUpDisplay answer={answer[this.state.score + 1]} />
-                    <NextUpDisplay answer={answer[this.state.score + 2]} />
-                    <NextUpDisplay answer={answer[this.state.score + 3]} />
-                  </div>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div className="top-right">
-                <ScoreBoard turn={this.state.turn} score={this.state.score} />
-              </div>
+
+            {(this.state.turn=== 0 ) ?(
+              <div className="answer-box">
+            <NextUpDisplay answer={answer[this.state.score]}  />
+            <NextUpDisplay answer={answer[this.state.score+1]}  />
+            <NextUpDisplay answer={answer[this.state.score+2]}  />
+            <NextUpDisplay answer={answer[this.state.score+3]}  />
+            </div>)
+            : ''}
+
             </div>
-            <div className="bottom-wrapper">
-              <div className="div1" onClick={turnUp}>
-                <RedButton
-                  score={this.state.score}
-                  answer={answer[this.state.score]}
-                />
-              </div>
+            <div className="top-right">
+              <ScoreBoard turn={this.state.turn} score={this.state.score} />
+            </div>
+          </div>
+          <div className="bottom-wrapper">
+            <div className="div1" onClick={turnUp}>
+              <RedButton score={this.state.score} answer={answer[this.state.score]} />
+            </div>
 
-              <div className="div2" onClick={turnUp}>
-                <BlueButton
-                  score={this.state.score}
-                  answer={answer[this.state.score]}
-                />
-              </div>
+            <div className="div2" onClick={turnUp}>
+              <BlueButton score={this.state.score} answer={answer[this.state.score]} />
+            </div>
 
-              <div className="div3" onClick={turnUp}>
-                <GreenButton
-                  score={this.state.score}
-                  answer={answer[this.state.score]}
-                />
-              </div>
-              <div className="div4" onClick={turnUp}>
-                <PurpleButton
-                  score={this.state.score}
-                  answer={answer[this.state.score]}
-                />
-              </div>
+            <div className="div3" onClick={turnUp}>
+              <GreenButton score={this.state.score} answer={answer[this.state.score]} />
+            </div>
+            <div className="div4" onClick={turnUp}>
+              <PurpleButton score={this.state.score} answer={answer[this.state.score]} />
             </div>
           </div>
         </div>
+      </div>
       </div>
     );
   }
@@ -141,7 +118,6 @@ export default withTracker(() => {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
     players: Players.find({}).fetch(),
-    score: Score.find({}).fetch(),
-    songs: Songs.find({}).fetch()
+    score: Score.find({}).fetch()
   };
 })(App);
