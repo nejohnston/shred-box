@@ -20,7 +20,7 @@ const randomArray = (length, max) => {
 };
 
 const array = randomArray(42, 3);
-let answer = array
+let answer = array;
 
 class App extends Component {
   constructor() {
@@ -31,23 +31,23 @@ class App extends Component {
     };
   }
   // componentDidMount() {
-	// 	const isLoggedIn = this.props.currentUserId;
-	// 	isLoggedIn? 
-	// 	console.log(this.props.players)
-	// 	: ''; 
+  // 	const isLoggedIn = this.props.currentUserId;
+  // 	isLoggedIn?
+  // 	console.log(this.props.players)
+  // 	: '';
   // }
 
   render() {
-    console.log(answer)
-if (this.state.turn > 3) {
-  let restartTurn = 0;
-  this.setState({ turn: restartTurn });
-}
+    if (this.state.turn > 3) {
+      let restartTurn = 0;
+      this.setState({ turn: restartTurn });
+    }
     const turnUp = () => {
       let nextTurn = this.state.turn + 1;
-      let nextScore = this.state.score +1;
-      this.setState({ turn: nextTurn,
-      score: nextScore
+      let nextScore = this.state.score + 1;
+      this.setState({
+        turn: nextTurn,
+        score: nextScore
       });
     };
     // let answer = array[0 + this.state.turn];
@@ -56,58 +56,66 @@ if (this.state.turn > 3) {
     // }
 
     // console.log();
-    Meteor.call('players.timeoutLoop');
+    Meteor.call("players.timeoutLoop");
     // return (
     //
 
-
     return (
       <div className="background">
-       <img className="logo" src="./logo.png"/>
-      <div className="app-wrapper">
-     
-        <div className="login-wrapper">
-          <AccountsWrapper />
-        </div>
-     
-     
-        <div className="input-wrapper">
-          <div className="top-wrapper">
-            <div className="top-left">
+        <img className="logo" src="./logo.png" />
+        <div className="app-wrapper">
+          <div className="login-wrapper">
+            <AccountsWrapper />
+          </div>
 
-
-            {(this.state.turn=== 0 ) ?(
-              <div className="answer-box">
-            <NextUpDisplay answer={answer[this.state.score]}  />
-            <NextUpDisplay answer={answer[this.state.score+1]}  />
-            <NextUpDisplay answer={answer[this.state.score+2]}  />
-            <NextUpDisplay answer={answer[this.state.score+3]}  />
-            </div>)
-            : ''}
-
+          <div className="input-wrapper">
+            <div className="top-wrapper">
+              <div className="top-left">
+                {this.state.turn === 0 ? (
+                  <div className="answer-box">
+                    <NextUpDisplay answer={answer[this.state.score]} />
+                    <NextUpDisplay answer={answer[this.state.score + 1]} />
+                    <NextUpDisplay answer={answer[this.state.score + 2]} />
+                    <NextUpDisplay answer={answer[this.state.score + 3]} />
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+              <div className="top-right">
+                <ScoreBoard turn={this.state.turn} score={this.state.score} />
+              </div>
             </div>
-            <div className="top-right">
-              <ScoreBoard turn={this.state.turn} score={this.state.score} />
+            <div className="bottom-wrapper">
+              <div className="div1" onClick={turnUp}>
+                <RedButton
+                  score={this.state.score}
+                  answer={answer[this.state.score]}
+                />
+              </div>
+
+              <div className="div2" onClick={turnUp}>
+                <BlueButton
+                  score={this.state.score}
+                  answer={answer[this.state.score]}
+                />
+              </div>
+
+              <div className="div3" onClick={turnUp}>
+                <GreenButton
+                  score={this.state.score}
+                  answer={answer[this.state.score]}
+                />
+              </div>
+              <div className="div4" onClick={turnUp}>
+                <PurpleButton
+                  score={this.state.score}
+                  answer={answer[this.state.score]}
+                />
+              </div>
             </div>
           </div>
-          <div className="bottom-wrapper">
-            <div className="div1" onClick={turnUp}>
-              <RedButton score={this.state.score} answer={answer[this.state.score]} />
-            </div>
-
-            <div className="div2" onClick={turnUp}>
-              <BlueButton score={this.state.score} answer={answer[this.state.score]} />
-            </div>
-
-            <div className="div3" onClick={turnUp}>
-              <GreenButton score={this.state.score} answer={answer[this.state.score]} />
-            </div>
-            <div className="div4" onClick={turnUp}>
-              <PurpleButton score={this.state.score} answer={answer[this.state.score]} />
-            </div>
-          </div>
         </div>
-      </div>
       </div>
     );
   }
