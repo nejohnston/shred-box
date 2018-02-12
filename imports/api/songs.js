@@ -36,14 +36,7 @@ Meteor.methods({
         "You must be logged in to play"
       );
     }
-    // if (Songs.find().count()) {
-
-    // }
-
-    
-    
-   
-    // console.log(users);
+  
     //TODO: CHANGE TO DYNAMIC VAR
     const length = 1;
 
@@ -73,7 +66,7 @@ Meteor.methods({
         "You must be logged in to play"
       );
     }
-    // if (Meteor.isServer){
+   
 
     // console.log(songs);
     if (Meteor.isServer) {
@@ -90,7 +83,7 @@ Meteor.methods({
         // });
       });
     }
-    // }
+  
   },
   "songs.cancelArrayDispatch"() {
     Meteor.clearInterval(intervalId);
