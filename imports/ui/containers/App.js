@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withTracker } from "meteor/react-meteor-data";
-import "./styles.css";
+
 import { Players } from "../../api/players";
 import { Score } from "../../api/score";
+import { Songs } from "../../api/songs";
+
 import { Meteor } from "meteor/meteor";
+
 import BlueButton from "../components/BlueButton";
 import GreenButton from "../components/GreenButton";
 import PurpleButton from "../components/PurpleButton";
@@ -13,6 +16,8 @@ import NextUpDisplay from "../components/NextUpDisplay";
 import AccountsWrapper from "../components/AccountsWrapper";
 import ScoreBoard from "../components/ScoreBoard";
 import ResetButton from "../components/ResetButton";
+
+import "./styles.css";
 
 const randomArray = (length, max) => {
   return Array.apply(null, Array(length)).map(function() {
@@ -30,6 +35,23 @@ class App extends Component {
       turn: 0,
       score: 0
     };
+    this.display = this.display.bind(this);
+    this.createChallengeArray = this.createChallengeArray.bind(this);
+  }
+
+  createChallengeArray() {
+    Meteor.call("songs.createChallengeArray");
+    // Meteor.call('songs.dispatchArray');
+  }
+
+  display() {
+    // if (this.props.currentUserId ===)
+    Meteor.call("songs.dispatchArray");
+    // console.log(Meteor.call("players.timeoutLoop"));
+  }
+  cancelArrayDispatch(){
+    // Meteor.clearInterval(this.createChallengeArray);
+    Meteor.call("songs.cancelArrayDispatch");
   }
   // componentDidMount() {
   // 	const isLoggedIn = this.props.currentUserId;
@@ -39,6 +61,12 @@ class App extends Component {
   // }
 
   render() {
+    // this.createChallengeArray();
+		// Songs.remove();
+		// if (this.props.songs.length < )
+   
+    this.display();
+    // console.log(this.props.songs);
     if (this.state.turn > 3) {
       let restartTurn = 0;
       this.setState({ turn: restartTurn });
@@ -65,12 +93,7 @@ class App extends Component {
     // handleClick(buttonColor) {
     //   console.log(buttonColor)
     // }
-
-    // console.log();
-    Meteor.call("players.timeoutLoop");
-    // return (
-    //
-
+    console.log(this.props.songs);
     return (
       <div className="background">
         <img className="logo" src="./logo.png" />
@@ -93,6 +116,8 @@ class App extends Component {
                   ""
                 )}
               </div>
+              <button onClick={this.createChallengeArray}></button>
+              <button onClick={this.cancelArrayDispatch}></button>
               <div className="top-right">
                 <ScoreBoard turn={this.state.turn} score={this.state.score} />
                 <div onClick={reset}>
@@ -139,6 +164,7 @@ class App extends Component {
 }
 
 export default withTracker(() => {
+  Meteor.subscribe("songs");
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),

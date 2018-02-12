@@ -2,14 +2,6 @@ import { Mongo } from "meteor/mongo";
 
 export const Players = new Mongo.Collection("players");
 
-const songArray = [{userid: "azByCoZDMZQjmRGDM", challenge: [0]}, {userid: "S7cixL6urAr7Bxopd", challenge: [1]}];
-
-
-const users = Meteor.users
-.find({})
-.fetch()
-.map(user => user._id);
-
 export function randomArray(length, max) {
   return Array.apply(null, Array(length)).map(function() {
     return Math.round(Math.random() * max);
@@ -33,7 +25,7 @@ Meteor.methods({
       // if (!this.isSimulation) {
         // songArray.map(el=>{
           //  Meteor.setTimeout(function() {
-             return (songArray[0].challenge);
+            //  return (songArray[0].challenge);
           // Players.update(
           //   { "user.userId": userid },
           //   { $set: { "user.turn": 1 } }
