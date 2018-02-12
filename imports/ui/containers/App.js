@@ -15,6 +15,7 @@ import RedButton from "../components/RedButton";
 import NextUpDisplay from "../components/NextUpDisplay";
 import AccountsWrapper from "../components/AccountsWrapper";
 import ScoreBoard from "../components/ScoreBoard";
+import ResetButton from "../components/ResetButton";
 
 import "./styles.css";
 
@@ -78,6 +79,16 @@ class App extends Component {
         score: nextScore
       });
     };
+    const reset = () => {
+      {
+        let zeroTurn = this.state.turn * 0;
+        let zeroScore = this.state.score * 0;
+        this.setState({
+          turn: zeroTurn,
+          score: zeroScore
+        });
+      }
+    };
     // let answer = array[0 + this.state.turn];
     // handleClick(buttonColor) {
     //   console.log(buttonColor)
@@ -109,6 +120,12 @@ class App extends Component {
               <button onClick={this.cancelArrayDispatch}></button>
               <div className="top-right">
                 <ScoreBoard turn={this.state.turn} score={this.state.score} />
+                <div onClick={reset}>
+                  <ResetButton
+                    turn={this.state.turn}
+                    score={this.state.score}
+                  />
+                </div>
               </div>
             </div>
             <div className="bottom-wrapper">
