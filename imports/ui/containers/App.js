@@ -57,7 +57,6 @@ class App extends Component {
   // 	isLoggedIn?
   // 	console.log(this.props.players)
   // 	: '';
-
   // }
 
   render() {
@@ -80,13 +79,13 @@ class App extends Component {
       });
     };
     // let answer = array[0 + this.state.turn];
-
     // handleClick(buttonColor) {
     //   console.log(buttonColor)
     // }
     console.log(this.props.songs);
     return (
       <div className="background">
+        <img className="logo" src="./logo.png" />
         <div className="app-wrapper">
           <div className="login-wrapper">
             <AccountsWrapper />
@@ -153,7 +152,6 @@ export default withTracker(() => {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
     players: Players.find({}).fetch(),
-    score: Score.find({}).fetch(),
-    songs: Songs.find({}).fetch()
+    score: Score.find({}).fetch()
   };
 })(App);

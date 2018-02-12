@@ -13,8 +13,6 @@ const greenClicked = (score, answer) => {
     const errorsnd = new Audio("record-scratch.mp3"); 
     alert("GAME OVER, you got " + score + " correct answers!!")// buffers automatically when created
     errorsnd.play();
-
-    console.log("wrong");
   }
 };
 const GreenButton = ({score, answer }) => (
