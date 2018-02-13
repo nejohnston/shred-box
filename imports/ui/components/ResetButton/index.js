@@ -5,14 +5,14 @@ const resetClicked = (score, answer) => {
   return (score = 0), (answer = 0);
 };
 const ResetButton = ({ score, answer }) => (
-  <div
+  <button
     onClick={() => {
       resetClicked(score, answer);
     }}
     className="reset"
   >
     reset
-  </div>
+  </button>
 );
 
 export default ResetButton;

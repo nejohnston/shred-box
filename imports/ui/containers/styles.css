@@ -2,6 +2,23 @@ body {
     background: #f5f5f5;
 }
 
+
+/* ###############   WRAPPERS AND BACKGROUNDS  ############## */
+
+.background {
+    height: 100%;
+    width: 100%;
+    background: rgb(255, 252, 252);
+    /* Old browsers */
+    background: -moz-linear-gradient( top, rgba(255, 252, 252, 1) 1%, rgba(255, 255, 255, 1) 40%, rgba(252, 180, 0, 1) 82%, rgba(229, 0, 0, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient( top, rgba(255, 252, 252, 1) 1%, rgba(255, 255, 255, 1) 40%, rgba(252, 180, 0, 1) 82%, rgba(229, 0, 0, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient( to bottom, rgba(255, 252, 252, 1) 1%, rgba(255, 255, 255, 1) 40%, rgba(252, 180, 0, 1) 82%, rgba(229, 0, 0, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#fffcfc", endColorstr="#e50000", GradientType=0);
+}
+
 .input-wrapper {
     font-family: "Oswald", sans-serif;
     margin: 0 auto;
@@ -16,18 +33,15 @@ body {
     display: flex;
     flex-direction: row;
     border: 1px solid rgb(172, 172, 172);
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffaf4b+0,ff920a+100;Orange+3D+%231 */
     background: rgb(255, 175, 75);
-    /* Old browsers */
     background: -moz-linear-gradient( top, rgba(255, 175, 75, 1) 0%, rgba(255, 146, 10, 1) 100%);
-    /* FF3.6-15 */
     background: -webkit-linear-gradient( top, rgba(255, 175, 75, 1) 0%, rgba(255, 146, 10, 1) 100%);
-    /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient( to bottom, rgba(255, 175, 75, 1) 0%, rgba(255, 146, 10, 1) 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ffaf4b", endColorstr="#ff920a", GradientType=0);
-    /* IE6-9 */
 }
+
+
+/* ############## ANIMATIONS ############### */
 
 @keyframes fadeout {
     from {
@@ -38,7 +52,10 @@ body {
     }
 }
 
-.top-left {
+
+/* ############## HEADER LEFT ############### */
+
+.top-left-header {
     display: flex;
     justify-content: left;
     align-items: center;
@@ -46,162 +63,72 @@ body {
     padding-left: 28px;
 }
 
-.top-right {
+.answer-box {
+    display: flex;
+    flex-direction: row;
+    animation: fadeout 6s;
+    opacity: 1;
+}
+
+
+/* TODO rename all buttons */
+
+.button1 {
+    width: 66px;
+    background-color: red;
+}
+
+.button2 {
+    width: 66px;
+    background-color: green;
+}
+
+.reset {
+    width: 66px;
+    background-color: blue;
+}
+
+
+/* ################# HEADER RIGHT ############## */
+
+.top-right-header {
     width: 50%;
     height: 100%;
 }
 
-.bottom-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    background-color: white;
-    background-image: url("overlay.jpg");
-    opacity: 1;
-    border: 1px solid rgb(216, 216, 216);
+.score {
+    padding: 8px;
+    width: 40%;
+    height: 80%;
+    color: white;
+    font-size: 24px;
 }
 
-.div1 {
+.turn {
+    padding: 8px;
+    width: 40%;
+    height: 80%;
+    color: white;
+    font-size: 24px;
+}
+
+.logo {
+    height: 130px;
+    width: 130px;
+    margin: -12px;
+    padding: -12px;
+}
+
+.scoreboard {
+    height: 90%;
+    width: 90%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-column: 1/2;
-    grid-row: 1/2;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-.red-button {
-    z-index: 1000;
-    width: 12vw;
-    height: 12vw;
-    max-height: 175px;
-    max-width: 175px;
-    min-height: 120px;
-    min-width: 120px;
-    border-radius: 50%;
-    /* Old browsers */
-    background: -moz-linear-gradient( top, rgba(255, 50, 50, 1) 0%, rgba(201, 0, 0, 1) 57%, rgba(255, 170, 170, 1) 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient( top, rgba(255, 50, 50, 1) 0%, rgba(201, 0, 0, 1) 57%, rgba(255, 170, 170, 1) 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient( to bottom, rgba(255, 50, 50, 1) 0%, rgba(201, 0, 0, 1) 57%, rgba(255, 170, 170, 1) 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff3232", endColorstr="#ffaaaa", GradientType=0);
-    box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 1);
-    /* IE6-9 */
-}
 
-.red-button:active {
-    position: relative;
-    top: 8px;
-    left: 8px;
-    box-shadow: 0 0 28px rgb(219, 99, 99);
-}
-
-.div2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-column: 2/3;
-}
-
-.blue-button {
-    width: 12vw;
-    height: 12vw;
-    max-height: 175px;
-    max-width: 175px;
-    min-height: 120px;
-    min-width: 120px;
-    border-radius: 50%;
-    background: rgb(34, 46, 173);
-    /* Old browsers */
-    background: -moz-linear-gradient( top, rgba(34, 46, 173, 1) 1%, rgba(0, 5, 63, 1) 57%, rgba(170, 179, 255, 1) 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient( top, rgba(34, 46, 173, 1) 1%, rgba(0, 5, 63, 1) 57%, rgba(170, 179, 255, 1) 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient( to bottom, rgba(34, 46, 173, 1) 1%, rgba(0, 5, 63, 1) 57%, rgba(170, 179, 255, 1) 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#222ead", endColorstr="#aab3ff", GradientType=0);
-    box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 0.75);
-}
-
-.blue-button:active {
-    position: relative;
-    top: 8px;
-    left: 8px;
-    box-shadow: 0 0 28px rgb(113, 115, 231);
-}
-
-.div3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-column: 1/2;
-    grid-row: 2/3;
-    padding-left: 28%;
-}
-
-.green-button {
-    width: 12vw;
-    height: 12vw;
-    max-height: 175px;
-    max-width: 175px;
-    min-height: 120px;
-    min-width: 120px;
-    border-radius: 50%;
-    background: rgb(51, 181, 0);
-    /* Old browsers */
-    background: -moz-linear-gradient( top, rgba(51, 181, 0, 1) 1%, rgba(6, 61, 0, 1) 57%, rgba(175, 255, 170, 1) 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient( top, rgba(51, 181, 0, 1) 1%, rgba(6, 61, 0, 1) 57%, rgba(175, 255, 170, 1) 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient( to bottom, rgba(51, 181, 0, 1) 1%, rgba(6, 61, 0, 1) 57%, rgba(175, 255, 170, 1) 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#33b500", endColorstr="#afffaa", GradientType=0);
-    box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 0.75);
-}
-
-.green-button:active {
-    position: relative;
-    top: 8px;
-    left: 8px;
-    box-shadow: 0 0 28px rgb(113, 231, 113);
-}
-
-.div4 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-column: 2/3;
-    grid-row: 2/3;
-    padding-right: 28%;
-}
-
-.purple-button {
-    width: 12vw;
-    height: 12vw;
-    max-height: 175px;
-    max-width: 175px;
-    min-height: 120px;
-    min-width: 120px;
-    border-radius: 50%;
-    background: rgb(142, 0, 130);
-    /* Old browsers */
-    background: -moz-linear-gradient( top, rgba(142, 0, 130, 1) 1%, rgba(43, 0, 56, 1) 57%, rgba(255, 91, 235, 1) 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient( top, rgba(142, 0, 130, 1) 1%, rgba(43, 0, 56, 1) 57%, rgba(255, 91, 235, 1) 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient( to bottom, rgba(142, 0, 130, 1) 1%, rgba(43, 0, 56, 1) 57%, rgba(255, 91, 235, 1) 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#8e0082", endColorstr="#ff5beb", GradientType=0);
-    box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 0.75);
-}
-
-.purple-button:active {
-    position: relative;
-    top: 8px;
-    left: 8px;
-    box-shadow: 0 0 28px rgb(231, 113, 225);
-}
+/* ############### UPCOMING ANSWERS ################ */
 
 .blue-answer {
     background-color: blue;
@@ -235,62 +162,160 @@ body {
     margin: 4px;
 }
 
-.correct {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    height: 200px;
-}
 
-.scoreboard {
-    height: 90%;
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
+/* ############### BOTTOM BOXES ################# */
 
-.score {
-    padding: 8px;
-    width: 40%;
-    height: 80%;
-    color: white;
-    font-size: 24px;
-}
-
-.turn {
-    padding: 8px;
-    width: 40%;
-    height: 80%;
-    color: white;
-    font-size: 24px;
-}
-
-.background {
-    height: 100%;
-    width: 100%;
-    background: rgb(255, 252, 252);
-    /* Old browsers */
-    background: -moz-linear-gradient( top, rgba(255, 252, 252, 1) 1%, rgba(255, 255, 255, 1) 40%, rgba(252, 180, 0, 1) 82%, rgba(229, 0, 0, 1) 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient( top, rgba(255, 252, 252, 1) 1%, rgba(255, 255, 255, 1) 40%, rgba(252, 180, 0, 1) 82%, rgba(229, 0, 0, 1) 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient( to bottom, rgba(255, 252, 252, 1) 1%, rgba(255, 255, 255, 1) 40%, rgba(252, 180, 0, 1) 82%, rgba(229, 0, 0, 1) 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#fffcfc", endColorstr="#e50000", GradientType=0);
-}
-
-.answer-box {
-    display: flex;
-    flex-direction: row;
-    animation: fadeout 6s;
+.bottom-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    background-color: white;
+    background-image: url("overlay.jpg");
     opacity: 1;
+    border: 1px solid rgb(216, 216, 216);
 }
 
-.logo {
-    height: 130px;
-    width: 130px;
-    margin: -12px;
-    padding: -12px;
+.div1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.red-button:active {
+    position: relative;
+    top: 8px;
+    left: 8px;
+    box-shadow: 0 0 28px rgb(219, 99, 99);
+}
+
+.div2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 2/3;
+}
+
+.blue-button:active {
+    position: relative;
+    top: 8px;
+    left: 8px;
+    box-shadow: 0 0 28px rgb(113, 115, 231);
+}
+
+.div3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1/2;
+    grid-row: 2/3;
+    padding-left: 28%;
+}
+
+.green-button:active {
+    position: relative;
+    top: 8px;
+    left: 8px;
+    box-shadow: 0 0 28px rgb(113, 231, 113);
+}
+
+.div4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    padding-right: 28%;
+}
+
+.purple-button:active {
+    position: relative;
+    top: 8px;
+    left: 8px;
+    box-shadow: 0 0 28px rgb(231, 113, 225);
+}
+
+
+/* ########### BUTTONS ############### */
+
+.red-button {
+    z-index: 1000;
+    width: 12vw;
+    height: 12vw;
+    max-height: 175px;
+    max-width: 175px;
+    min-height: 120px;
+    min-width: 120px;
+    border-radius: 50%;
+    /* Old browsers */
+    background: -moz-linear-gradient( top, rgba(255, 50, 50, 1) 0%, rgba(201, 0, 0, 1) 57%, rgba(255, 170, 170, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient( top, rgba(255, 50, 50, 1) 0%, rgba(201, 0, 0, 1) 57%, rgba(255, 170, 170, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient( to bottom, rgba(255, 50, 50, 1) 0%, rgba(201, 0, 0, 1) 57%, rgba(255, 170, 170, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff3232", endColorstr="#ffaaaa", GradientType=0);
+    box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 1);
+    /* IE6-9 */
+}
+
+.blue-button {
+    width: 12vw;
+    height: 12vw;
+    max-height: 175px;
+    max-width: 175px;
+    min-height: 120px;
+    min-width: 120px;
+    border-radius: 50%;
+    background: rgb(34, 46, 173);
+    /* Old browsers */
+    background: -moz-linear-gradient( top, rgba(34, 46, 173, 1) 1%, rgba(0, 5, 63, 1) 57%, rgba(170, 179, 255, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient( top, rgba(34, 46, 173, 1) 1%, rgba(0, 5, 63, 1) 57%, rgba(170, 179, 255, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient( to bottom, rgba(34, 46, 173, 1) 1%, rgba(0, 5, 63, 1) 57%, rgba(170, 179, 255, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#222ead", endColorstr="#aab3ff", GradientType=0);
+    box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 0.75);
+}
+
+.green-button {
+    width: 12vw;
+    height: 12vw;
+    max-height: 175px;
+    max-width: 175px;
+    min-height: 120px;
+    min-width: 120px;
+    border-radius: 50%;
+    background: rgb(51, 181, 0);
+    /* Old browsers */
+    background: -moz-linear-gradient( top, rgba(51, 181, 0, 1) 1%, rgba(6, 61, 0, 1) 57%, rgba(175, 255, 170, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient( top, rgba(51, 181, 0, 1) 1%, rgba(6, 61, 0, 1) 57%, rgba(175, 255, 170, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient( to bottom, rgba(51, 181, 0, 1) 1%, rgba(6, 61, 0, 1) 57%, rgba(175, 255, 170, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#33b500", endColorstr="#afffaa", GradientType=0);
+    box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 0.75);
+}
+
+.purple-button {
+    width: 12vw;
+    height: 12vw;
+    max-height: 175px;
+    max-width: 175px;
+    min-height: 120px;
+    min-width: 120px;
+    border-radius: 50%;
+    background: rgb(142, 0, 130);
+    /* Old browsers */
+    background: -moz-linear-gradient( top, rgba(142, 0, 130, 1) 1%, rgba(43, 0, 56, 1) 57%, rgba(255, 91, 235, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient( top, rgba(142, 0, 130, 1) 1%, rgba(43, 0, 56, 1) 57%, rgba(255, 91, 235, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient( to bottom, rgba(142, 0, 130, 1) 1%, rgba(43, 0, 56, 1) 57%, rgba(255, 91, 235, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#8e0082", endColorstr="#ff5beb", GradientType=0);
+    box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 0.75);
 }

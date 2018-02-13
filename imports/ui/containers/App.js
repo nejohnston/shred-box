@@ -96,7 +96,7 @@ class App extends Component {
     console.log(this.props.songs);
     return (
       <div className="background">
-        <img className="logo" src="./logo.png" />
+       
         <div className="app-wrapper">
           <div className="login-wrapper">
             <AccountsWrapper />
@@ -104,7 +104,8 @@ class App extends Component {
 
           <div className="input-wrapper">
             <div className="top-wrapper">
-              <div className="top-left">
+              <div className="top-left-header">
+              <img className="logo" src="./logo.png" />
                 {this.state.turn === 0 ? (
                   <div className="answer-box">
                     <NextUpDisplay answer={answer[this.state.score]} />
@@ -116,16 +117,19 @@ class App extends Component {
                   ""
                 )}
               </div>
-              <button onClick={this.createChallengeArray}></button>
-              <button onClick={this.cancelArrayDispatch}></button>
-              <div className="top-right">
-                <ScoreBoard turn={this.state.turn} score={this.state.score} />
-                <div onClick={reset}>
-                  <ResetButton
+              <button className="button1" onClick={this.createChallengeArray}>Create </button>
+              <button className="button2" onClick={this.cancelArrayDispatch}>cancel</button>
+               
+                  <ResetButton 
+                    onClick={reset}
                     turn={this.state.turn}
                     score={this.state.score}
                   />
-                </div>
+            
+
+              <div className="top-right-header">
+                <ScoreBoard turn={this.state.turn} score={this.state.score} />
+               
               </div>
             </div>
             <div className="bottom-wrapper">
