@@ -35,7 +35,7 @@ class App extends Component {
       turn: 0,
       score: 0
     };
-    this.display = this.display.bind(this);
+    this.dispatchArray = this.dispatchArray.bind(this);
     this.createChallengeArray = this.createChallengeArray.bind(this);
   }
 
@@ -44,7 +44,7 @@ class App extends Component {
     // Meteor.call('songs.dispatchArray');
   }
 
-  display() {
+  dispatchArray() {
     // if (this.props.currentUserId ===)
     Meteor.call("songs.dispatchArray");
     // console.log(Meteor.call("players.timeoutLoop"));
@@ -65,7 +65,7 @@ class App extends Component {
 		// Songs.remove();
 		// if (this.props.songs.length < )
    
-    this.display();
+    this.dispatchArray();
     // console.log(this.props.songs);
     if (this.state.turn > 3) {
       let restartTurn = 0;

@@ -4,13 +4,16 @@ import { gameInterval } from "./helpers.js";
 
 export const Songs = new Mongo.Collection("songs");
 
-let intervalId = '';
+let intervalId;
 
 const intervalGenerator = (i) => {
-  const intervalId = Meteor.setInterval(() => {
+  intervalId = Meteor.setInterval(() => {
     Songs.insert({ userid: users[i], challenge: challengeArray() });
-  }, 1000);
+  }, 2000);
+
+  console.log(intervalId);
   return intervalId;
+  // return intervalId;
 };
 const challengeArray = () => {
   return Array.from({ length: 4 }, () => Math.floor(Math.random() * 4));
@@ -43,15 +46,22 @@ Meteor.methods({
     // if ( Songs.find().count()){
     if (!this.isSimulation) {
       if (
-        Songs.find({}).count() !== 0 ||
-        Songs.find({}).count() < length * users.length
+        
+        Songs.find({}).count() !== length * users.length
       ) {
-        Songs.remove({});
+        if (Songs.find({}).count() !== 0 ){
+           Songs.remove({});
+        }
+       
         for (let i = 0; i < length; i++) {
           for (let k = 0; k < users.length; k++) {
+            
             intervalId = intervalGenerator(k);
+            // Songs.insert({userid: users[k], intervalId: intervalId});
           }
         }
+        
+        // console.log(intervalId);
       }
     }
     // }
@@ -86,6 +96,8 @@ Meteor.methods({
   
   },
   "songs.cancelArrayDispatch"() {
+    // const intervalId = Songs.find({userid: this.userId}, {_id: 0, intervalId: 1});
+    console.log(intervalId);
     Meteor.clearInterval(intervalId);
   }
 });
