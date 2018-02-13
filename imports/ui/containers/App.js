@@ -96,8 +96,8 @@ class App extends Component {
     console.log(this.props.songs);
     return (
       <div className="background">
-       
         <div className="app-wrapper">
+        
           <div className="login-wrapper">
             <AccountsWrapper />
           </div>
@@ -126,13 +126,14 @@ class App extends Component {
                     score={this.state.score}
                   />
             
-
               <div className="top-right-header">
                 <ScoreBoard turn={this.state.turn} score={this.state.score} />
                
               </div>
             </div>
             <div className="bottom-wrapper">
+
+            {/* TODO assign onclick to buttons not divs (will need access to server stats from inside <redbutton> ) */}
               <div className="div1" onClick={turnUp}>
                 <RedButton
                   score={this.state.score}
