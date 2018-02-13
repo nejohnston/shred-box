@@ -49,7 +49,7 @@ class App extends Component {
     Meteor.call("songs.dispatchArray");
     // console.log(Meteor.call("players.timeoutLoop"));
   }
-  cancelArrayDispatch(){
+  cancelArrayDispatch() {
     // Meteor.clearInterval(this.createChallengeArray);
     Meteor.call("songs.cancelArrayDispatch");
   }
@@ -62,9 +62,9 @@ class App extends Component {
 
   render() {
     // this.createChallengeArray();
-		// Songs.remove();
-		// if (this.props.songs.length < )
-   
+    // Songs.remove();
+    // if (this.props.songs.length < )
+
     this.display();
     // console.log(this.props.songs);
     if (this.state.turn > 3) {
@@ -89,6 +89,7 @@ class App extends Component {
         });
       }
     };
+
     // let answer = array[0 + this.state.turn];
     // handleClick(buttonColor) {
     //   console.log(buttonColor)
@@ -116,8 +117,8 @@ class App extends Component {
                   ""
                 )}
               </div>
-              <button onClick={this.createChallengeArray}></button>
-              <button onClick={this.cancelArrayDispatch}></button>
+              <button onClick={this.createChallengeArray} />
+              <button onClick={this.cancelArrayDispatch} />
               <div className="top-right">
                 <ScoreBoard turn={this.state.turn} score={this.state.score} />
                 <div onClick={reset}>
