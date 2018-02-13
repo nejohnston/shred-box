@@ -63,7 +63,7 @@ if (this.state.turn > 3) {
 
     return (
       <div className="background">
-       <img className="logo" src="./logo.png"/>
+       
       <div className="app-wrapper">
      
         <div className="login-wrapper">
@@ -74,7 +74,7 @@ if (this.state.turn > 3) {
         <div className="input-wrapper">
           <div className="top-wrapper">
             <div className="top-left">
-
+            <img className="logo" src="./logo.png"/>
 
             {(this.state.turn=== 0 ) ?(
               <div className="answer-box">

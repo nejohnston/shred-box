@@ -43,7 +43,7 @@ body {
     justify-content: left;
     align-items: center;
     width: 50%;
-    padding-left: 88px;
+    padding-left: 28px;
 }
 
 .top-right {
@@ -208,6 +208,7 @@ body {
     height: 44px;
     width: 44px;
     border-radius: 50%;
+    margin: 4px;
 }
 
 .red-answer {
@@ -215,6 +216,7 @@ body {
     height: 44px;
     width: 44px;
     border-radius: 50%;
+    margin: 4px;
 }
 
 .green-answer {
@@ -222,6 +224,7 @@ body {
     height: 44px;
     width: 44px;
     border-radius: 50%;
+    margin: 4px;
 }
 
 .purple-answer {
@@ -229,6 +232,7 @@ body {
     height: 44px;
     width: 44px;
     border-radius: 50%;
+    margin: 4px;
 }
 
 .correct {
@@ -280,13 +284,13 @@ body {
 .answer-box {
     display: flex;
     flex-direction: row;
-    animation: fadeout 3s;
+    animation: fadeout 6s;
     opacity: 1;
 }
 
 .logo {
-    position: fixed;
-    top: 0%;
-    height: 170px;
-    left: 0%;
+    height: 130px;
+    width: 130px;
+    margin: -12px;
+    padding: -12px;
 }
