@@ -35,7 +35,7 @@ class App extends Component {
       turn: 0,
       score: 0
     };
-    this.display = this.display.bind(this);
+    this.dispatchArray = this.dispatchArray.bind(this);
     this.createChallengeArray = this.createChallengeArray.bind(this);
   }
 
@@ -44,7 +44,7 @@ class App extends Component {
     // Meteor.call('songs.dispatchArray');
   }
 
-  display() {
+  dispatchArray() {
     // if (this.props.currentUserId ===)
     Meteor.call("songs.dispatchArray");
     // console.log(Meteor.call("players.timeoutLoop"));
@@ -62,10 +62,10 @@ class App extends Component {
 
   render() {
     // this.createChallengeArray();
-    // Songs.remove();
-    // if (this.props.songs.length < )
-
-    this.display();
+		// Songs.remove();
+		// if (this.props.songs.length < )
+   
+    this.dispatchArray();
     // console.log(this.props.songs);
     if (this.state.turn > 3) {
       let restartTurn = 0;
@@ -97,15 +97,16 @@ class App extends Component {
     console.log(this.props.songs);
     return (
       <div className="background">
-        <img className="logo" src="./logo.png" />
         <div className="app-wrapper">
+        
           <div className="login-wrapper">
             <AccountsWrapper />
           </div>
 
           <div className="input-wrapper">
             <div className="top-wrapper">
-              <div className="top-left">
+              <div className="top-left-header">
+              <img className="logo" src="./logo.png" />
                 {this.state.turn === 0 ? (
                   <div className="answer-box">
                     <NextUpDisplay answer={answer[this.state.score]} />
@@ -117,19 +118,32 @@ class App extends Component {
                   ""
                 )}
               </div>
+<<<<<<< HEAD
               <button onClick={this.createChallengeArray} />
               <button onClick={this.cancelArrayDispatch} />
               <div className="top-right">
                 <ScoreBoard turn={this.state.turn} score={this.state.score} />
                 <div onClick={reset}>
                   <ResetButton
+=======
+              <button className="button1" onClick={this.createChallengeArray}>Create </button>
+              <button className="button2" onClick={this.cancelArrayDispatch}>cancel</button>
+               
+                  <ResetButton 
+                    onClick={reset}
+>>>>>>> 88708fe183d3802d86e694c0d5e3d9c96d40603d
                     turn={this.state.turn}
                     score={this.state.score}
                   />
-                </div>
+            
+              <div className="top-right-header">
+                <ScoreBoard turn={this.state.turn} score={this.state.score} />
+               
               </div>
             </div>
             <div className="bottom-wrapper">
+
+            {/* TODO assign onclick to buttons not divs (will need access to server stats from inside <redbutton> ) */}
               <div className="div1" onClick={turnUp}>
                 <RedButton
                   score={this.state.score}
@@ -170,6 +184,7 @@ export default withTracker(() => {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
     players: Players.find({}).fetch(),
-    score: Score.find({}).fetch()
+    score: Score.find({}).fetch(),
+    songs: Songs.find({}).fetch(),
   };
 })(App);
