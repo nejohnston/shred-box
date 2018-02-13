@@ -2,6 +2,7 @@ import { Meteor } from "meteor/meteor";
 import { Accounts } from "meteor/accounts-base"; //for add default user
 import { Players } from "../../api/players";
 import { Score } from "../../api/score";
+import { Songs } from "../../api/songs";
 
 Meteor.startup(() => {
   if (Meteor.users.find().count() === 0) {
@@ -18,6 +19,16 @@ Meteor.startup(() => {
       user: { userId: defaultUser, turn: false }
     });
   }
+  if (Songs.find({}).count()) {
+    Songs.remove({});
+  }
+  if (Score.find({}).count()) {
+    Score.remove({});
+    Score.insert({
+      score: 3
+    });
+  }
+
   // const users = Meteor.users
   //   .find({})
   //   .fetch()
@@ -27,5 +38,4 @@ Meteor.startup(() => {
   //     user: { userId: user._id, turn: false }
   //   });
   // });
-
 });
