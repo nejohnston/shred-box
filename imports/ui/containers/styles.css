@@ -182,7 +182,7 @@ body {
     border: 1px solid rgb(216, 216, 216);
 }
 
-.div1 {
+.red-div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -197,7 +197,7 @@ body {
     box-shadow: 0 0 28px rgb(219, 99, 99);
 }
 
-.div2 {
+.blue-div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -211,7 +211,7 @@ body {
     box-shadow: 0 0 28px rgb(113, 115, 231);
 }
 
-.div3 {
+.green-div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -227,7 +227,7 @@ body {
     box-shadow: 0 0 28px rgb(113, 231, 113);
 }
 
-.div4 {
+.purple-div {
     display: flex;
     justify-content: center;
     align-items: center;

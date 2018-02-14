@@ -42,17 +42,18 @@ Streamy.on('challenge-result',(d, s) => {
 
 
 class App extends Component {
-
-  onClick(id,turn) {
-    buttonClicked(id);
-    turnUp(turn);
+  constructor() {
+    super();
+    this.state = {
+      turn: 0
+    };
   }
+  
   buttonClicked = (id) => {
     if(Session.get('started')) {
-    console.log(id);
+    console.log("Button to emit: ", id);
     Streamy.emit('note', { data: id })
     }
-    
   };
   startClicked = (e) => {
     Session.set('started', true)
@@ -64,19 +65,29 @@ class App extends Component {
     Meteor.call('reset')
     console.log("Resetted")
   };
-  turnUp = (turn) => {
-    if (turn > 3 ) {
-      turn = 0;
-    } else {
-      turn++
-    }
-  }
 
+  turnUp = () => {
+    if (this.state.turn > 2) {
+      let restartTurn = 0;
+      this.setState({ turn: restartTurn });
+    } else {
+      let nextTurn = this.state.turn + 1;
+      this.setState({ turn: nextTurn })
+  }
+  console.log("Turn: ", this.state.turn)
+}
+
+  onClick = (id,turn) => {
+    this.buttonClicked(id);
+    this.turnUp(turn);
+  }
 
   render() {
 
 // answer is variable that 
-   
+
+
+
 
 
     return (
@@ -111,30 +122,30 @@ class App extends Component {
             <div className="bottom-wrapper">
 
             
-              <div className="div1"
+              <div className="red-div"
               onClick={() => {this.onClick(0, turn)}} >
                 <RedButton id={0} 
-                  // noteChoice={1}
+                  noteChoice={challenge.curValue[this.state.turn]}
                 />
               </div>
 
-              <div className="div2"
+              <div className="blue-div"
               onClick={() => {this.onClick(1, turn)}} >
                 <BlueButton 
-                  // noteChoice={1}
+                 noteChoice={challenge.curValue[this.state.turn]}
                 />
               </div>
 
-              <div className="div3"
+              <div className="green-div"
               onClick={() => {this.onClick(2, turn)}}  >
                 <GreenButton id={2} 
-                  // noteChoice={1}
+                 noteChoice={challenge.curValue[this.state.turn]}
                 />
               </div>
-              <div className="div4"
+              <div className="purple-div"
               onClick={() => {this.onClick(3, turn)}}  >
                 <PurpleButton id={3}     
-                   // noteChoice={1}
+                 noteChoice={challenge.curValue[this.state.turn]}
                 />
               </div>
 
