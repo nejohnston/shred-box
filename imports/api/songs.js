@@ -15,8 +15,8 @@ let prev = curr;
 let playedNotes = [];
 let win = true;
 
-// let challenge = Songs.find().fetch();
-let challenge = [{challenge: [0,1,2,3]}]
+let challenge = Songs.find().fetch();
+// let challenge = [{challenge: [2,2,2,2]}]
 const users = Meteor.users
   .find({})
   .fetch()

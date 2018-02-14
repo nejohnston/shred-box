@@ -23,15 +23,9 @@ let turn = 0;
 
 Session.set("started", false);
 
-Streamy.on("challenge", (d, s) => {
-  console.log(">>>>>>>>>>>>>>", d);
-  challenge.set(d.data.challenge);
-  
-});
-
 Streamy.on("challenge-result", (d, s) => {
   challengeResult.set(d.data);
-  console.log(challengeResult);
+
   Meteor.setTimeout(() => {
     challengeResult.set("");
   }, 1500);
@@ -46,8 +40,13 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      turn: 0
+      turn: 0,
+      challenge: []
     };
+      Streamy.on("challenge", (d, s) => {
+      console.log("Initial challenge pull", d);
+      this.setState({ challenge: d.data.challenge });
+    });
   }
   
   buttonClicked = (id) => {
@@ -64,7 +63,7 @@ class App extends Component {
   };
   resetClicked = e => {
     Session.set("started", false);
-    Meteor.call("reset");
+    Meteor.call("songs.reset");
     console.log("Resetted");
   };
 
@@ -84,13 +83,9 @@ class App extends Component {
     this.turnUp(turn);
   }
 
+  
+
   render() {
-
-// answer is variable that 
-
-
-
-
 
     return (
       <div className="background">
@@ -106,10 +101,10 @@ class App extends Component {
 
                 {/* what to render? */}
                 <div className="answer-box">
-                  <NextUpDisplay nextNote={challenge.curValue[0]} />
-                  <NextUpDisplay nextNote={challenge.curValue[1]} />
-                  <NextUpDisplay nextNote={challenge.curValue[2]} />
-                  <NextUpDisplay nextNote={challenge.curValue[3]} />
+                  <NextUpDisplay nextNote={this.state.challenge[0]} />
+                  <NextUpDisplay nextNote={this.state.challenge[1]} />
+                  <NextUpDisplay nextNote={this.state.challenge[2]} />
+                  <NextUpDisplay nextNote={this.state.challenge[3]} />
                 </div>
               </div>
 
@@ -123,27 +118,27 @@ class App extends Component {
               <div className="red-div"
               onClick={() => {this.onClick(0, turn)}} >
                 <RedButton id={0} 
-                  noteChoice={challenge.curValue[this.state.turn]}
+                  noteChoice={this.state.challenge[this.state.turn]}
                 />
               </div>
 
               <div className="blue-div"
               onClick={() => {this.onClick(1, turn)}} >
                 <BlueButton 
-                 noteChoice={challenge.curValue[this.state.turn]}
+                 noteChoice={this.state.challenge[this.state.turn]}
                 />
               </div>
 
               <div className="green-div"
               onClick={() => {this.onClick(2, turn)}}  >
                 <GreenButton id={2} 
-                 noteChoice={challenge.curValue[this.state.turn]}
+                 noteChoice={this.state.challenge[this.state.turn]}
                 />
               </div>
               <div className="purple-div"
               onClick={() => {this.onClick(3, turn)}}  >
                 <PurpleButton id={3}     
-                 noteChoice={challenge.curValue[this.state.turn]}
+                 noteChoice={this.state.challenge[this.state.turn]}
                 />
               </div>
             </div>
@@ -179,6 +174,7 @@ export default withTracker(() => {
     currentUserId: Meteor.userId(),
     players: Players.find({}).fetch(),
     score: Score.find({}).fetch(),
-    songs: Songs.find({}).fetch()
+    songs: Songs.find({}).fetch(),
+  
   };
 })(App);
