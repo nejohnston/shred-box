@@ -17,10 +17,7 @@ import "./styles.css";
 import { ReactiveVar } from "meteor/reactive-var";
 import { Session } from "meteor/session";
 
-import { ReactiveVar } from "meteor/reactive-var";
-import { Session } from "meteor/session";
-
-const challenge = new ReactiveVar([0, 1, 2, 3]);
+const challenge = new ReactiveVar([]);
 const challengeResult = new ReactiveVar("");
 let turn = 0;
 
@@ -29,6 +26,7 @@ Session.set("started", false);
 Streamy.on("challenge", (d, s) => {
   console.log(">>>>>>>>>>>>>>", d);
   challenge.set(d.data.challenge);
+  console.log("?????????", challenge.curValue);
 });
 
 Streamy.on("challenge-result", (d, s) => {
@@ -51,21 +49,22 @@ class App extends Component {
       turn: 0
     };
   }
-  
-  buttonClicked = (id) => {
-    if(Session.get('started')) {
-    console.log("Button to emit: ", id);
-    Streamy.emit('note', { data: id })
+
+  buttonClicked = id => {
+    if (Session.get("started")) {
+      console.log("Button to emit: ", id);
+      Streamy.emit("note", { data: id });
     }
   };
   startClicked = e => {
     Session.set("started", true);
-    Meteor.call("start song");
+    Meteor.call("songs.createChallengeArray");
+    Meteor.call("songs.start");
     console.log("Started");
   };
   resetClicked = e => {
     Session.set("started", false);
-    Meteor.call("reset");
+    Meteor.call("songs.reset");
     console.log("Resetted");
   };
 
@@ -75,25 +74,22 @@ class App extends Component {
       this.setState({ turn: restartTurn });
     } else {
       let nextTurn = this.state.turn + 1;
-      this.setState({ turn: nextTurn })
-  }
-  console.log("Turn: ", this.state.turn)
-}
+      this.setState({ turn: nextTurn });
+    }
+    console.log("Turn: ", this.state.turn);
+  };
 
-  onClick = (id,turn) => {
+  onClick = (id, turn) => {
     this.buttonClicked(id);
     this.turnUp(turn);
-  }
+  };
 
   render() {
+    // answer is variable that
 
-// answer is variable that 
+    console.log("////////////////", challenge.curValue[0]);
 
-
-
-
-
-    return (
+    return challenge ? (
       <div className="background">
         <div className="app-wrapper">
           <div className="login-wrapper">
@@ -119,46 +115,60 @@ class App extends Component {
               </div>
             </div>
             <div className="bottom-wrapper">
-
-            
-              <div className="red-div"
-              onClick={() => {this.onClick(0, turn)}} >
-                <RedButton id={0} 
+              <div
+                className="red-div"
+                onClick={() => {
+                  this.onClick(0, turn);
+                }}
+              >
+                <RedButton
+                  id={0}
                   noteChoice={challenge.curValue[this.state.turn]}
                 />
               </div>
 
-              <div className="blue-div"
-              onClick={() => {this.onClick(1, turn)}} >
-                <BlueButton 
-                 noteChoice={challenge.curValue[this.state.turn]}
-                />
+              <div
+                className="blue-div"
+                onClick={() => {
+                  this.onClick(1, turn);
+                }}
+              >
+                <BlueButton noteChoice={challenge.curValue[this.state.turn]} />
               </div>
 
-              <div className="green-div"
-              onClick={() => {this.onClick(2, turn)}}  >
-                <GreenButton id={2} 
-                 noteChoice={challenge.curValue[this.state.turn]}
+              <div
+                className="green-div"
+                onClick={() => {
+                  this.onClick(2, turn);
+                }}
+              >
+                <GreenButton
+                  id={2}
+                  noteChoice={challenge.curValue[this.state.turn]}
                 />
               </div>
-              <div className="purple-div"
-              onClick={() => {this.onClick(3, turn)}}  >
-                <PurpleButton id={3}     
-                 noteChoice={challenge.curValue[this.state.turn]}
+              <div
+                className="purple-div"
+                onClick={() => {
+                  this.onClick(3, turn);
+                }}
+              >
+                <PurpleButton
+                  id={3}
+                  noteChoice={challenge.curValue[this.state.turn]}
                 />
               </div>
             </div>
           </div>
         </div>
-
         <button
-          className="button1"
-          onClick={() => {
-            this.startClicked();
-          }}
-        >
-          Start
-        </button>
+        className="button1"
+        onClick={() => {
+          this.startClicked();
+        }}
+      >
+        Start
+      </button>
         <button className="button2">Quit</button>
         <button
           className="reset-div"
@@ -169,6 +179,15 @@ class App extends Component {
           Reset
         </button>
       </div>
+    ) : (
+      <button
+        className="button1"
+        onClick={() => {
+          this.startClicked();
+        }}
+      >
+        Start
+      </button>
     );
   }
 }
