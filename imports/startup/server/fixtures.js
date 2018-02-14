@@ -20,23 +20,17 @@ Meteor.startup(() => {
       user: { userId: defaultUser, turn: false }
     });
   }
+
   if (Songs.find({}).count()) {
     Songs.remove({});
   }
+
   if (Score.find({}).count()) {
     Score.remove({});
-    Score.insert({
+   
+  }
+ Score.insert({
       score: 3
     });
-  }
 
-  // const users = Meteor.users
-  //   .find({})
-  //   .fetch()
-  //   .map(user => user._id);
-  // users.forEach(user => {
-  //   Players.insert({
-  //     user: { userId: user._id, turn: false }
-  //   });
-  // });
 });
