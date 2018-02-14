@@ -17,7 +17,7 @@ import "./styles.css";
 import { ReactiveVar } from "meteor/reactive-var";
 import { Session } from "meteor/session";
 
-const challenge = new ReactiveVar([]);
+// const challenge = new ReactiveVar([]);
 const challengeResult = new ReactiveVar("");
 let turn = 0;
 
@@ -45,7 +45,15 @@ class App extends Component {
     };
       Streamy.on("challenge", (d, s) => {
       console.log("Initial challenge pull", d);
-      this.setState({ challenge: d.data.challenge });
+      console.log(this.props.currentUserId);
+      if(d.data.userid === this.props.currentUserId){
+        //      challenge.set(d.data.challenge)
+        this.setState({ challenge: d.data.challenge });
+      }
+      else{
+        this.setState({ challenge:[] });
+      }
+      
     });
   }
   
@@ -175,6 +183,6 @@ export default withTracker(() => {
     players: Players.find({}).fetch(),
     score: Score.find({}).fetch(),
     songs: Songs.find({}).fetch(),
-    challenge
+    // challenge
   };
 })(App);

@@ -16,7 +16,7 @@ let playedNotes = [];
 let win = true;
 
 let challenge = Songs.find().fetch();
-// let challenge = [{challenge: [2,2,2,2]}]
+// let challenge = [{challenge: [0,1,2,3]}]
 const users = Meteor.users
   .find({})
   .fetch()
@@ -66,7 +66,8 @@ Meteor.methods({
   },
 
   "songs.start"() {
-    challenge = challenge || Songs.find().fetch();
+    challenge = Songs.find({}).fetch();
+    console.log("challenge", challenge);
     if (!this.isSimulation) {
       interval = Meteor.setInterval(() => {
         playedNotes = [];
