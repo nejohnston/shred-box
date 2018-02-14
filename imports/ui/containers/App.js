@@ -61,6 +61,9 @@ class App extends Component {
   // }
 
   render() {
+   
+
+
     // this.createChallengeArray();
 		// Songs.remove();
 		// if (this.props.songs.length < )
@@ -94,7 +97,8 @@ class App extends Component {
     // handleClick(buttonColor) {
     //   console.log(buttonColor)
     // }
-    console.log(this.props.songs);
+   console.log(answer)
+    
     return (
       <div className="background">
         <div className="app-wrapper">
@@ -118,15 +122,7 @@ class App extends Component {
                   ""
                 )}
               </div>
-              <button className="button1" onClick={this.createChallengeArray}>Create </button>
-              <button className="button2" onClick={this.cancelArrayDispatch}>cancel</button>
-               <div  onClick={reset} className="reset-div">
-                  <ResetButton 
-                   
-                    turn={this.state.turn}
-                    score={this.state.score}
-                  />
-            </div>
+            
               <div className="top-right-header">
                 <ScoreBoard turn={this.state.turn} score={this.state.score} />
                
@@ -164,6 +160,15 @@ class App extends Component {
             </div>
           </div>
         </div>
+        <button className="button1" onClick={this.createChallengeArray}>Create </button>
+              <button className="button2" onClick={this.cancelArrayDispatch}>cancel</button>
+               <div  onClick={reset} className="reset-div">
+                  <ResetButton 
+                   
+                    turn={this.state.turn}
+                    score={this.state.score}
+                  />
+            </div>
       </div>
     );
   }

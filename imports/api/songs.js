@@ -9,7 +9,7 @@ let intervalId;
 const intervalGenerator = i => {
   intervalId = Meteor.setInterval(() => {
     Songs.insert({ userid: users[i], challenge: challengeArray() });
-  }, 5000);
+  }, 10000);
 
   console.log(intervalId);
   return intervalId;
@@ -33,12 +33,12 @@ Meteor.methods({
   // Need a method to create challenge array, this is the array of colors
   // each user will be inputting
   "songs.createChallengeArray"() {
-    if (!this.userId) {
-      throw new Meteor.Error(
-        "songs.not-authorized",
-        "You must be logged in to play"
-      );
-    }
+    // if (!this.userId) {
+    //   throw new Meteor.Error(
+    //     "songs.not-authorized",
+    //     "You must be logged in to play"
+    //   );
+    // }
 
     //TODO: CHANGE TO DYNAMIC VAR
     const length = 1;
