@@ -17,7 +17,7 @@ import "./styles.css";
 import { ReactiveVar } from "meteor/reactive-var";
 import { Session } from "meteor/session";
 
-const challenge = new ReactiveVar([1,2,3,4]);
+const challenge = new ReactiveVar([]);
 const challengeResult = new ReactiveVar("");
 let turn = 0;
 
@@ -58,7 +58,8 @@ class App extends Component {
   };
   startClicked = e => {
     Session.set("started", true);
-    Meteor.call("start song");
+    Meteor.call("songs.createChallengeArray")
+    Meteor.call("songs.start");
     console.log("Started");
   };
   resetClicked = e => {
