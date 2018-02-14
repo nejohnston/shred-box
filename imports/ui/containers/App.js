@@ -17,8 +17,27 @@ import "./styles.css";
 import { ReactiveVar } from "meteor/reactive-var";
 import { Session } from "meteor/session";
 
-const challenge = new ReactiveVar([]);
+import { ReactiveVar } from "meteor/reactive-var";
+import { Session } from "meteor/session";
+
+const challenge = new ReactiveVar([0, 1, 2, 3]);
 const challengeResult = new ReactiveVar("");
+let turn = 0;
+
+Session.set("started", false);
+
+Streamy.on("challenge", (d, s) => {
+  console.log(">>>>>>>>>>>>>>", d);
+  challenge.set(d.data.challenge);
+});
+
+Streamy.on("challenge-result", (d, s) => {
+  challengeResult.set(d.data);
+  console.log(challengeResult);
+  Meteor.setTimeout(() => {
+    challengeResult.set("");
+  }, 1500);
+});
 
 const buttonClicked = function(id) {
   Streamy.emit("note", { data: id });
@@ -26,6 +45,34 @@ const buttonClicked = function(id) {
 };
 
 class App extends Component {
+  onClick(id, turn) {
+    buttonClicked(id);
+    turnUp(turn);
+  }
+  buttonClicked = id => {
+    if (Session.get("started")) {
+      console.log(id);
+      Streamy.emit("note", { data: id });
+    }
+  };
+  startClicked = e => {
+    Session.set("started", true);
+    Meteor.call("start song");
+    console.log("Started");
+  };
+  resetClicked = e => {
+    Session.set("started", false);
+    Meteor.call("reset");
+    console.log("Resetted");
+  };
+  turnUp = turn => {
+    if (turn > 3) {
+      turn = 0;
+    } else {
+      turn++;
+    }
+  };
+
   render() {
     // answer is variable that
 
@@ -43,10 +90,10 @@ class App extends Component {
 
                 {/* what to render? */}
                 <div className="answer-box">
-                  <NextUpDisplay nextNote={0} />
-                  <NextUpDisplay nextNote={1} />
-                  <NextUpDisplay nextNote={2} />
-                  <NextUpDisplay nextNote={3} />
+                  <NextUpDisplay nextNote={challenge.curValue[0]} />
+                  <NextUpDisplay nextNote={challenge.curValue[1]} />
+                  <NextUpDisplay nextNote={challenge.curValue[2]} />
+                  <NextUpDisplay nextNote={challenge.curValue[3]} />
                 </div>
               </div>
 
@@ -55,33 +102,48 @@ class App extends Component {
               </div>
             </div>
             <div className="bottom-wrapper">
-              <div className="div1">
+              <div
+                className="div1"
+                onClick={() => {
+                  this.onClick(0, turn);
+                }}
+              >
                 <RedButton
                   id={0}
-                  onClick={buttonClicked(0)}
                   // noteChoice={1}
                 />
               </div>
 
-              <div className="div2">
+              <div
+                className="div2"
+                onClick={() => {
+                  this.onClick(1, turn);
+                }}
+              >
                 <BlueButton
-                  id={1}
-                  onClick={buttonClicked(1)}
-                  // noteChoice={1}
+                // noteChoice={1}
                 />
               </div>
 
-              <div className="div3">
+              <div
+                className="div3"
+                onClick={() => {
+                  this.onClick(2, turn);
+                }}
+              >
                 <GreenButton
                   id={2}
-                  onClick={buttonClicked(2)}
                   // noteChoice={1}
                 />
               </div>
-              <div className="div4">
+              <div
+                className="div4"
+                onClick={() => {
+                  this.onClick(3, turn);
+                }}
+              >
                 <PurpleButton
                   id={3}
-                  onClick={buttonClicked(3)}
                   // noteChoice={1}
                 />
               </div>
@@ -89,9 +151,23 @@ class App extends Component {
           </div>
         </div>
 
-        <button className="button1">New Game</button>
+        <button
+          className="button1"
+          onClick={() => {
+            this.startClicked();
+          }}
+        >
+          Start
+        </button>
         <button className="button2">Quit</button>
-        <button className="reset-div">Reset</button>
+        <button
+          className="reset-div"
+          onClick={() => {
+            this.resetClicked();
+          }}
+        >
+          Reset
+        </button>
       </div>
     );
   }
