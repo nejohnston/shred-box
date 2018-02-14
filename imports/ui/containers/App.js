@@ -35,7 +35,7 @@ class App extends Component {
       turn: 0,
       score: 0
     };
-    this.dispatchArray = this.dispatchArray.bind(this);
+    // this.dispatchArray = this.dispatchArray.bind(this);
     this.createChallengeArray = this.createChallengeArray.bind(this);
   }
 
@@ -44,15 +44,6 @@ class App extends Component {
     // Meteor.call('songs.dispatchArray');
   }
 
-  dispatchArray() {
-    // if (this.props.currentUserId ===)
-    Meteor.call("songs.dispatchArray");
-    // console.log(Meteor.call("players.timeoutLoop"));
-  }
-  cancelArrayDispatch(){
-    // Meteor.clearInterval(this.createChallengeArray);
-    Meteor.call("songs.cancelArrayDispatch");
-  }
   // componentDidMount() {
   // 	const isLoggedIn = this.props.currentUserId;
   // 	isLoggedIn?
@@ -61,12 +52,8 @@ class App extends Component {
   // }
 
   render() {
-    // this.createChallengeArray();
-		// Songs.remove();
-		// if (this.props.songs.length < )
-   
-    this.dispatchArray();
-    // console.log(this.props.songs);
+
+
     if (this.state.turn > 3) {
       let restartTurn = 0;
       this.setState({ turn: restartTurn });
@@ -117,7 +104,7 @@ class App extends Component {
                 )}
               </div>
               <button onClick={this.createChallengeArray}></button>
-              <button onClick={this.cancelArrayDispatch}></button>
+       
               <div className="top-right">
                 <ScoreBoard turn={this.state.turn} score={this.state.score} />
                 <div onClick={reset}>
