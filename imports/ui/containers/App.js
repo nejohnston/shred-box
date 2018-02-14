@@ -17,10 +17,7 @@ import "./styles.css";
 import { ReactiveVar } from "meteor/reactive-var";
 import { Session } from "meteor/session";
 
-import { ReactiveVar } from "meteor/reactive-var";
-import { Session } from "meteor/session";
-
-const challenge = new ReactiveVar([0, 1, 2, 3]);
+const challenge = new ReactiveVar([1,2,3,4]);
 const challengeResult = new ReactiveVar("");
 let turn = 0;
 
