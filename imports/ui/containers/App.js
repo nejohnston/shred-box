@@ -47,16 +47,16 @@ class App extends Component {
 
                 {/* what to render? */}
                   <div className="answer-box">
-                    <NextUpDisplay answer={0} />
-                    <NextUpDisplay answer={1} />
-                    <NextUpDisplay answer={2} />
-                    <NextUpDisplay answer={3} />
+                    <NextUpDisplay nextNote={0} />
+                    <NextUpDisplay nextNote={1} />
+                    <NextUpDisplay nextNote={2} />
+                    <NextUpDisplay nextNote={3} />
                   </div>
                 
               </div>
          
               <div className="top-right-header">
-                <ScoreBoard id={0} turn={0} score={0} />
+                <ScoreBoard turn={0} score={0} />
               </div>
 
             </div>
@@ -64,24 +64,24 @@ class App extends Component {
 
             
               <div className="div1" >
-                <RedButton
+                <RedButton id={0} 
                   // noteChoice={1}
                 />
               </div>
 
               <div className="div2">
-                <BlueButton
+                <BlueButton id={1} 
                   // noteChoice={1}
                 />
               </div>
 
               <div className="div3">
-                <GreenButton
+                <GreenButton id={2} 
                   // noteChoice={1}
                 />
               </div>
               <div className="div4">
-                <PurpleButton
+                <PurpleButton id={3} 
                    // noteChoice={1}
                 />
               </div>
