@@ -15,7 +15,8 @@ let prev = curr;
 let playedNotes = [];
 let win = true;
 
-const challenge = Songs.find({}).fetch();
+let challenge = Songs.find().fetch();
+
 
 const users = Meteor.users
   .find({})
@@ -47,7 +48,7 @@ Meteor.methods({
     //TODO: CHANGE TO DYNAMIC VAR
     const length = 5;
 
-      if (Songs.find({}).count() !== length * users.length) {
+      // if (Songs.find({}).count() !== length * users.length) {
         if (Songs.find({}).count() !== 0) {
           Songs.remove({});
         }
@@ -59,7 +60,9 @@ Meteor.methods({
           }
         }
 
-      }
+      // }
+
+      console.log(Songs.find().fetch());
 
   },
 
@@ -68,17 +71,27 @@ Meteor.methods({
   },
 
   "songs.start"(){
+   challenge = challenge || Songs.find().fetch();
     interval = Meteor.setInterval(() => {
       playedNotes = [];
       win = true
-      if(curr === challenge.length) { 
+      if(challenge.length !== 0 && curr === challenge.length) { 
         Streamy.broadcast('challenge', { data: { challenge: 'Done!' }});
-        return done(); 
+        return songEnd(); 
       }
-      Streamy.broadcast('challenge', { data: challenge[curr] });
+      console.log(challenge.length);
+
+      // if(challenge.length !== 0 && challenge[curr].userid === this.userId){
+            // }
+      if (challenge.length){
+         Streamy.broadcast('challenge', { data: challenge[curr] });
+      }
+       
+  
+      
       prev = curr;
       curr ++;
-  }, 4000)
+  }, 5000)
   }
 });
 
