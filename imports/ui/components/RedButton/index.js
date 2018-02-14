@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const redClicked = (noteChoice) => {
-
+const redClicked = noteChoice => {
   if (noteChoice === 0) {
-    const snd = new Audio("ThunderKick.wav"); 
+    const snd = new Audio("ThunderKick.wav");
     snd.play();
   } else {
     const errorsnd = new Audio("record-scratch.mp3");
@@ -12,10 +11,10 @@ const redClicked = (noteChoice) => {
   }
 };
 
-const RedButton = ({noteChoice}) => (
+const RedButton = ({ noteChoice }) => (
   <div
     onClick={() => {
-      redClicked(nextNonoteChoicete);
+      redClicked(noteChoice);
     }}
     className="red-button"
   />
