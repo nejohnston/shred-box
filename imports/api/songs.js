@@ -66,7 +66,8 @@ Meteor.methods({
   },
 
   "songs.start"() {
-    challenge = challenge || Songs.find().fetch();
+    challenge = Songs.find({}).fetch();
+    console.log("challenge", challenge);
     if (!this.isSimulation) {
       interval = Meteor.setInterval(() => {
         playedNotes = [];
@@ -85,7 +86,7 @@ Meteor.methods({
 
         prev = curr;
         curr++;
-      }, 5000);
+      }, 4000);
     }
   }
 });

@@ -17,21 +17,15 @@ import "./styles.css";
 import { ReactiveVar } from "meteor/reactive-var";
 import { Session } from "meteor/session";
 
-const challenge = new ReactiveVar([]);
+// const challenge = new ReactiveVar([]);
 const challengeResult = new ReactiveVar("");
 let turn = 0;
 
 Session.set("started", false);
 
-Streamy.on("challenge", (d, s) => {
-  console.log(">>>>>>>>>>>>>>", d);
-  challenge.set(d.data.challenge);
-  // console.log("?????????", challenge.curValue);
-});
-
 Streamy.on("challenge-result", (d, s) => {
   challengeResult.set(d.data);
-  console.log(challengeResult);
+
   Meteor.setTimeout(() => {
     challengeResult.set("");
   }, 1500);
@@ -46,19 +40,32 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      turn: 0
+      turn: 0,
+      challenge: []
     };
+      Streamy.on("challenge", (d, s) => {
+      console.log("Initial challenge pull", d);
+      console.log(this.props.currentUserId);
+      if(d.data.userid === this.props.currentUserId){
+        //      challenge.set(d.data.challenge)
+        this.setState({ challenge: d.data.challenge });
+      }
+      else{
+        this.setState({ challenge:[] });
+      }
+      
+    });
   }
-
-  buttonClicked = id => {
-    if (Session.get("started")) {
-      console.log("Button to emit: ", id);
-      Streamy.emit("note", { data: id });
+  
+  buttonClicked = (id) => {
+    if(Session.get('started')) {
+    console.log("Button to emit: ", id);
+    Streamy.emit('note', { data: id })
     }
   };
   startClicked = e => {
     Session.set("started", true);
-    Meteor.call("songs.createChallengeArray");
+    Meteor.call("songs.createChallengeArray")
     Meteor.call("songs.start");
     console.log("Started");
   };
@@ -74,20 +81,19 @@ class App extends Component {
       this.setState({ turn: restartTurn });
     } else {
       let nextTurn = this.state.turn + 1;
-      this.setState({ turn: nextTurn });
-    }
-    console.log("Turn: ", this.state.turn);
-  };
+      this.setState({ turn: nextTurn })
+  }
+  console.log("Turn: ", this.state.turn)
+}
 
-  onClick = (id, turn) => {
+  onClick = (id,turn) => {
     this.buttonClicked(id);
     this.turnUp(turn);
-  };
+  }
+
+  
 
   render() {
-    // answer is variable that
-
-    console.log("////////////////", challenge);
 
     return (
       <div className="background">
@@ -103,10 +109,10 @@ class App extends Component {
 
                 {/* what to render? */}
                 <div className="answer-box">
-                  <NextUpDisplay nextNote={challenge.curValue[0]} />
-                  <NextUpDisplay nextNote={challenge.curValue[1]} />
-                  <NextUpDisplay nextNote={challenge.curValue[2]} />
-                  <NextUpDisplay nextNote={challenge.curValue[3]} />
+                  <NextUpDisplay nextNote={this.state.challenge[0]} />
+                  <NextUpDisplay nextNote={this.state.challenge[1]} />
+                  <NextUpDisplay nextNote={this.state.challenge[2]} />
+                  <NextUpDisplay nextNote={this.state.challenge[3]} />
                 </div>
               </div>
 
@@ -115,52 +121,38 @@ class App extends Component {
               </div>
             </div>
             <div className="bottom-wrapper">
-              <div
-                className="red-div"
-                onClick={() => {
-                  this.onClick(0, turn);
-                }}
-              >
-                <RedButton
-                  id={0}
-                  noteChoice={challenge.curValue[this.state.turn]}
+
+            
+              <div className="red-div"
+              onClick={() => {this.onClick(0, turn)}} >
+                <RedButton id={0} 
+                  noteChoice={this.state.challenge[this.state.turn]}
                 />
               </div>
 
-              <div
-                className="blue-div"
-                onClick={() => {
-                  this.onClick(1, turn);
-                }}
-              >
-                <BlueButton noteChoice={challenge.curValue[this.state.turn]} />
-              </div>
-
-              <div
-                className="green-div"
-                onClick={() => {
-                  this.onClick(2, turn);
-                }}
-              >
-                <GreenButton
-                  id={2}
-                  noteChoice={challenge.curValue[this.state.turn]}
+              <div className="blue-div"
+              onClick={() => {this.onClick(1, turn)}} >
+                <BlueButton 
+                 noteChoice={this.state.challenge[this.state.turn]}
                 />
               </div>
-              <div
-                className="purple-div"
-                onClick={() => {
-                  this.onClick(3, turn);
-                }}
-              >
-                <PurpleButton
-                  id={3}
-                  noteChoice={challenge.curValue[this.state.turn]}
+
+              <div className="green-div"
+              onClick={() => {this.onClick(2, turn)}}  >
+                <GreenButton id={2} 
+                 noteChoice={this.state.challenge[this.state.turn]}
+                />
+              </div>
+              <div className="purple-div"
+              onClick={() => {this.onClick(3, turn)}}  >
+                <PurpleButton id={3}     
+                 noteChoice={this.state.challenge[this.state.turn]}
                 />
               </div>
             </div>
           </div>
         </div>
+
         <button
           className="button1"
           onClick={() => {
@@ -190,6 +182,7 @@ export default withTracker(() => {
     currentUserId: Meteor.userId(),
     players: Players.find({}).fetch(),
     score: Score.find({}).fetch(),
-    songs: Songs.find({}).fetch()
+    songs: Songs.find({}).fetch(),
+    // challenge
   };
 })(App);
