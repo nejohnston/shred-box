@@ -81,7 +81,7 @@ class App extends Component {
     // handleClick(buttonColor) {
     //   console.log(buttonColor)
     // }
-   console.log(answer)
+   console.log(this.props.songs);
     
     return (
       <div className="background">
