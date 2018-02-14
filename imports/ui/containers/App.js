@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withTracker } from "meteor/react-meteor-data";
-
 import { Players } from "../../api/players";
 import { Score } from "../../api/score";
 import { Songs } from "../../api/songs";
-
 import { Meteor } from "meteor/meteor";
-
 import BlueButton from "../components/BlueButton";
 import GreenButton from "../components/GreenButton";
 import PurpleButton from "../components/PurpleButton";
@@ -15,78 +12,90 @@ import RedButton from "../components/RedButton";
 import NextUpDisplay from "../components/NextUpDisplay";
 import AccountsWrapper from "../components/AccountsWrapper";
 import ScoreBoard from "../components/ScoreBoard";
-import ResetButton from "../components/ResetButton";
-
 import "./styles.css";
 
-const randomArray = (length, max) => {
-  return Array.apply(null, Array(length)).map(function() {
-    return Math.round(Math.random() * max);
-  });
-};
+import { ReactiveVar } from "meteor/reactive-var";
+import { Session } from "meteor/session";
 
-const array = randomArray(42, 3);
-let answer = array;
+import { ReactiveVar } from "meteor/reactive-var";
+import { Session } from "meteor/session";
+
+const challenge = new ReactiveVar([0, 1, 2, 3]);
+const challengeResult = new ReactiveVar("");
+let turn = 0;
+
+Session.set("started", false);
+
+Streamy.on("challenge", (d, s) => {
+  console.log(">>>>>>>>>>>>>>", d);
+  challenge.set(d.data.challenge);
+});
+
+Streamy.on("challenge-result", (d, s) => {
+  challengeResult.set(d.data);
+  console.log(challengeResult);
+  Meteor.setTimeout(() => {
+    challengeResult.set("");
+  }, 1500);
+});
+
+const buttonClicked = function(id) {
+  Streamy.emit("note", { data: id });
+  console.log(id);
+};
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      turn: 0,
-      score: 0
+      turn: 0
     };
-    // this.dispatchArray = this.dispatchArray.bind(this);
-    this.createChallengeArray = this.createChallengeArray.bind(this);
   }
+  
+  buttonClicked = (id) => {
+    if(Session.get('started')) {
+    console.log("Button to emit: ", id);
+    Streamy.emit('note', { data: id })
+    }
+  };
+  startClicked = e => {
+    Session.set("started", true);
+    Meteor.call("start song");
+    console.log("Started");
+  };
+  resetClicked = e => {
+    Session.set("started", false);
+    Meteor.call("reset");
+    console.log("Resetted");
+  };
 
-  createChallengeArray() {
-    Meteor.call("songs.createChallengeArray");
-    // Meteor.call('songs.dispatchArray');
+  turnUp = () => {
+    if (this.state.turn > 2) {
+      let restartTurn = 0;
+      this.setState({ turn: restartTurn });
+    } else {
+      let nextTurn = this.state.turn + 1;
+      this.setState({ turn: nextTurn })
   }
+  console.log("Turn: ", this.state.turn)
+}
 
-  // componentDidMount() {
-  // 	const isLoggedIn = this.props.currentUserId;
-  // 	isLoggedIn?
-  // 	console.log(this.props.players)
-  // 	: '';
-  // }
+  onClick = (id,turn) => {
+    this.buttonClicked(id);
+    this.turnUp(turn);
+  }
 
   render() {
 
+// answer is variable that 
 
-    if (this.state.turn > 3) {
-      let restartTurn = 0;
-      this.setState({ turn: restartTurn });
-    }
-    const turnUp = () => {
-      let nextTurn = this.state.turn + 1;
-      let nextScore = this.state.score + 1;
-      this.setState({
-        turn: nextTurn,
-        score: nextScore
-      });
-    };
-    const reset = () => {
-      {
-        let zeroTurn = this.state.turn * 0;
-        let zeroScore = this.state.score * 0;
-        this.setState({
-          turn: zeroTurn,
-          score: zeroScore
-        });
-      }
-    };
 
-    // let answer = array[0 + this.state.turn];
-    // handleClick(buttonColor) {
-    //   console.log(buttonColor)
-    // }
-   console.log(this.props.songs);
-    
+
+
+
     return (
       <div className="background">
         <div className="app-wrapper">
-        
           <div className="login-wrapper">
             <AccountsWrapper />
           </div>
@@ -94,66 +103,71 @@ class App extends Component {
           <div className="input-wrapper">
             <div className="top-wrapper">
               <div className="top-left-header">
-              <img className="logo" src="./logo.png" />
-                {this.state.turn === 0 ? (
-                  <div className="answer-box">
-                    <NextUpDisplay answer={answer[this.state.score]} />
-                    <NextUpDisplay answer={answer[this.state.score + 1]} />
-                    <NextUpDisplay answer={answer[this.state.score + 2]} />
-                    <NextUpDisplay answer={answer[this.state.score + 3]} />
-                  </div>
-                ) : (
-                  ""
-                )}
+                <img className="logo" src="./logo.png" />
+
+                {/* what to render? */}
+                <div className="answer-box">
+                  <NextUpDisplay nextNote={challenge.curValue[0]} />
+                  <NextUpDisplay nextNote={challenge.curValue[1]} />
+                  <NextUpDisplay nextNote={challenge.curValue[2]} />
+                  <NextUpDisplay nextNote={challenge.curValue[3]} />
+                </div>
               </div>
-              <button onClick={this.createChallengeArray}></button>
-       
-              <div className="top-right">
-                <ScoreBoard turn={this.state.turn} score={this.state.score} />
-               
+
+              <div className="top-right-header">
+                <ScoreBoard turn={0} score={0} />
               </div>
             </div>
             <div className="bottom-wrapper">
 
-            {/* TODO assign onclick to buttons not divs (will need access to server stats from inside <redbutton> ) */}
-              <div className="div1" onClick={turnUp}>
-                <RedButton
-                  score={this.state.score}
-                  answer={answer[this.state.score]}
+            
+              <div className="red-div"
+              onClick={() => {this.onClick(0, turn)}} >
+                <RedButton id={0} 
+                  noteChoice={challenge.curValue[this.state.turn]}
                 />
               </div>
 
-              <div className="div2" onClick={turnUp}>
-                <BlueButton
-                  score={this.state.score}
-                  answer={answer[this.state.score]}
+              <div className="blue-div"
+              onClick={() => {this.onClick(1, turn)}} >
+                <BlueButton 
+                 noteChoice={challenge.curValue[this.state.turn]}
                 />
               </div>
 
-              <div className="div3" onClick={turnUp}>
-                <GreenButton
-                  score={this.state.score}
-                  answer={answer[this.state.score]}
+              <div className="green-div"
+              onClick={() => {this.onClick(2, turn)}}  >
+                <GreenButton id={2} 
+                 noteChoice={challenge.curValue[this.state.turn]}
                 />
               </div>
-              <div className="div4" onClick={turnUp}>
-                <PurpleButton
-                  score={this.state.score}
-                  answer={answer[this.state.score]}
+              <div className="purple-div"
+              onClick={() => {this.onClick(3, turn)}}  >
+                <PurpleButton id={3}     
+                 noteChoice={challenge.curValue[this.state.turn]}
                 />
               </div>
             </div>
           </div>
         </div>
-        <button className="button1" onClick={this.createChallengeArray}>Create </button>
-              <button className="button2" onClick={this.cancelArrayDispatch}>cancel</button>
-               <div  onClick={reset} className="reset-div">
-                  <ResetButton 
-                   
-                    turn={this.state.turn}
-                    score={this.state.score}
-                  />
-            </div>
+
+        <button
+          className="button1"
+          onClick={() => {
+            this.startClicked();
+          }}
+        >
+          Start
+        </button>
+        <button className="button2">Quit</button>
+        <button
+          className="reset-div"
+          onClick={() => {
+            this.resetClicked();
+          }}
+        >
+          Reset
+        </button>
       </div>
     );
   }
@@ -166,6 +180,6 @@ export default withTracker(() => {
     currentUserId: Meteor.userId(),
     players: Players.find({}).fetch(),
     score: Score.find({}).fetch(),
-    songs: Songs.find({}).fetch(),
+    songs: Songs.find({}).fetch()
   };
 })(App);
