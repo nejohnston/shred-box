@@ -5,6 +5,9 @@ import { Score } from "../../api/score";
 import { Songs } from "../../api/songs";
 
 Meteor.startup(() => {
+  Score.insert({
+    score: 3
+  });
   if (Meteor.users.find().count() === 0) {
     let defaultUser = Accounts.createUser({
       email: "test@test.com",
@@ -12,9 +15,7 @@ Meteor.startup(() => {
       // user: insertUser,
     });
     // console.log('first try', Players.find().fetch());
-    Score.insert({
-      score: 3
-    });
+    
     Players.insert({
       user: { userId: defaultUser, turn: false }
     });

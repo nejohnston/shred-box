@@ -25,12 +25,12 @@ const users = Meteor.users
 Meteor.methods({
 
   "songs.createChallengeArray"() {
-    if (!this.userId) {
-      throw new Meteor.Error(
-        "songs.not-authorized",
-        "You must be logged in to play"
-      );
-    }
+    // if (!this.userId) {
+    //   throw new Meteor.Error(
+    //     "songs.not-authorized",
+    //     "You must be logged in to play"
+    //   );
+    // }
 
     //TODO: CHANGE TO DYNAMIC VAR
     const length = 5;

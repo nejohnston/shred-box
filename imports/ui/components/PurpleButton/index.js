@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const purpleClicked = (score, answer) => {
-  console.log(answer);
   if (answer === 3) {
     const snd = new Audio("GreenPerc2.wav"); // buffers automatically when created
     snd.play();
