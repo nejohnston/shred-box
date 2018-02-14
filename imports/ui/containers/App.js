@@ -12,12 +12,21 @@ import RedButton from "../components/RedButton";
 import NextUpDisplay from "../components/NextUpDisplay";
 import AccountsWrapper from "../components/AccountsWrapper";
 import ScoreBoard from "../components/ScoreBoard";
-
 import "./styles.css";
 
 
+import { ReactiveVar } from 'meteor/reactive-var';
+import { Session } from 'meteor/session';
+
+const challenge = new ReactiveVar([])
+const challengeResult = new ReactiveVar("")
 
 
+const buttonClicked = function(id){
+  Streamy.emit('note', { data: id })
+  console.log(id)
+
+}
 
 
 
@@ -65,23 +74,27 @@ class App extends Component {
             
               <div className="div1" >
                 <RedButton id={0} 
+                onClick={buttonClicked(0)}
                   // noteChoice={1}
                 />
               </div>
 
               <div className="div2">
                 <BlueButton id={1} 
+                onClick={buttonClicked(1)}
                   // noteChoice={1}
                 />
               </div>
 
               <div className="div3">
                 <GreenButton id={2} 
+                onClick={buttonClicked(2)}
                   // noteChoice={1}
                 />
               </div>
               <div className="div4">
                 <PurpleButton id={3} 
+                onClick={buttonClicked(3)}
                    // noteChoice={1}
                 />
               </div>
