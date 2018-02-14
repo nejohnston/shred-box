@@ -1,0 +1,12 @@
+#typer {
+  font-size: 2rem;
+}
+
+#typer li:hover {
+  cursor:pointer;
+  font-size: 2.5rem;
+}
+
+#challenge {
+  font-size: 2rem;
+}

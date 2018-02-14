@@ -26,6 +26,7 @@ Session.set("started", false);
 Streamy.on("challenge", (d, s) => {
   console.log(">>>>>>>>>>>>>>", d);
   challenge.set(d.data.challenge);
+  
 });
 
 Streamy.on("challenge-result", (d, s) => {

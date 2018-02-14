@@ -4,7 +4,7 @@ import { gameInterval } from "./helpers.js";
 export const Songs = new Mongo.Collection("songs");
 
 if (Meteor.isServer) {
-  Meteor.publish('songs', function songsPublication() {
+  Meteor.publish("songs", function songsPublication() {
     return Songs.find({});
   });
 }
@@ -15,8 +15,8 @@ let prev = curr;
 let playedNotes = [];
 let win = true;
 
-const challenge = Songs.find({}).fetch();
-
+// let challenge = Songs.find().fetch();
+let challenge = [{challenge: [0,1,2,3]}]
 const users = Meteor.users
   .find({})
   .fetch()
@@ -26,17 +26,15 @@ const challengeArray = () => {
   return Array.from({ length: 4 }, () => Math.floor(Math.random() * 4));
 };
 
-const songEnd = ()=>{
-  console.log('Song is done....')
+const songEnd = () => {
+  console.log("Song is done....");
   curr = 0;
   playedNotes = [];
   Meteor.clearInterval(interval);
   win = true;
-}
-
+};
 
 Meteor.methods({
-
   "songs.createChallengeArray"() {
     if (!this.userId) {
       throw new Meteor.Error(
@@ -47,58 +45,70 @@ Meteor.methods({
     //TODO: CHANGE TO DYNAMIC VAR
     const length = 5;
 
-      if (Songs.find({}).count() !== length * users.length) {
-        if (Songs.find({}).count() !== 0) {
-          Songs.remove({});
-        }
+    // if (Songs.find({}).count() !== length * users.length) {
+    if (Songs.find({}).count() !== 0) {
+      Songs.remove({});
+    }
 
-        for (let i = 0; i < length; i++) {
-          for (let k = 0; k < users.length; k++) {
-           
-            Songs.insert({userid: users[k], challenge: challengeArray()});
-          }
-        }
-
+    for (let i = 0; i < length; i++) {
+      for (let k = 0; k < users.length; k++) {
+        Songs.insert({ userid: users[k], challenge: challengeArray() });
       }
+    }
 
+    // }
+
+    console.log(Songs.find().fetch());
   },
 
-  "songs.reset"(){
+  "songs.reset"() {
     songEnd();
   },
 
-  "songs.start"(){
-    interval = Meteor.setInterval(() => {
-      playedNotes = [];
-      win = true
-      if(curr === challenge.length) { 
-        Streamy.broadcast('challenge', { data: { challenge: 'Done!' }});
-        return done(); 
-      }
-      Streamy.broadcast('challenge', { data: challenge[curr] });
-      prev = curr;
-      curr ++;
-  }, 4000)
+  "songs.start"() {
+    challenge = challenge || Songs.find().fetch();
+    if (!this.isSimulation) {
+      interval = Meteor.setInterval(() => {
+        playedNotes = [];
+        win = true;
+        if (challenge.length !== 0 && curr === challenge.length) {
+          Streamy.broadcast("challenge", { data: { challenge: "Done!" } });
+          return songEnd();
+        }
+        console.log(challenge.length);
+
+        // if(challenge.length !== 0 && challenge[curr].userid === this.userId){
+        // }
+        if (challenge.length) {
+          Streamy.broadcast("challenge", { data: challenge[curr] });
+        }
+
+        prev = curr;
+        curr++;
+      }, 5000);
+    }
   }
 });
 
-Streamy.on('note', ({ data }) => {
-  if(interval && playedNotes.length < challenge[prev].challenge.length) {
+Streamy.on("note", ({ data }) => {
+  if (interval && playedNotes.length < challenge[prev].challenge.length) {
     const currentChallenge = challenge[prev].challenge;
 
-    if(playedNotes.length < currentChallenge.length) {
-      playedNotes.push(data)
+    if (playedNotes.length < currentChallenge.length) {
+      playedNotes.push(data);
     }
 
-    if(Number(playedNotes[playedNotes.length-1]) !== Number(currentChallenge[playedNotes.length-1])) {
+    if (
+      Number(playedNotes[playedNotes.length - 1]) !==
+      Number(currentChallenge[playedNotes.length - 1])
+    ) {
       win = false;
     }
 
-    if(playedNotes.length === currentChallenge.length) {
-      Streamy.broadcast('challenge-result', {
-          data: win
-       });
+    if (playedNotes.length === currentChallenge.length) {
+      Streamy.broadcast("challenge-result", {
+        data: win
+      });
     }
   }
-})
-
+});
