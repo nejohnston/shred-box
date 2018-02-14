@@ -85,7 +85,7 @@ Meteor.methods({
 
         prev = curr;
         curr++;
-      }, 5000);
+      }, 4000);
     }
   }
 });

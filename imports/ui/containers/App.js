@@ -175,6 +175,6 @@ export default withTracker(() => {
     players: Players.find({}).fetch(),
     score: Score.find({}).fetch(),
     songs: Songs.find({}).fetch(),
-  
+    challenge
   };
 })(App);

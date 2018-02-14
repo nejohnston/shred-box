@@ -68,7 +68,7 @@ body {
     width: 100%;
     display: flex;
     flex-direction: row;
-    animation: fadeout 6s;
+    animation: fadeout 2s;
     opacity: 1;
 }
 
