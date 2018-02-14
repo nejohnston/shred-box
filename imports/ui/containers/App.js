@@ -26,7 +26,7 @@ Session.set("started", false);
 Streamy.on("challenge", (d, s) => {
   console.log(">>>>>>>>>>>>>>", d);
   challenge.set(d.data.challenge);
-  console.log("?????????", challenge.curValue);
+  // console.log("?????????", challenge.curValue);
 });
 
 Streamy.on("challenge-result", (d, s) => {
@@ -87,9 +87,9 @@ class App extends Component {
   render() {
     // answer is variable that
 
-    console.log("////////////////", challenge.curValue[0]);
+    console.log("////////////////", challenge);
 
-    return challenge ? (
+    return (
       <div className="background">
         <div className="app-wrapper">
           <div className="login-wrapper">
@@ -162,13 +162,13 @@ class App extends Component {
           </div>
         </div>
         <button
-        className="button1"
-        onClick={() => {
-          this.startClicked();
-        }}
-      >
-        Start
-      </button>
+          className="button1"
+          onClick={() => {
+            this.startClicked();
+          }}
+        >
+          Start
+        </button>
         <button className="button2">Quit</button>
         <button
           className="reset-div"
@@ -179,15 +179,6 @@ class App extends Component {
           Reset
         </button>
       </div>
-    ) : (
-      <button
-        className="button1"
-        onClick={() => {
-          this.startClicked();
-        }}
-      >
-        Start
-      </button>
     );
   }
 }
