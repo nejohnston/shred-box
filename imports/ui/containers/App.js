@@ -14,32 +14,35 @@ import AccountsWrapper from "../components/AccountsWrapper";
 import ScoreBoard from "../components/ScoreBoard";
 import "./styles.css";
 
+import { ReactiveVar } from "meteor/reactive-var";
+import { Session } from "meteor/session";
 
-import { ReactiveVar } from 'meteor/reactive-var';
-import { Session } from 'meteor/session';
+import { ReactiveVar } from "meteor/reactive-var";
+import { Session } from "meteor/session";
 
-const challenge = new ReactiveVar([0,1,2,3])
-const challengeResult = new ReactiveVar("")
+const challenge = new ReactiveVar([0, 1, 2, 3]);
+const challengeResult = new ReactiveVar("");
 let turn = 0;
 
-Session.set('started', false)
+Session.set("started", false);
 
-Streamy.on('challenge',(d, s) => {
-  console.log('>>>>>>>>>>>>>>', d)
-  challenge.set(d.data.challenge)
+Streamy.on("challenge", (d, s) => {
+  console.log(">>>>>>>>>>>>>>", d);
+  challenge.set(d.data.challenge);
 });
 
-Streamy.on('challenge-result',(d, s) => {
-  challengeResult.set(d.data)
-  console.log(challengeResult)
+Streamy.on("challenge-result", (d, s) => {
+  challengeResult.set(d.data);
+  console.log(challengeResult);
   Meteor.setTimeout(() => {
-    challengeResult.set("")
-  }, 1500)
+    challengeResult.set("");
+  }, 1500);
 });
 
-  
-
-
+const buttonClicked = function(id) {
+  Streamy.emit("note", { data: id });
+  console.log(id);
+};
 
 class App extends Component {
   constructor() {
@@ -55,15 +58,15 @@ class App extends Component {
     Streamy.emit('note', { data: id })
     }
   };
-  startClicked = (e) => {
-    Session.set('started', true)
-    Meteor.call('start song')
-    console.log("Started")
+  startClicked = e => {
+    Session.set("started", true);
+    Meteor.call("start song");
+    console.log("Started");
   };
-  resetClicked = (e) => {
-    Session.set('started', false)
-    Meteor.call('reset')
-    console.log("Resetted")
+  resetClicked = e => {
+    Session.set("started", false);
+    Meteor.call("reset");
+    console.log("Resetted");
   };
 
   turnUp = () => {
@@ -93,31 +96,27 @@ class App extends Component {
     return (
       <div className="background">
         <div className="app-wrapper">
-
           <div className="login-wrapper">
             <AccountsWrapper />
           </div>
 
           <div className="input-wrapper">
             <div className="top-wrapper">
-
               <div className="top-left-header">
-              <img className="logo" src="./logo.png"/>
+                <img className="logo" src="./logo.png" />
 
                 {/* what to render? */}
-                  <div className="answer-box">
-                    <NextUpDisplay nextNote={challenge.curValue[0]} />
-                    <NextUpDisplay nextNote={challenge.curValue[1]} />
-                    <NextUpDisplay nextNote={challenge.curValue[2]} />
-                    <NextUpDisplay nextNote={challenge.curValue[3]} />
-                  </div>
-                
+                <div className="answer-box">
+                  <NextUpDisplay nextNote={challenge.curValue[0]} />
+                  <NextUpDisplay nextNote={challenge.curValue[1]} />
+                  <NextUpDisplay nextNote={challenge.curValue[2]} />
+                  <NextUpDisplay nextNote={challenge.curValue[3]} />
+                </div>
               </div>
-         
+
               <div className="top-right-header">
                 <ScoreBoard turn={0} score={0} />
               </div>
-
             </div>
             <div className="bottom-wrapper">
 
@@ -148,18 +147,28 @@ class App extends Component {
                  noteChoice={challenge.curValue[this.state.turn]}
                 />
               </div>
-
             </div>
           </div>
         </div>
 
-            <button className="button1"
-            onClick={() => {this.startClicked()}} >Start</button>
-            <button className="button2">Quit</button>
-            <button className="reset-div" onClick={() => {this.resetClicked()}}>Reset</button>
-                  
-                  
-        </div>
+        <button
+          className="button1"
+          onClick={() => {
+            this.startClicked();
+          }}
+        >
+          Start
+        </button>
+        <button className="button2">Quit</button>
+        <button
+          className="reset-div"
+          onClick={() => {
+            this.resetClicked();
+          }}
+        >
+          Reset
+        </button>
+      </div>
     );
   }
 }
@@ -171,6 +180,6 @@ export default withTracker(() => {
     currentUserId: Meteor.userId(),
     players: Players.find({}).fetch(),
     score: Score.find({}).fetch(),
-    songs: Songs.find({}).fetch(),
+    songs: Songs.find({}).fetch()
   };
 })(App);
