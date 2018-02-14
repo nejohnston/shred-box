@@ -1,22 +1,21 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const purpleClicked = (score, answer) => {
-  if (answer === 3) {
-    const snd = new Audio("GreenPerc2.wav"); // buffers automatically when created
+const purpleClicked = (nextNote) => {
+  if (nextNote === 3) {
+    const snd = new Audio("GreenPerc2.wav"); 
     snd.play();
   }
    else {
-    const errorsnd = new Audio("record-scratch.mp3"); 
-    alert("GAME OVER, you got " + score + " correct answers!!")
+    const errorsnd = new Audio("record-scratch.mp3");
     errorsnd.play();
   }
 };
 
-const PurpleButton = ({score, answer }) => (
+const PurpleButton = ({snextNote}) => (
   <div
     onClick={() => {
-      purpleClicked(score, answer);
+      purpleClicked(nextNote);
     }}
     className="purple-button"
   />

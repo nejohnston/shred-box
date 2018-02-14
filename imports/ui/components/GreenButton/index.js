@@ -1,24 +1,22 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Correct from "../Correct";
-import { Meteor } from "meteor/meteor";
-// var Sound = require('react-sound').default;
 
-const greenClicked = (score, answer) => {
-  console.log(answer);
+const greenClicked = () => {
+ 
   if (answer === 2) {
-    const snd = new Audio("BlueHat.wav"); // buffers automatically when created
+    const snd = new Audio("BlueHat.wav"); 
     snd.play();
+    
   } else {
-    const errorsnd = new Audio("record-scratch.mp3"); 
-    alert("GAME OVER, you got " + score + " correct answers!!")// buffers automatically when created
+    const errorsnd = new Audio("record-scratch.mp3");
     errorsnd.play();
   }
 };
-const GreenButton = ({score, answer }) => (
+
+const GreenButton = ({noteChoice }) => (
   <div
     onClick={() => {
-      greenClicked(score, answer);
+      greenClicked(noteChoice);
     }}
     className="green-button"
   />

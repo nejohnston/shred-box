@@ -1,23 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-function colorizeAnswer({ answer }) {
-  if (answer == 0) {
+function colorizeAnswer({ nextNote }) {
+  if (nextNote == 0) {
     return <div className="red-answer" />;
   }
-  if (answer == 1) {
+  if (nextNote == 1) {
     return <div className="blue-answer" />;
   }
-  if (answer == 2) {
+  if (nextNote == 2) {
     return <div className="green-answer" />;
   }
-  if (answer == 3) {
+  if (nextNote == 3) {
     return <div className="purple-answer" />;
   }
   else {
-    return <div>Whaaa?</div>
+    return <div>*</div>
   }
 }
 
-const NextUpDisplay = ({ answer }) => colorizeAnswer({ answer });
+const NextUpDisplay = ({ nextNote }) => colorizeAnswer({ nextNote });
 export default NextUpDisplay;
