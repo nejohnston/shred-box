@@ -38,7 +38,6 @@ Streamy.on("challenge-result", (d, s) => {
 
 const buttonClicked = function(id) {
   Streamy.emit("note", { data: id });
-  console.log(id);
 };
 class App extends Component {
   constructor() {
@@ -49,10 +48,7 @@ class App extends Component {
       challenge: []
     };
     Streamy.on("challenge", (d, s) => {
-      console.log("Initial challenge pull", d);
-      // console.log(this.props.currentUserId);
       if (d.data.userid === this.props.currentUserId) {
-        //      challenge.set(d.data.challenge)
         this.setState({ challenge: d.data.challenge });
         this.setState({ turn: 0 });x``
       } else {
@@ -134,7 +130,7 @@ class App extends Component {
               </div>
 
               <div className="top-right-header">
-                <ScoreBoard turn={0} score={0} />
+                <ScoreBoard lives={0} score={0} />
               </div>
             </div>
             <div className="bottom-wrapper">
@@ -195,7 +191,7 @@ class App extends Component {
         >
           Start
         </button>
-        <button className="button2">Quit</button>
+
         <button
           className="reset-div"
           onClick={() => {

@@ -7,10 +7,17 @@ if (Meteor.isServer) {
     return Score.find({});
   });
 }
-
-
-// const initScore = 3;
-
+const score = 0;
+const lives = 3;
 Meteor.methods({
-  // if() {}
+  "score.updateScore"() {
+    score++;
+  },
+  "score.updateLives"() {
+    if (lives < 0) {
+      lives--;
+    } else {
+      Meteor.call("songs.reset");
+    }
+  }
 });
