@@ -11,5 +11,4 @@ function ScoreBoard({turn, score }) {
     )
   }
 
-
 export default ScoreBoard;

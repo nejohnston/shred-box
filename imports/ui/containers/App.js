@@ -234,9 +234,13 @@ export default withTracker(() => {
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
+<<<<<<< HEAD
+    score: Score.find({}).fetch(),
+=======
 
     score: Score.find({id :1}).fetch(),
     lives: Score.find({id: 2}).fetch(),
+>>>>>>> b308642b75c6b96fe84dedefa177c036f958e02a
     songs: Songs.find({}).fetch()
   };
 })(App);
