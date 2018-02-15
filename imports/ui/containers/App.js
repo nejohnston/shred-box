@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withTracker } from "meteor/react-meteor-data";
-import { Players } from "../../api/players";
+
 import { Score } from "../../api/score";
 import { Songs } from "../../api/songs";
 import { Meteor } from "meteor/meteor";
@@ -17,7 +17,7 @@ import "./styles.css";
 import { ReactiveVar } from "meteor/reactive-var";
 import { Session } from "meteor/session";
 
-// const challenge = new ReactiveVar([]);
+
 const challengeResult = new ReactiveVar("");
 let turn = 0;
 
@@ -180,9 +180,9 @@ export default withTracker(() => {
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
-    players: Players.find({}).fetch(),
+ 
     score: Score.find({}).fetch(),
     songs: Songs.find({}).fetch(),
-    // challenge
+
   };
 })(App);

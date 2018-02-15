@@ -1,12 +1,20 @@
 import { Meteor } from "meteor/meteor";
-import { Accounts } from "meteor/accounts-base"; //for add default user
-import { Players } from "../../api/players";
+import { Accounts } from "meteor/accounts-base"; 
 import { Score } from "../../api/score";
 import { Songs } from "../../api/songs";
 
 Meteor.startup(() => {
+  if (Score.find({}).count()) {
+    Score.remove({});
+  } else {
+    Score.insert({
+      score: 0,
+      lives: 3
+    });
+  }
   Score.insert({
-    score: 3
+    score: 0,
+    lives: 3
   });
   if (Meteor.users.find().count() === 0) {
     let defaultUser = Accounts.createUser({
@@ -15,10 +23,10 @@ Meteor.startup(() => {
       // user: insertUser,
     });
     // console.log('first try', Players.find().fetch());
-    
-    Players.insert({
-      user: { userId: defaultUser, turn: false }
-    });
+
+    // Players.insert({
+    //   user: { userId: defaultUser, turn: false }
+    // });
   }
 
   if (Songs.find({}).count()) {
@@ -27,10 +35,8 @@ Meteor.startup(() => {
 
   if (Score.find({}).count()) {
     Score.remove({});
-   
   }
- Score.insert({
-      score: 3
-    });
-
+  //  Score.insert({
+  //       score: 3
+  //     });
 });
