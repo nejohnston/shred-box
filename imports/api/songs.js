@@ -98,7 +98,6 @@ Meteor.methods({
         if (challenge.length) {
           Streamy.broadcast("challenge", { data: challenge[curr] });
         }
-
         prev = curr;
         curr++;
       }, 5000);
