@@ -19,7 +19,11 @@ import "./styles.css";
 
 
 let turn = 0;
+<<<<<<< HEAD
 const challengeResult = new ReactiveVar("");
+=======
+
+>>>>>>> added button in app.js to test updateLives meteor method
 const snd = new Audio("ThunderKick.wav");
 const snd3 = new Audio("GreenPerc2.wav");
 const snd2 = new Audio("BlueHat.wav");
@@ -50,8 +54,7 @@ class App extends Component {
     Streamy.on("challenge", (d, s) => {
       if (d.data.userid === this.props.currentUserId) {
         //      challenge.set(d.data.challenge)
-        this.setState({turn: 0, challenge: d.data.challenge});
-        
+        this.setState({ turn: 0, challenge: d.data.challenge });
       } else {
         this.setState({ challenge: [] });
       }
@@ -112,7 +115,7 @@ class App extends Component {
   };
 
   render() {
-    if(this.props.score.length){
+    if (this.props.score.length) {
       console.log(this.props.score[0].score);
     }
 
@@ -159,7 +162,16 @@ class App extends Component {
                   <NextUpDisplay nextNote={this.state.challenge[3]} />
                 </div>
               </div>
-  <button onClick={()=>{Meteor.call("score.updateScore", this.props.score[0].score);}}></button>
+              <button
+                onClick={() => {
+                  Meteor.call("score.updateScore", this.props.score[0].score);
+                }}
+              />
+              <button
+                onClick={() => {
+                  Meteor.call("score.updateLives", this.props.lives[0].lives);
+                }}
+              />
               <div className="top-right-header">
                 <ScoreBoard lives={0} score={0} />
               </div>
@@ -235,8 +247,8 @@ export default withTracker(() => {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
 
-    score: Score.find({id :1}).fetch(),
-    lives: Score.find({id: 2}).fetch(),
+    score: Score.find({ id: 1 }).fetch(),
+    lives: Score.find({ id: 2 }).fetch(),
     songs: Songs.find({}).fetch()
   };
 })(App);
