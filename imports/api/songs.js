@@ -1,5 +1,5 @@
 import { Mongo } from "meteor/mongo";
-import { gameInterval } from "./helpers.js";
+// import { gameInterval } from "./helpers.js";
 
 export const Songs = new Mongo.Collection("songs");
 
@@ -7,6 +7,7 @@ if (Meteor.isServer) {
   Meteor.publish("songs", function songsPublication() {
     return Songs.find({});
   });
+ 
 }
 
 let interval;
