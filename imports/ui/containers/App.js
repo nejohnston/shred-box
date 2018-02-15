@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withTracker } from "meteor/react-meteor-data";
+import { Meteor } from "meteor/meteor";
+import { ReactiveVar } from "meteor/reactive-var";
+import { Session } from "meteor/session";
+
 
 import { Score } from "../../api/score";
 import { Songs } from "../../api/songs";
-import { Meteor } from "meteor/meteor";
 import BlueButton from "../components/BlueButton";
 import GreenButton from "../components/GreenButton";
 import PurpleButton from "../components/PurpleButton";
@@ -14,17 +17,16 @@ import AccountsWrapper from "../components/AccountsWrapper";
 import ScoreBoard from "../components/ScoreBoard";
 import "./styles.css";
 
-import { ReactiveVar } from "meteor/reactive-var";
-import { Session } from "meteor/session";
 
-const challengeResult = new ReactiveVar("");
 let turn = 0;
+const challengeResult = new ReactiveVar("");
 const snd = new Audio("ThunderKick.wav");
-Session.set("started", false);
 const snd3 = new Audio("GreenPerc2.wav");
 const snd2 = new Audio("BlueHat.wav");
 const snd1 = new Audio("BaiscKick2.wav");
 const errorsnd = new Audio("record-scratch.mp3");
+
+Session.set("started", false);
 
 Streamy.on("challenge-result", (d, s) => {
   challengeResult.set(d.data);
@@ -37,10 +39,10 @@ Streamy.on("challenge-result", (d, s) => {
 const buttonClicked = function(id) {
   Streamy.emit("note", { data: id });
 };
+
 class App extends Component {
   constructor() {
     super();
-
     this.state = {
       turn: 0,
       challenge: []
@@ -61,6 +63,7 @@ class App extends Component {
       Streamy.emit("note", { data: id });
     }
   };
+
   startClicked = e => {
     Session.set("started", true);
     Meteor.call("songs.createChallengeArray");
@@ -82,10 +85,12 @@ class App extends Component {
       errorsnd.play();
     }, 2400);
   };
+
   resetClicked = e => {
     Session.set("started", false);
     Meteor.call("songs.reset");
-    console.log("Resetted");
+    this.setState({ turn: 0 });
+    this.setState({ challenge: [] });
   };
 
   turnUp = () => {
@@ -105,13 +110,36 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.props.score);
+    console.log("score: " , this.props.score);
     return (
+
       <div className="background">
         <div className="app-wrapper">
+       
+       
+        <div className="button-wrapper">
           <div className="login-wrapper">
-            <AccountsWrapper />
+          <AccountsWrapper />
           </div>
+        <button
+          className="start-button"
+          onClick={() => {
+            this.startClicked();
+          }}
+        >
+          Start
+        </button>
+      
+        <button
+          className="reset-button"
+          onClick={() => {
+            this.resetClicked();
+          }}
+        >
+          Reset
+        </button>
+          </div>
+         
 
           <div className="input-wrapper">
             <div className="top-wrapper">
@@ -128,7 +156,7 @@ class App extends Component {
               </div>
 
               <div className="top-right-header">
-                <ScoreBoard turn={0} score={0} />
+                <ScoreBoard lives={0} score={0} />
               </div>
             </div>
             <div className="bottom-wrapper">
@@ -178,26 +206,18 @@ class App extends Component {
                 />
               </div>
             </div>
-          </div>
-        </div>
 
-        <button
-          className="button1"
-          onClick={() => {
-            this.startClicked();
-          }}
-        >
-          Start
-        </button>
-        <button className="button2">Quit</button>
-        <button
-          className="reset-div"
-          onClick={() => {
-            this.resetClicked();
-          }}
-        >
-          Reset
-        </button>
+
+        
+
+
+          </div>
+         
+
+              
+
+        </div>
+            
       </div>
     );
   }
@@ -209,7 +229,6 @@ export default withTracker(() => {
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
-
     score: Score.find({}).fetch(),
     songs: Songs.find({}).fetch()
   };
