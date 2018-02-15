@@ -8,9 +8,22 @@ if (Meteor.isServer) {
   });
 }
 
-
-// const initScore = 3;
-
+const lives = 3;
 Meteor.methods({
-  // if() {}
+  "score.updateScore"() {
+    if (!this.userId) {
+      throw new Meteor.Error(
+        "songs.not-authorized",
+        "You must be logged in to play"
+      );
+    } else {
+    }
+  },
+  "score.updateLives"() {
+    if (lives < 0) {
+      lives--;
+    } else {
+      Meteor.call("songs.reset");
+    }
+  }
 });
