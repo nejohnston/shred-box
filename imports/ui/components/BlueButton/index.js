@@ -6,12 +6,16 @@ const blueClicked = (noteChoice, sound) => {
   if (noteChoice === 1) {
     const snd3 = new Audio("GreenPerc2.wav");
     snd3.play();
+<<<<<<< HEAD
     Meteor.call("score.updateScore");
+=======
+    console.log("right");
+>>>>>>> fd7d0f197519a737a9cf7c36b04f71a655913914
   } else {
     const errorsnd = new Audio("record-scratch.mp3");
     console.log("wrong");
     errorsnd.play();
-    Meteor.call("score.updateLives");
+    // Meteor.call("score.updateLives");
   }
   // }else{
   //   alert (" you've lost")

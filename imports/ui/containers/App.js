@@ -45,6 +45,7 @@ class App extends Component {
       turn: 0,
       challenge: []
     };
+
     Streamy.on("challenge", (d, s) => {
       if (d.data.userid === this.props.currentUserId) {
         //      challenge.set(d.data.challenge)
@@ -203,7 +204,6 @@ class App extends Component {
                   <NextUpDisplay nextNote={this.state.challenge[3]} />
                 </div>
               </div>
-
               <div className="top-right-header">
                 <ScoreBoard lives={0} score={0} />
               </div>
@@ -222,7 +222,6 @@ export default withTracker(() => {
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
-
     score: Score.find({ id: 1 }).fetch(),
     lives: Score.find({ id: 2 }).fetch(),
     songs: Songs.find({}).fetch()
