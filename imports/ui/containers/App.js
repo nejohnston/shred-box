@@ -112,6 +112,7 @@ class App extends Component {
   };
 
   render() {
+console.log(this.props.score);
     return (
       <div className="background">
         <div className="app-wrapper">
@@ -215,6 +216,7 @@ class App extends Component {
 
 export default withTracker(() => {
   Meteor.subscribe("songs");
+  Meteor.subscribe("score");
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
