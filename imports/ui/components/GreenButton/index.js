@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-const greenClicked = noteChoice => {
+const greenClicked = (noteChoice, sound) => {
   if (noteChoice === 2) {
-    const snd = new Audio("BlueHat.wav");
-    snd.play();
+    
+    sound.play();
   } else {
     const errorsnd = new Audio("record-scratch.mp3");
     errorsnd.play();
   }
 };
 
-const GreenButton = ({ noteChoice }) => (
+const GreenButton = ({ noteChoice }, sound) => (
   <div
     onClick={() => {
-      greenClicked(noteChoice);
+      greenClicked(noteChoice, sound);
     }}
     className="green-button"
   />
