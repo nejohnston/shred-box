@@ -7,17 +7,11 @@ if (Meteor.isServer) {
     return Score.find({});
   });
 }
-
+const score;
 const lives = 3;
 Meteor.methods({
   "score.updateScore"() {
-    if (!this.userId) {
-      throw new Meteor.Error(
-        "songs.not-authorized",
-        "You must be logged in to play"
-      );
-    } else {
-    }
+    score++;
   },
   "score.updateLives"() {
     if (lives < 0) {
