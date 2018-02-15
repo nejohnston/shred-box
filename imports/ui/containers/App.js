@@ -145,7 +145,6 @@ class App extends Component {
                 <RedButton
                   id={0}
                   noteChoice={this.state.challenge[this.state.turn]}
-                  sound={this.snd}
                 />
               </div>
 
@@ -157,7 +156,6 @@ class App extends Component {
               >
                 <BlueButton
                   noteChoice={this.state.challenge[this.state.turn]}
-                  sound={this.snd1}
                 />
               </div>
 
@@ -170,7 +168,6 @@ class App extends Component {
                 <GreenButton
                   id={2}
                   noteChoice={this.state.challenge[this.state.turn]}
-                  sound={this.snd2}
                 />
               </div>
               <div
@@ -182,7 +179,6 @@ class App extends Component {
                 <PurpleButton
                   id={3}
                   noteChoice={this.state.challenge[this.state.turn]}
-                  sound={this.snd3}
                 />
               </div>
             </div>
