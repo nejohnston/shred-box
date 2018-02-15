@@ -1,5 +1,6 @@
 import { Mongo } from "meteor/mongo";
 // import { gameInterval } from "./helpers.js";
+import { Score} from './score.js';
 
 export const Songs = new Mongo.Collection("songs");
 
@@ -75,8 +76,10 @@ Meteor.methods({
   },
 
   "songs.reset"() {
-    Meteor.call("score.updateScore", this.score);
-    Meteor.call("score.updateLives", this.lives);
+    Score.update({id: 1}, {$set: {score: 0}});
+    Score.update({id: 2}, {$set: {lives: 0}});
+    // Meteor.call("score.updateScore", this.score);
+    // Meteor.call("score.updateLives", this.lives);
     songEnd();
   },
 
