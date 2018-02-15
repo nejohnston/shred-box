@@ -14,7 +14,6 @@ import AccountsWrapper from "../components/AccountsWrapper";
 import ScoreBoard from "../components/ScoreBoard";
 import "./styles.css";
 
-<<<<<<< HEAD
 import { ReactiveVar } from "meteor/reactive-var";
 import { Session } from "meteor/session";
 
@@ -38,8 +37,6 @@ Streamy.on("challenge-result", (d, s) => {
 const buttonClicked = function(id) {
   Streamy.emit("note", { data: id });
 };
-=======
->>>>>>> importing new changes from git
 class App extends Component {
   constructor() {
     super();
