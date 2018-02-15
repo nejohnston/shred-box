@@ -128,7 +128,7 @@ class App extends Component {
               </div>
 
               <div className="top-right-header">
-                <ScoreBoard turn={0} score={0} />
+                <ScoreBoard lives={0} score={0} />
               </div>
             </div>
             <div className="bottom-wrapper">
@@ -189,7 +189,7 @@ class App extends Component {
         >
           Start
         </button>
-        <button className="button2">Quit</button>
+
         <button
           className="reset-div"
           onClick={() => {
