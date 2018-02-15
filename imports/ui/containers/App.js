@@ -42,6 +42,10 @@ const buttonClicked = function(id) {
 class App extends Component {
   constructor() {
     super();
+    const snd3 = new Audio("GreenPerc2.wav");
+    const snd2 = new Audio("BlueHat.wav");
+    const snd1 = new Audio("BaiscKick2.wav");
+    const snd = new Audio("ThunderKick.wav");
     this.state = {
       turn: 0,
       challenge: []

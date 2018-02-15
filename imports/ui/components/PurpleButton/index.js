@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 
 const purpleClicked = (noteChoice, sound) => {
   if (noteChoice === 3) {
-    sound.play();
+    const snd1 = new Audio("BaiscKick2.wav");
+    snd1.play();
   } else {
     const errorsnd = new Audio("record-scratch.mp3");
     errorsnd.play();
