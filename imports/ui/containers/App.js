@@ -127,6 +127,7 @@ class App extends Component {
               onClick={() => {this.onClick(0, turn)}} >
                 <RedButton id={0} 
                   noteChoice={this.state.challenge[this.state.turn]}
+                  sound={snd}
                 />
               </div>
 
@@ -134,6 +135,7 @@ class App extends Component {
               onClick={() => {this.onClick(1, turn)}} >
                 <BlueButton 
                  noteChoice={this.state.challenge[this.state.turn]}
+                 sound={snd1}
                 />
               </div>
 
@@ -141,12 +143,14 @@ class App extends Component {
               onClick={() => {this.onClick(2, turn)}}  >
                 <GreenButton id={2} 
                  noteChoice={this.state.challenge[this.state.turn]}
+                 sound={snd2}
                 />
               </div>
               <div className="purple-div"
               onClick={() => {this.onClick(3, turn)}}  >
                 <PurpleButton id={3}     
                  noteChoice={this.state.challenge[this.state.turn]}
+                 sound={snd3}
                 />
               </div>
             </div>
