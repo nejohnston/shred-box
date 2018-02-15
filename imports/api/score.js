@@ -2,8 +2,8 @@ import { Mongo } from "meteor/mongo";
 
 export const Score = new Mongo.Collection("score");
 
-const updateScore = 0;
-const lives = 3;
+// const updateScore = 0;
+// const lives = 3;
 
 if (Meteor.isServer) {
   Meteor.publish("score", function scorePublication() {
@@ -14,11 +14,12 @@ if (Meteor.isServer) {
 // const initScore = 3;
 
 Meteor.methods({
-  "score.updateScore"(score){
-    Score.update({id: 1}, {$set:{score: score+1}})
+  "score.updateScore"(score) {
+    Score.update({ id: 1 }, { $set: { score: score + 1 } });
   },
-
-  "score.updateLives"() {}
+  "score.updateLives"(lives) {
+    Score.update({ id: 2 }, { $set: { lives: lives - 1 } });
+  }
 });
 
 // const score = 0;
