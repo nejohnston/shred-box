@@ -5,9 +5,11 @@ const purpleClicked = (noteChoice, sound) => {
   if (noteChoice === 3) {
     const snd1 = new Audio("BaiscKick2.wav");
     snd1.play();
+    Meteor.call("score.updateScore");
   } else {
     const errorsnd = new Audio("record-scratch.mp3");
     errorsnd.play();
+    Meteor.call("score.updateLives");
   }
 };
 

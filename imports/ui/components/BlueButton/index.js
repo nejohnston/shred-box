@@ -5,9 +5,11 @@ const blueClicked = (noteChoice, sound) => {
   if (noteChoice === 1) {
     const snd3 = new Audio("GreenPerc2.wav");
     snd3.play();
+    Meteor.call("score.updateScore");
   } else {
     const errorsnd = new Audio("record-scratch.mp3");
     errorsnd.play();
+    Meteor.call("score.updateLives");
   }
 };
 

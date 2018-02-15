@@ -36,7 +36,6 @@ Streamy.on("challenge-result", (d, s) => {
 
 const buttonClicked = function(id) {
   Streamy.emit("note", { data: id });
-  console.log(id);
 };
 class App extends Component {
   constructor() {
@@ -47,10 +46,7 @@ class App extends Component {
       challenge: []
     };
     Streamy.on("challenge", (d, s) => {
-      console.log("Initial challenge pull", d);
-      // console.log(this.props.currentUserId);
       if (d.data.userid === this.props.currentUserId) {
-        //      challenge.set(d.data.challenge)
         this.setState({ challenge: d.data.challenge });
         this.setState({ turn: 0 });
       } else {
