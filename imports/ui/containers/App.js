@@ -49,14 +49,9 @@ class App extends Component {
     };
     Streamy.on("challenge", (d, s) => {
       if (d.data.userid === this.props.currentUserId) {
-<<<<<<< HEAD
         //      challenge.set(d.data.challenge)
         this.setState({turn: 0, challenge: d.data.challenge});
         
-=======
-        this.setState({ challenge: d.data.challenge });
-        this.setState({ turn: 0 });x``
->>>>>>> af5df2b34908c269731e17b205d3a9971f701f20
       } else {
         this.setState({ challenge: [] });
       }
