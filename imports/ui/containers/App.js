@@ -45,7 +45,7 @@ class App extends Component {
     };
       Streamy.on("challenge", (d, s) => {
       console.log("Initial challenge pull", d);
-      console.log(this.props.currentUserId);
+      // console.log(this.props.currentUserId);
       if(d.data.userid === this.props.currentUserId){
         //      challenge.set(d.data.challenge)
         this.setState({ challenge: d.data.challenge });

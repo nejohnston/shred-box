@@ -17,10 +17,15 @@ let win = true;
 
 let challenge = Songs.find().fetch();
 // let challenge = [{challenge: [0,1,2,3]}]
-const users = Meteor.users
+let users = new ReactiveVar([]);
+console.log(users.get());
+
+users.set(Meteor.users
   .find({})
   .fetch()
-  .map(user => user._id);
+  .map(user => user._id));
+
+console.log(users.get());
 
 const challengeArray = () => {
   return Array.from({ length: 4 }, () => Math.floor(Math.random() * 4));
@@ -32,6 +37,11 @@ const songEnd = () => {
   playedNotes = [];
   Meteor.clearInterval(interval);
   win = true;
+  users.set(Meteor.users
+    .find({})
+    .fetch()
+    .map(user => user._id));
+  
 };
 
 Meteor.methods({
@@ -51,8 +61,8 @@ Meteor.methods({
     }
 
     for (let i = 0; i < length; i++) {
-      for (let k = 0; k < users.length; k++) {
-        Songs.insert({ userid: users[k], challenge: challengeArray() });
+      for (let k = 0; k < users.get().length; k++) {
+        Songs.insert({ userid: users.get()[k], challenge: challengeArray() });
       }
     }
 
@@ -66,6 +76,9 @@ Meteor.methods({
   },
 
   "songs.start"() {
+
+   
+
     challenge = Songs.find({}).fetch();
     console.log("challenge", challenge);
     if (!this.isSimulation) {
@@ -86,7 +99,7 @@ Meteor.methods({
 
         prev = curr;
         curr++;
-      }, 4000);
+      }, 5000);
     }
   }
 });
