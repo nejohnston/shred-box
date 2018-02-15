@@ -38,14 +38,10 @@ const buttonClicked = function(id) {
   Streamy.emit("note", { data: id });
   console.log(id);
 };
-
 class App extends Component {
   constructor() {
     super();
-    const snd3 = new Audio("GreenPerc2.wav");
-    const snd2 = new Audio("BlueHat.wav");
-    const snd1 = new Audio("BaiscKick2.wav");
-    const snd = new Audio("ThunderKick.wav");
+
     this.state = {
       turn: 0,
       challenge: []
@@ -112,7 +108,7 @@ class App extends Component {
   };
 
   render() {
-console.log(this.props.score);
+    console.log(this.props.score);
     return (
       <div className="background">
         <div className="app-wrapper">
@@ -148,7 +144,6 @@ console.log(this.props.score);
                 <RedButton
                   id={0}
                   noteChoice={this.state.challenge[this.state.turn]}
-                  sound={this.snd}
                 />
               </div>
 
@@ -160,7 +155,6 @@ console.log(this.props.score);
               >
                 <BlueButton
                   noteChoice={this.state.challenge[this.state.turn]}
-                  sound={this.snd1}
                 />
               </div>
 
@@ -173,7 +167,6 @@ console.log(this.props.score);
                 <GreenButton
                   id={2}
                   noteChoice={this.state.challenge[this.state.turn]}
-                  sound={this.snd2}
                 />
               </div>
               <div
@@ -185,7 +178,6 @@ console.log(this.props.score);
                 <PurpleButton
                   id={3}
                   noteChoice={this.state.challenge[this.state.turn]}
-                  sound={this.snd3}
                 />
               </div>
             </div>
