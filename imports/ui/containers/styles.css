@@ -143,7 +143,16 @@ body {
 /* ############### UPCOMING ANSWERS ################ */
 
 .blue-answer {
-    background-color: blue;
+    background: rgb(34, 46, 173);
+    /* Old browsers */
+    background: -moz-linear-gradient( top, rgba(34, 46, 173, 1) 1%, rgba(0, 5, 63, 1) 57%, rgba(170, 179, 255, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient( top, rgba(34, 46, 173, 1) 1%, rgba(0, 5, 63, 1) 57%, rgba(170, 179, 255, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient( to bottom, rgba(34, 46, 173, 1) 1%, rgba(0, 5, 63, 1) 57%, rgba(170, 179, 255, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#222ead", endColorstr="#aab3ff", GradientType=0);
+    box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 0.75);
     height: 44px;
     width: 44px;
     border-radius: 50%;
@@ -151,7 +160,14 @@ body {
 }
 
 .red-answer {
-    background-color: red;
+    background: -moz-linear-gradient( top, rgba(255, 50, 50, 1) 0%, rgba(201, 0, 0, 1) 57%, rgba(255, 170, 170, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient( top, rgba(255, 50, 50, 1) 0%, rgba(201, 0, 0, 1) 57%, rgba(255, 170, 170, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient( to bottom, rgba(255, 50, 50, 1) 0%, rgba(201, 0, 0, 1) 57%, rgba(255, 170, 170, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff3232", endColorstr="#ffaaaa", GradientType=0);
+    box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 1);
     height: 44px;
     width: 44px;
     border-radius: 50%;
@@ -159,7 +175,16 @@ body {
 }
 
 .green-answer {
-    background-color: green;
+    background: rgb(51, 181, 0);
+    /* Old browsers */
+    background: -moz-linear-gradient( top, rgba(51, 181, 0, 1) 1%, rgba(6, 61, 0, 1) 57%, rgba(175, 255, 170, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient( top, rgba(51, 181, 0, 1) 1%, rgba(6, 61, 0, 1) 57%, rgba(175, 255, 170, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient( to bottom, rgba(51, 181, 0, 1) 1%, rgba(6, 61, 0, 1) 57%, rgba(175, 255, 170, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#33b500", endColorstr="#afffaa", GradientType=0);
+    box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 0.75);
     height: 44px;
     width: 44px;
     border-radius: 50%;
@@ -167,7 +192,16 @@ body {
 }
 
 .purple-answer {
-    background-color: purple;
+    background: rgb(142, 0, 130);
+    /* Old browsers */
+    background: -moz-linear-gradient( top, rgba(142, 0, 130, 1) 1%, rgba(43, 0, 56, 1) 57%, rgba(255, 91, 235, 1) 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient( top, rgba(142, 0, 130, 1) 1%, rgba(43, 0, 56, 1) 57%, rgba(255, 91, 235, 1) 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient( to bottom, rgba(142, 0, 130, 1) 1%, rgba(43, 0, 56, 1) 57%, rgba(255, 91, 235, 1) 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#8e0082", endColorstr="#ff5beb", GradientType=0);
+    box-shadow: 10px 10px 43px -6px rgba(0, 0, 0, 0.75);
     height: 44px;
     width: 44px;
     border-radius: 50%;
