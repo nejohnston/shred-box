@@ -7,7 +7,7 @@ if (Meteor.isServer) {
     return Score.find({});
   });
 }
-// const score;
+const score = 0;
 const lives = 3;
 Meteor.methods({
   "score.updateScore"() {
