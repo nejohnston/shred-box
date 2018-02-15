@@ -9,9 +9,9 @@ const blueClicked = (noteChoice, sound) => {
     Meteor.call("score.updateScore");
   } else {
     const errorsnd = new Audio("record-scratch.mp3");
-    console.log("wrong")
+    console.log("wrong");
     errorsnd.play();
-    Meteor.call("score.updateLives");
+    // Meteor.call("score.updateLives");
   }
   // }else{
   //   alert (" you've lost")

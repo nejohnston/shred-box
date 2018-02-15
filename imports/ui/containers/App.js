@@ -5,7 +5,6 @@ import { Meteor } from "meteor/meteor";
 import { ReactiveVar } from "meteor/reactive-var";
 import { Session } from "meteor/session";
 
-
 import { Score } from "../../api/score";
 import { Songs } from "../../api/songs";
 import BlueButton from "../components/BlueButton";
@@ -16,7 +15,6 @@ import NextUpDisplay from "../components/NextUpDisplay";
 import AccountsWrapper from "../components/AccountsWrapper";
 import ScoreBoard from "../components/ScoreBoard";
 import "./styles.css";
-
 
 let turn = 0;
 const challengeResult = new ReactiveVar("");
@@ -47,11 +45,11 @@ class App extends Component {
       turn: 0,
       challenge: []
     };
+
     Streamy.on("challenge", (d, s) => {
       if (d.data.userid === this.props.currentUserId) {
         //      challenge.set(d.data.challenge)
-        this.setState({turn: 0, challenge: d.data.challenge});
-        
+        this.setState({ turn: 0, challenge: d.data.challenge });
       } else {
         this.setState({ challenge: [] });
       }
@@ -112,39 +110,86 @@ class App extends Component {
   };
 
   render() {
-    if(this.props.score.length){
+    if (this.props.score.length) {
       console.log(this.props.score[0].score);
+    }
+    if (this.state.challenge.length) {
+      buttons = (
+        <div className="bottom-wrapper">
+          <div
+            className="red-div"
+            onClick={() => {
+              this.onClick(0, turn);
+            }}
+          >
+            <RedButton
+              id={0}
+              noteChoice={this.state.challenge[this.state.turn]}
+            />
+          </div>
+
+          <div
+            className="blue-div"
+            onClick={() => {
+              this.onClick(1, turn);
+            }}
+          >
+            <BlueButton noteChoice={this.state.challenge[this.state.turn]} />
+          </div>
+
+          <div
+            className="green-div"
+            onClick={() => {
+              this.onClick(2, turn);
+            }}
+          >
+            <GreenButton
+              id={2}
+              noteChoice={this.state.challenge[this.state.turn]}
+            />
+          </div>
+          <div
+            className="purple-div"
+            onClick={() => {
+              this.onClick(3, turn);
+            }}
+          >
+            <PurpleButton
+              id={3}
+              noteChoice={this.state.challenge[this.state.turn]}
+            />
+          </div>
+        </div>
+      );
+    } else {
+      buttons = <div className="bottom-wrapper">"TIS NOT YOUR TURN"</div>;
     }
 
     return (
-
       <div className="background">
         <div className="app-wrapper">
-       
-       
-        <div className="button-wrapper">
-          <div className="login-wrapper">
-          <AccountsWrapper />
+          <div className="button-wrapper">
+            <div className="login-wrapper">
+              <AccountsWrapper />
+            </div>
+            <button
+              className="start-button"
+              onClick={() => {
+                this.startClicked();
+              }}
+            >
+              Start
+            </button>
+
+            <button
+              className="reset-button"
+              onClick={() => {
+                this.resetClicked();
+              }}
+            >
+              Reset
+            </button>
           </div>
-        <button
-          className="start-button"
-          onClick={() => {
-            this.startClicked();
-          }}
-        >
-          Start
-        </button>
-      
-        <button
-          className="reset-button"
-          onClick={() => {
-            this.resetClicked();
-          }}
-        >
-          Reset
-        </button>
-          </div>
-         
 
           <div className="input-wrapper">
             <div className="top-wrapper">
@@ -159,70 +204,13 @@ class App extends Component {
                   <NextUpDisplay nextNote={this.state.challenge[3]} />
                 </div>
               </div>
-  <button onClick={()=>{Meteor.call("score.updateScore", this.props.score[0].score);}}></button>
               <div className="top-right-header">
                 <ScoreBoard lives={0} score={0} />
               </div>
             </div>
-            <div className="bottom-wrapper">
-              <div
-                className="red-div"
-                onClick={() => {
-                  this.onClick(0, turn);
-                }}
-              >
-                <RedButton
-                  id={0}
-                  noteChoice={this.state.challenge[this.state.turn]}
-                />
-              </div>
-
-              <div
-                className="blue-div"
-                onClick={() => {
-                  this.onClick(1, turn);
-                }}
-              >
-                <BlueButton
-                  noteChoice={this.state.challenge[this.state.turn]}
-                />
-              </div>
-
-              <div
-                className="green-div"
-                onClick={() => {
-                  this.onClick(2, turn);
-                }}
-              >
-                <GreenButton
-                  id={2}
-                  noteChoice={this.state.challenge[this.state.turn]}
-                />
-              </div>
-              <div
-                className="purple-div"
-                onClick={() => {
-                  this.onClick(3, turn);
-                }}
-              >
-                <PurpleButton
-                  id={3}
-                  noteChoice={this.state.challenge[this.state.turn]}
-                />
-              </div>
-            </div>
-
-
-        
-
-
+            {buttons}
           </div>
-         
-
-              
-
         </div>
-            
       </div>
     );
   }
@@ -235,12 +223,17 @@ export default withTracker(() => {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
 <<<<<<< HEAD
+<<<<<<< HEAD
     score: Score.find({}).fetch(),
 =======
 
     score: Score.find({id :1}).fetch(),
     lives: Score.find({id: 2}).fetch(),
 >>>>>>> b308642b75c6b96fe84dedefa177c036f958e02a
+=======
+    score: Score.find({ id: 1 }).fetch(),
+    lives: Score.find({ id: 2 }).fetch(),
+>>>>>>> cb3ee53844fbe1cbfd373d27439a85827a92c6f4
     songs: Songs.find({}).fetch()
   };
 })(App);
