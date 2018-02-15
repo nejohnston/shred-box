@@ -38,7 +38,6 @@ const buttonClicked = function(id) {
   Streamy.emit("note", { data: id });
   console.log(id);
 };
-
 class App extends Component {
   constructor() {
     super();
