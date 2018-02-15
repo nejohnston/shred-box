@@ -125,6 +125,7 @@ class App extends Component {
             <RedButton
               id={0}
               noteChoice={this.state.challenge[this.state.turn]}
+              score={this.props.score[0].score}
             />
           </div>
 
@@ -134,7 +135,11 @@ class App extends Component {
               this.onClick(1, turn);
             }}
           >
-            <BlueButton noteChoice={this.state.challenge[this.state.turn]} />
+            <BlueButton 
+            id={1}
+            noteChoice={this.state.challenge[this.state.turn]} 
+            score={this.props.score[0].score}
+            />
           </div>
 
           <div
@@ -146,6 +151,7 @@ class App extends Component {
             <GreenButton
               id={2}
               noteChoice={this.state.challenge[this.state.turn]}
+              score={this.props.score[0].score}
             />
           </div>
           <div
@@ -157,6 +163,7 @@ class App extends Component {
             <PurpleButton
               id={3}
               noteChoice={this.state.challenge[this.state.turn]}
+              score={this.props.score[0].score}
             />
           </div>
         </div>
@@ -205,7 +212,11 @@ class App extends Component {
                 </div>
               </div>
               <div className="top-right-header">
+              {this.props.score.length ? (
+                <ScoreBoard lives={0} score={this.props.score[0].score} />
+              ) : (
                 <ScoreBoard lives={0} score={0} />
+              )}
               </div>
             </div>
             {buttons}
@@ -222,18 +233,8 @@ export default withTracker(() => {
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
-<<<<<<< HEAD
-<<<<<<< HEAD
-    score: Score.find({}).fetch(),
-=======
-
-    score: Score.find({id :1}).fetch(),
-    lives: Score.find({id: 2}).fetch(),
->>>>>>> b308642b75c6b96fe84dedefa177c036f958e02a
-=======
     score: Score.find({ id: 1 }).fetch(),
     lives: Score.find({ id: 2 }).fetch(),
->>>>>>> cb3ee53844fbe1cbfd373d27439a85827a92c6f4
     songs: Songs.find({}).fetch()
   };
 })(App);
