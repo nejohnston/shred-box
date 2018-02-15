@@ -51,7 +51,8 @@ class App extends Component {
       // console.log(this.props.currentUserId);
       if (d.data.userid === this.props.currentUserId) {
         //      challenge.set(d.data.challenge)
-        this.setState({ challenge: d.data.challenge });
+        this.setState({turn: 0, challenge: d.data.challenge});
+        
       } else {
         this.setState({ challenge: [] });
       }

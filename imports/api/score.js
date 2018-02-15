@@ -8,9 +8,12 @@ if (Meteor.isServer) {
   });
 }
 
-
 // const initScore = 3;
 
 Meteor.methods({
-  // if() {}
+  "score.updateScore"(){
+    Score.find({score}, {$set:{score: }})
+  },
+
+  "score.updateLives"() {}
 });

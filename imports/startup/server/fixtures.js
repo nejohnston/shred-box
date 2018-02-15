@@ -28,8 +28,10 @@ Meteor.startup(() => {
   }
 
   Score.insert({
-    score: 0,
-    lives: 3
+    score: 0
+    
   });
-
+Score.insert({
+  lives: 3
+})
 });
