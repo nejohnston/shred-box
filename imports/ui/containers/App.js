@@ -103,7 +103,7 @@ class App extends Component {
       let nextTurn = this.state.turn + 1;
       this.setState({ turn: nextTurn });
     }
-    console.log("Turn: ", this.state.turn);
+    // console.log("Turn: ", this.state.turn);
   };
 
   onClick = (id, turn) => {
@@ -113,7 +113,7 @@ class App extends Component {
 
   render() {
     if(this.props.score.length){
-      console.log(this.props.score[0].score);
+      console.log(this.props.score[0]);
     }
 
     return (
