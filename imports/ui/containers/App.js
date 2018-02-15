@@ -59,6 +59,7 @@ class App extends Component {
       } else {
         this.setState({ challenge: [] });
       }
+      console.log(this.state.challenge);
     });
   }
 
@@ -112,7 +113,7 @@ class App extends Component {
   };
 
   render() {
-console.log(this.props.score);
+// console.log(this.props.score);
     return (
       <div className="background">
         <div className="app-wrapper">
