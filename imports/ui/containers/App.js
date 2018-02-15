@@ -143,30 +143,44 @@ class App extends Component {
                 <RedButton
                   id={0}
                   noteChoice={this.state.challenge[this.state.turn]}
-                  sound={snd}
+                  sound={this.snd}
                 />
               </div>
 
-              <div className="blue-div"
-              onClick={() => {this.onClick(1, turn)}} >
-                <BlueButton 
-                 noteChoice={this.state.challenge[this.state.turn]}
-                 sound={snd1}
+              <div
+                className="blue-div"
+                onClick={() => {
+                  this.onClick(1, turn);
+                }}
+              >
+                <BlueButton
+                  noteChoice={this.state.challenge[this.state.turn]}
+                  sound={this.snd1}
                 />
               </div>
 
-              <div className="green-div"
-              onClick={() => {this.onClick(2, turn)}}  >
-                <GreenButton id={2} 
-                 noteChoice={this.state.challenge[this.state.turn]}
-                 sound={snd2}
+              <div
+                className="green-div"
+                onClick={() => {
+                  this.onClick(2, turn);
+                }}
+              >
+                <GreenButton
+                  id={2}
+                  noteChoice={this.state.challenge[this.state.turn]}
+                  sound={this.snd2}
                 />
               </div>
-              <div className="purple-div"
-              onClick={() => {this.onClick(3, turn)}}  >
-                <PurpleButton id={3}     
-                 noteChoice={this.state.challenge[this.state.turn]}
-                 sound={snd3}
+              <div
+                className="purple-div"
+                onClick={() => {
+                  this.onClick(3, turn);
+                }}
+              >
+                <PurpleButton
+                  id={3}
+                  noteChoice={this.state.challenge[this.state.turn]}
+                  sound={this.snd3}
                 />
               </div>
             </div>
