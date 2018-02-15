@@ -12,9 +12,6 @@ const purpleClicked = (noteChoice, score) => {
     errorsnd.play();
     Meteor.call("score.updateLives");
   }
-  // }else{
-  //   alert (" you've lost")
-  // }
 };
 
 const PurpleButton = ({ noteChoice, score }) => (
