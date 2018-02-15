@@ -49,11 +49,13 @@ class App extends Component {
     };
     Streamy.on("challenge", (d, s) => {
       if (d.data.userid === this.props.currentUserId) {
-        this.setState({ challenge: d.data.challenge });
-        this.setState({ turn: 0 });
+        //      challenge.set(d.data.challenge)
+        this.setState({turn: 0, challenge: d.data.challenge});
+        
       } else {
         this.setState({ challenge: [] });
       }
+      console.log(this.state.challenge);
     });
   }
 
@@ -110,7 +112,10 @@ class App extends Component {
   };
 
   render() {
-    console.log("score: " , this.props.score);
+    if(this.props.score.length){
+      console.log(this.props.score[0].score);
+    }
+
     return (
 
       <div className="background">
@@ -154,7 +159,7 @@ class App extends Component {
                   <NextUpDisplay nextNote={this.state.challenge[3]} />
                 </div>
               </div>
-
+  <button onClick={()=>{Meteor.call("score.updateScore", this.props.score[0].score);}}></button>
               <div className="top-right-header">
                 <ScoreBoard lives={0} score={0} />
               </div>
@@ -229,7 +234,9 @@ export default withTracker(() => {
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
-    score: Score.find({}).fetch(),
+
+    score: Score.find({id :1}).fetch(),
+    lives: Score.find({id: 2}).fetch(),
     songs: Songs.find({}).fetch()
   };
 })(App);
