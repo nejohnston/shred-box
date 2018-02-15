@@ -11,9 +11,24 @@ if (Meteor.isServer) {
 // const initScore = 3;
 
 Meteor.methods({
-  "score.updateScore"(){
-    Score.find({score}, {$set:{score: }})
+  "score.updateScore"(score){
+    Score.update({id: 1}, {$set:{score: score+1}})
   },
 
   "score.updateLives"() {}
 });
+
+// const score = 0;
+// const lives = 3;
+// Meteor.methods({
+//   "score.updateScore"() {
+//     score++;
+//   },
+//   "score.updateLives"() {
+//     if (lives < 0) {
+//       lives--;
+//     } else {
+//       Meteor.call("songs.reset");
+//     }
+//   }
+// });

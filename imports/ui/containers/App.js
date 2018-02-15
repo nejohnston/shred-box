@@ -107,7 +107,10 @@ class App extends Component {
   };
 
   render() {
-// console.log(this.props.score);
+    if(this.props.score.length){
+      console.log(this.props.score[0].score);
+    }
+
     return (
       <div className="background">
         <div className="app-wrapper">
@@ -128,7 +131,7 @@ class App extends Component {
                   <NextUpDisplay nextNote={this.state.challenge[3]} />
                 </div>
               </div>
-
+  <button onClick={()=>{Meteor.call("score.updateScore", this.props.score[0].score);}}></button>
               <div className="top-right-header">
                 <ScoreBoard lives={0} score={0} />
               </div>
@@ -212,7 +215,8 @@ export default withTracker(() => {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
 
-    score: Score.find({}).fetch(),
+    score: Score.find({id :1}).fetch(),
+    lives: Score.find({id: 2}).fetch(),
     songs: Songs.find({}).fetch()
   };
 })(App);

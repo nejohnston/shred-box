@@ -1,11 +1,9 @@
 import { Meteor } from "meteor/meteor";
-import { Accounts } from "meteor/accounts-base"; 
+import { Accounts } from "meteor/accounts-base";
 import { Score } from "../../api/score";
 import { Songs } from "../../api/songs";
 
 Meteor.startup(() => {
-
-
   if (Meteor.users.find().count() === 0) {
     let defaultUser = Accounts.createUser({
       email: "test@test.com",
@@ -28,10 +26,11 @@ Meteor.startup(() => {
   }
 
   Score.insert({
+    id: 1,
     score: 0
-    
   });
-Score.insert({
-  lives: 3
-})
+  Score.insert({
+    id: 2,
+    lives: 3
+  });
 });
