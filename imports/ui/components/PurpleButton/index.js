@@ -12,11 +12,7 @@ const purpleClicked = (noteChoice, sound) => {
     errorsnd.play();
     Meteor.call("score.updateLives");
   }
-  // }else{
-  //   alert (" you've lost")
-  // }
 };
-
 const PurpleButton = ({ noteChoice }) => (
   <div
     onClick={() => {

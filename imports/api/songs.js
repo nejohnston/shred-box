@@ -7,7 +7,6 @@ if (Meteor.isServer) {
   Meteor.publish("songs", function songsPublication() {
     return Songs.find({});
   });
- 
 }
 
 let interval;
@@ -21,10 +20,12 @@ let challenge = Songs.find().fetch();
 let users = new ReactiveVar([]);
 console.log(users.get());
 
-users.set(Meteor.users
-  .find({})
-  .fetch()
-  .map(user => user._id));
+users.set(
+  Meteor.users
+    .find({})
+    .fetch()
+    .map(user => user._id)
+);
 
 console.log(users.get());
 
@@ -38,11 +39,12 @@ const songEnd = () => {
   playedNotes = [];
   Meteor.clearInterval(interval);
   win = true;
-  users.set(Meteor.users
-    .find({})
-    .fetch()
-    .map(user => user._id));
-  
+  users.set(
+    Meteor.users
+      .find({})
+      .fetch()
+      .map(user => user._id)
+  );
 };
 
 Meteor.methods({
@@ -73,13 +75,12 @@ Meteor.methods({
   },
 
   "songs.reset"() {
+    Meteor.call("score.updateScore", this.score);
+    Meteor.call("score.updateLives", this.lives);
     songEnd();
   },
 
   "songs.start"() {
-
-   
-
     challenge = Songs.find({}).fetch();
     console.log("challenge", challenge);
     if (!this.isSimulation) {
