@@ -171,6 +171,11 @@ class App extends Component {
     } else {
       buttons = <div className="bottom-wrapper" />;
     }
+    if (this.state.challenge.length) {
+      logo = <div />;
+    } else {
+      logo = <img className="logo" src="./logo.png" />;
+    }
 
     return (
       <div className="background">
@@ -201,8 +206,7 @@ class App extends Component {
           <div className="input-wrapper">
             <div className="top-wrapper">
               <div className="top-left-header">
-                <img className="logo" src="./logo.png" />
-
+                {logo}
                 {/* what to render? */}
                 <div className="answer-box">
                   <NextUpDisplay nextNote={this.state.challenge[0]} />
