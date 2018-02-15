@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withTracker } from "meteor/react-meteor-data";
-
 import { Score } from "../../api/score";
 import { Songs } from "../../api/songs";
 import { Meteor } from "meteor/meteor";
@@ -19,8 +18,11 @@ import { Session } from "meteor/session";
 
 const challengeResult = new ReactiveVar("");
 let turn = 0;
+
+
+
+
 const snd = new Audio("ThunderKick.wav");
-Session.set("started", false);
 const snd3 = new Audio("GreenPerc2.wav");
 const snd2 = new Audio("BlueHat.wav");
 const snd1 = new Audio("BaiscKick2.wav");
@@ -52,7 +54,7 @@ class App extends Component {
       if (d.data.userid === this.props.currentUserId) {
         //      challenge.set(d.data.challenge)
         this.setState({ challenge: d.data.challenge });
-        this.setState({ turn: 0 });
+        this.setState({ turn: 0 });x``
       } else {
         this.setState({ challenge: [] });
       }
