@@ -38,7 +38,6 @@ const buttonClicked = function(id) {
   Streamy.emit("note", { data: id });
   console.log(id);
 };
-
 class App extends Component {
   constructor() {
     super();
@@ -112,7 +111,7 @@ class App extends Component {
   };
 
   render() {
-console.log(this.props.score);
+    console.log(this.props.score);
     return (
       <div className="background">
         <div className="app-wrapper">
