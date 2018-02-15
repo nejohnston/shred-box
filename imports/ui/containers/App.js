@@ -135,10 +135,10 @@ class App extends Component {
               this.onClick(1, turn);
             }}
           >
-            <BlueButton 
-            id={1}
-            noteChoice={this.state.challenge[this.state.turn]} 
-            score={this.props.score[0].score}
+            <BlueButton
+              id={1}
+              noteChoice={this.state.challenge[this.state.turn]}
+              score={this.props.score[0].score}
             />
           </div>
 
@@ -169,7 +169,7 @@ class App extends Component {
         </div>
       );
     } else {
-      buttons = <div className="bottom-wrapper">"TIS NOT YOUR TURN"</div>;
+      buttons = <div className="bottom-wrapper" />;
     }
 
     return (
@@ -212,11 +212,11 @@ class App extends Component {
                 </div>
               </div>
               <div className="top-right-header">
-              {this.props.score.length ? (
-                <ScoreBoard lives={0} score={this.props.score[0].score} />
-              ) : (
-                <ScoreBoard lives={0} score={0} />
-              )}
+                {this.props.score.length ? (
+                  <ScoreBoard lives={0} score={this.props.score[0].score} />
+                ) : (
+                  <ScoreBoard lives={0} score={0} />
+                )}
               </div>
             </div>
             {buttons}
