@@ -11,10 +11,10 @@ const blueClicked = (noteChoice, sound) => {
   }
 };
 
-const BlueButton = ({ noteChoice }, sound) => (
+const BlueButton = ({ noteChoice }) => (
   <div
     onClick={() => {
-      blueClicked(noteChoice, sound);
+      blueClicked(noteChoice);
     }}
     className="blue-button"
   />
