@@ -117,7 +117,11 @@ class App extends Component {
     // }
     if (this.state.end) {
       console.log("hiya");
-      buttons = <div>You lost, your score is:{this.props.score[0].score}</div>;
+      buttons = (
+        <div className="lose-screen">
+          You lost! your score is: {this.props.score[0].score}
+        </div>
+      );
     } else {
       if (this.state.challenge.length) {
         buttons = (
