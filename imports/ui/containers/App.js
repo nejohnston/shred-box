@@ -26,6 +26,12 @@ const errorsnd = new Audio("record-scratch.mp3");
 
 Session.set("started", false);
 
+Streamy.on("endgame", (d,s)=>{
+  console.log(d.data.end);
+})
+
+
+
 Streamy.on("challenge-result", (d, s) => {
   challengeResult.set(d.data);
 
@@ -53,7 +59,7 @@ class App extends Component {
       } else {
         this.setState({ challenge: [] });
       }
-      console.log(this.state.challenge);
+      // console.log(this.state.challenge);
     });
   }
 
@@ -68,7 +74,7 @@ class App extends Component {
     Session.set("started", true);
     Meteor.call("songs.createChallengeArray");
     Meteor.call("songs.start");
-    console.log("Started");
+    // console.log("Started");
     setTimeout(function() {
       snd.play();
     }, 800);
@@ -110,14 +116,10 @@ class App extends Component {
   };
 
   render() {
-    if (this.props.score.length) {
-      console.log(this.props.score[0]);
-    }
-<<<<<<< HEAD
-    if (this.state.challenge.length ) {
-=======
+    // if (this.props.score.length) {
+    //   console.log(this.props.score[0]);
+    // }
     if (this.state.challenge.length) {
->>>>>>> 861819ac9a574921527652bbf3172e7504588104
       buttons = (
         <div className="bottom-wrapper">
           <div
