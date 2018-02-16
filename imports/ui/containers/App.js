@@ -15,13 +15,7 @@ import NextUpDisplay from "../components/NextUpDisplay";
 import AccountsWrapper from "../components/AccountsWrapper";
 import ScoreBoard from "../components/ScoreBoard";
 
-import {
-  buttonClicked,
-  startClicked,
-  resetClicked,
-  turnUp,
-  onClick
-} from "../../lib/buttonFunctions.js";
+import {buttonClicked , startClicked, resetClicked, turnUp, onClick} from "../lib/buttonFunctions.js"
 import "./styles.css";
 
 let turn = 0;
@@ -34,6 +28,9 @@ const errorsnd = new Audio("record-scratch.mp3");
 
 Session.set("started", false);
 
+Streamy.on("endgame", (d,s)=>{
+  console.log(d.data.end);
+})
 Streamy.on("challenge-result", (d, s) => {
   challengeResult.set(d.data);
 
@@ -195,7 +192,7 @@ class App extends Component {
             <button
               className="start-button"
               onClick={() => {
-                this.startClicked();
+                startClicked();
               }}
             >
               Start
