@@ -14,7 +14,7 @@ const blueClicked = (noteChoice, score, lives) => {
       Meteor.call("score.updateLives", lives);
     }
   } else {
-    alert("You lost, your score is :", score);
+    alert("You lost, your score is :" + score);
     Meteor.call("songs.reset");
   }
 };
