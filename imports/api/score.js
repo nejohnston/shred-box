@@ -17,21 +17,11 @@ Meteor.methods({
     Score.update({ id: 1 }, { $set: { score: score + 1 } });
   },
   "score.updateLives"(lives) {
-    Score.update({ id: 2 }, { $set: { lives: lives - 1 } });
+    if (lives === 1) {
+      Score.update({ id: 2 }, { $set: { lives: lives - 1 } });
+      console.log("end game");
+    } else {
+      Score.update({ id: 2 }, { $set: { lives: lives - 1 } });
+    }
   }
 });
-
-// const score = 0;
-// const lives = 3;
-// Meteor.methods({
-//   "score.updateScore"() {
-//     score++;
-//   },
-//   "score.updateLives"() {
-//     if (lives < 0) {
-//       lives--;
-//     } else {
-//       Meteor.call("songs.reset");
-//     }
-//   }
-// });
