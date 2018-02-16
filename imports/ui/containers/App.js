@@ -179,11 +179,13 @@ class App extends Component {
 
     return (
       <div className="background">
+     
         <div className="app-wrapper">
-          <div className="button-wrapper">
-            <div className="login-wrapper">
+        <div className="login-wrapper">
+          
               <AccountsWrapper />
-            </div>
+        </div>
+          <div className="button-wrapper">
             <button
               className="start-button"
               onClick={() => {

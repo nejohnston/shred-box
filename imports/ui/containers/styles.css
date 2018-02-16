@@ -92,12 +92,26 @@ body {
 
 .start-button {
     width: 33%;
+    font-size: 24px;
+    color: rgb(255, 123, 0);
     height: 60px;
+}
+
+.start-button:hover {
+    font-size: 28px;
+    color: rgb(255, 72, 0);
 }
 
 .reset-button {
     width: 33%;
     height: 60px;
+    color: rgb(255, 123, 0);
+    font-size: 24px;
+}
+
+.reset-button:hover {
+    font-size: 28px;
+    color: rgb(255, 72, 0);
 }
 
 
