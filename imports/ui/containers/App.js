@@ -110,14 +110,13 @@ class App extends Component {
   };
 
   render() {
-    if (this.props.score.length) {
-      console.log(this.props.score[0]);
-    }
-<<<<<<< HEAD
-    if (this.state.challenge.length ) {
-=======
+  //   if (this.props.lives[0].lives.length) {
+  //     if (this.props.lives[0].lives === 0) {
+  //     <div className="lose">You have Lost!</div>
+  //   }
+  // }
+  
     if (this.state.challenge.length) {
->>>>>>> 861819ac9a574921527652bbf3172e7504588104
       buttons = (
         <div className="bottom-wrapper">
           <div
