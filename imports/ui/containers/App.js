@@ -110,10 +110,10 @@ class App extends Component {
   };
 
   render() {
-    if(this.props.score.length){
+    if (this.props.score.length) {
       console.log(this.props.score[0]);
     }
-    if (this.state.challenge.length && this.props.lives[0].lives) {
+    if (this.state.challenge.length) {
       buttons = (
         <div className="bottom-wrapper">
           <div
@@ -183,12 +183,10 @@ class App extends Component {
 
     return (
       <div className="background">
-     
         <div className="app-wrapper">
-        <div className="login-wrapper">
-          
-              <AccountsWrapper />
-        </div>
+          <div className="login-wrapper">
+            <AccountsWrapper />
+          </div>
           <div className="button-wrapper">
             <button
               className="start-button"
