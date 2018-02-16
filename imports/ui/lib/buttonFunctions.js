@@ -5,6 +5,14 @@ import { withTracker } from "meteor/react-meteor-data";
 import { Meteor } from "meteor/meteor";
 import { ReactiveVar } from "meteor/reactive-var";
 import { Session } from "meteor/session";
+<<<<<<< HEAD
+=======
+const snd = new Audio("ThunderKick.wav");
+const snd3 = new Audio("GreenPerc2.wav");
+const snd2 = new Audio("BlueHat.wav");
+const snd1 = new Audio("BaiscKick2.wav");
+const errorsnd = new Audio("record-scratch.mp3");
+>>>>>>> 7299ec2a1ca831290f770484c817cc985cafd616
 
 export const buttonClicked = id => {
   if (Session.get("started")) {
