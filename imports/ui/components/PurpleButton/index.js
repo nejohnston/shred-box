@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const purpleClicked = (noteChoice, score) => {
+const purpleClicked = (noteChoice, score, lives) => {
   // if (!this.props.lives===0){
   if (noteChoice === 3) {
     const snd1 = new Audio("BaiscKick2.wav");
@@ -10,14 +10,14 @@ const purpleClicked = (noteChoice, score) => {
   } else {
     const errorsnd = new Audio("record-scratch.mp3");
     errorsnd.play();
-    Meteor.call("score.updateLives");
+    Meteor.call("score.updateLives", lives);
   }
 };
 
-const PurpleButton = ({ noteChoice, score }) => (
+const PurpleButton = ({ noteChoice, score, lives }) => (
   <div
     onClick={() => {
-      purpleClicked(noteChoice, score);
+      purpleClicked(noteChoice, score, lives);
     }}
     className="purple-button"
   />

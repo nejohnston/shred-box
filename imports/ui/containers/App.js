@@ -126,6 +126,7 @@ class App extends Component {
               id={0}
               noteChoice={this.state.challenge[this.state.turn]}
               score={this.props.score[0].score}
+              lives={this.props.lives[0].lives}
             />
           </div>
 
@@ -139,6 +140,7 @@ class App extends Component {
               id={1}
               noteChoice={this.state.challenge[this.state.turn]}
               score={this.props.score[0].score}
+              lives={this.props.lives[0].lives}
             />
           </div>
 
@@ -152,6 +154,7 @@ class App extends Component {
               id={2}
               noteChoice={this.state.challenge[this.state.turn]}
               score={this.props.score[0].score}
+              lives={this.props.lives[0].lives}
             />
           </div>
           <div
@@ -164,6 +167,7 @@ class App extends Component {
               id={3}
               noteChoice={this.state.challenge[this.state.turn]}
               score={this.props.score[0].score}
+              lives={this.props.lives[0].lives}
             />
           </div>
         </div>
@@ -217,7 +221,11 @@ class App extends Component {
               </div>
               <div className="top-right-header">
                 {this.props.score.length ? (
-                  <ScoreBoard lives={0} score={this.props.score[0].score} />
+                  <ScoreBoard
+                    lives={0}
+                    score={this.props.score[0].score}
+                    lives={this.props.lives[0].lives}
+                  />
                 ) : (
                   <ScoreBoard lives={0} score={0} />
                 )}

@@ -1,6 +1,10 @@
 import { Mongo } from "meteor/mongo";
 // import { gameInterval } from "./helpers.js";
+<<<<<<< HEAD
 import { Score} from './score.js';
+=======
+import { Score } from "./score";
+>>>>>>> passed lives prop through all buttons, need more buttons
 
 export const Songs = new Mongo.Collection("songs");
 
