@@ -1,3 +1,34 @@
-SHRED-BOX
+# SHRED-BOX
 
-createChallengeArray is the first Meteor.method we made. It was a struggle to come up with simply because we did not know where to start. After clarification of our end goal, and conversation about our immediate goal, we were able to come up with a createChallengeArray that console.logs a random array.
+Multiplayer music game, that displays random array of four colour, waits for input, then updates lives and score accordingly.
+
+## Getting Started
+
+Download or clone github files. run in terminal "npm install" then "meteor"
+
+### Prerequisites
+
+up to date computer, internet access
+
+### Installing
+
+open "shred-box" in the terminal, run "npm install" and then "meteor" open a browser window and access localhost:3000
+
+## Built With
+
+* [Meteor]
+* [React]
+* [javascript]
+
+## Authors
+
+* **Qingxin Yuan**
+* **Sean Stobo**
+* **Nicholas Johnston**
+* **Michael Kim**
+
+## Acknowledgments
+
+* Thanks to Mack for providing, basicc skeleton of code
+* Thanks to RED
+* etc
