@@ -248,11 +248,11 @@ class App extends Component {
         } else {
           buttons = <div className="bottom-wrapper" />;
         }
-        if (this.state.challenge.length) {
-          logo = <div />;
-        } else {
-          logo = <img className="logo" src="./logo.png" />;
-        }
+      }
+      if (this.state.challenge.length) {
+        logo = <div />;
+      } else {
+        logo = <img className="logo" src="./logo.png" />;
       }
     }
 
