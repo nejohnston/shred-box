@@ -113,11 +113,7 @@ class App extends Component {
     if (this.props.score.length) {
       console.log(this.props.score[0]);
     }
-<<<<<<< HEAD
-    if (this.state.challenge.length ) {
-=======
     if (this.state.challenge.length) {
->>>>>>> 861819ac9a574921527652bbf3172e7504588104
       buttons = (
         <div className="bottom-wrapper">
           <div
