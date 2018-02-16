@@ -1,13 +1,13 @@
 //these are all the functions that pertain to the button functionality, they used to be in app.js
 
-buttonClicked = id => {
+export const buttonClicked = id => {
   if (Session.get("started")) {
     console.log("Button to emit: ", id);
     Streamy.emit("note", { data: id });
   }
 };
 
-startClicked = e => {
+export const startClicked = e => {
   Session.set("started", true);
   Meteor.call("songs.createChallengeArray");
   Meteor.call("songs.start");
@@ -29,14 +29,14 @@ startClicked = e => {
   }, 2400);
 };
 
-resetClicked = e => {
+export const resetClicked = e => {
   Session.set("started", false);
   Meteor.call("songs.reset");
   this.setState({ turn: 0 });
   this.setState({ challenge: [] });
 };
 
-turnUp = () => {
+export const turnUp = () => {
   if (this.state.turn > 2) {
     let restartTurn = 0;
     this.setState({ turn: restartTurn });
@@ -47,9 +47,7 @@ turnUp = () => {
   // console.log("Turn: ", this.state.turn);
 };
 
-onClick = (id, turn) => {
+export const onClick = (id, turn) => {
   this.buttonClicked(id);
   this.turnUp(turn);
 };
-
-export default { buttonClicked, startClicked, resetClicked, turnUp, onClick };

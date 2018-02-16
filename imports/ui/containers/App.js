@@ -39,7 +39,6 @@ Streamy.on("challenge-result", (d, s) => {
   }, 1500);
 });
 
-
 class App extends Component {
   constructor() {
     super();
