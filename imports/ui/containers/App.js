@@ -66,17 +66,10 @@ class App extends Component {
     Meteor.call("songs.createChallengeArray");
     Meteor.call("songs.start");
     console.log("Started");
-    setTimeout(function() {
-      snd.play();
-    }, 800);
-    setTimeout(function() {
-      snd1.play();
-    }, 1200);
-    setTimeout(function() {
-      snd2.play();
-    }, 1600);
-    setTimeout(function() {
-      snd3.play();
+    setTimeout(function() {snd.play();}, 800);
+    setTimeout(function() {snd1.play();}, 1200);
+    setTimeout(function() {snd2.play();}, 1600);
+    setTimeout(function() {snd3.play();
     }, 2000);
     setTimeout(function() {
       errorsnd.play();
