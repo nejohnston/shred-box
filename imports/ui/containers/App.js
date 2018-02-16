@@ -15,7 +15,13 @@ import NextUpDisplay from "../components/NextUpDisplay";
 import AccountsWrapper from "../components/AccountsWrapper";
 import ScoreBoard from "../components/ScoreBoard";
 
-import {buttonClicked , startClicked, resetClicked, turnUp, onClick} from "../../lib/buttonFunctions.js"
+import {
+  buttonClicked,
+  startClicked,
+  resetClicked,
+  turnUp,
+  onClick
+} from "../../lib/buttonFunctions.js";
 import "./styles.css";
 
 let turn = 0;
@@ -35,10 +41,6 @@ Streamy.on("challenge-result", (d, s) => {
     challengeResult.set("");
   }, 1500);
 });
-
-const buttonClicked = function(id) {
-  Streamy.emit("note", { data: id });
-};
 
 class App extends Component {
   constructor() {
@@ -112,18 +114,9 @@ class App extends Component {
   // };
 
   render() {
-<<<<<<< HEAD
-  //   if (this.props.lives[0].lives.length) {
-  //     if (this.props.lives[0].lives === 0) {
-  //     <div className="lose">You have Lost!</div>
-  //   }
-  // }
-  
-=======
     if (this.props.score.length) {
       console.log(this.props.score[0]);
     }
->>>>>>> 51fcc8e9dd8086cf3c30a58fb75d8279007f0856
     if (this.state.challenge.length) {
       buttons = (
         <div className="bottom-wrapper">
