@@ -19,7 +19,7 @@ Meteor.methods({
   "score.updateLives"(lives) {
     if (lives === 1) {
       Score.update({ id: 2 }, { $set: { lives: lives - 1 } });
-      console.log("end game");
+      Streamy.broadcast("endgame", { data: { end: true } });
     } else {
       Score.update({ id: 2 }, { $set: { lives: lives - 1 } });
     }
