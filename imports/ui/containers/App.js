@@ -101,6 +101,10 @@ class App extends Component {
       let nextTurn = this.state.turn + 1;
       this.setState({ turn: nextTurn });
     }
+<<<<<<< HEAD
+=======
+    console.log("Turn: ", this.state.turn);
+>>>>>>> added an endgame alert into a method when lives hits 0
   };
   onClick = (id, turn) => {
     this.buttonClicked(id);
@@ -108,7 +112,14 @@ class App extends Component {
   };
 
   render() {
+<<<<<<< HEAD
     if (this.state.end) {
+=======
+    if (this.props.score.length) {
+      console.log(this.props.score[0].score);
+    }
+    if (this.state.challenge.length) {
+>>>>>>> added an endgame alert into a method when lives hits 0
       buttons = (
         <div className="lose-screen">
           You lost! Your score is {this.props.score[0].score}
@@ -259,11 +270,17 @@ class App extends Component {
     return (
       <div className="background">
         <div className="app-wrapper">
+<<<<<<< HEAD
           <div className="login-wrapper">
             <AccountsWrapper />
           </div>
 
+=======
+>>>>>>> added an endgame alert into a method when lives hits 0
           <div className="button-wrapper">
+            <div className="login-wrapper">
+              <AccountsWrapper />
+            </div>
             <button
               className="start-button"
               onClick={() => {
