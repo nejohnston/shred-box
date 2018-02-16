@@ -114,7 +114,17 @@ class App extends Component {
           You lost! Your score is {this.props.score[0].score}
         </div>
       );
+
+      display = <div />;
     } else {
+      display = (
+        <div className="answer-box">
+          <NextUpDisplay nextNote={this.state.challenge[0]} />
+          <NextUpDisplay nextNote={this.state.challenge[1]} />
+          <NextUpDisplay nextNote={this.state.challenge[2]} />
+          <NextUpDisplay nextNote={this.state.challenge[3]} />
+        </div>
+      );
       if (this.state.challenge.length) {
         buttons = (
           <div className="bottom-wrapper">
@@ -245,6 +255,7 @@ class App extends Component {
         }
       }
     }
+
     return (
       <div className="background">
         <div className="app-wrapper">
@@ -276,13 +287,7 @@ class App extends Component {
             <div className="top-wrapper">
               <div className="top-left-header">
                 {logo}
-
-                <div className="answer-box">
-                  <NextUpDisplay nextNote={this.state.challenge[0]} />
-                  <NextUpDisplay nextNote={this.state.challenge[1]} />
-                  <NextUpDisplay nextNote={this.state.challenge[2]} />
-                  <NextUpDisplay nextNote={this.state.challenge[3]} />
-                </div>
+                {display}
               </div>
 
               <div className="top-right-header">
