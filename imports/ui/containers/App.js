@@ -91,6 +91,7 @@ class App extends Component {
     this.setState({ turn: 0 });
     this.setState({ challenge: [] });
     this.drum2();
+    this.setState({ end: false });
   };
   turnUp = () => {
     if (this.state.turn > 2) {
