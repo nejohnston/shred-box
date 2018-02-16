@@ -1,4 +1,10 @@
 //these are all the functions that pertain to the button functionality, they used to be in app.js
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { withTracker } from "meteor/react-meteor-data";
+import { Meteor } from "meteor/meteor";
+import { ReactiveVar } from "meteor/reactive-var";
+import { Session } from "meteor/session";
 
 export const buttonClicked = id => {
   if (Session.get("started")) {
