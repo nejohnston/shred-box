@@ -1,10 +1,6 @@
 import { Mongo } from "meteor/mongo";
 // import { gameInterval } from "./helpers.js";
-<<<<<<< HEAD
-import { Score} from './score.js';
-=======
 import { Score } from "./score";
->>>>>>> passed lives prop through all buttons, need more buttons
 
 export const Songs = new Mongo.Collection("songs");
 
@@ -74,16 +70,12 @@ Meteor.methods({
       }
     }
 
-    // }
-
     console.log(Songs.find().fetch());
   },
 
   "songs.reset"() {
-    Score.update({id: 1}, {$set: {score: 0}});
-    Score.update({id: 2}, {$set: {lives: 0}});
-    // Meteor.call("score.updateScore", this.score);
-    // Meteor.call("score.updateLives", this.lives);
+    Score.update({ id: 1 }, { $set: { score: 0 } });
+    Score.update({ id: 2 }, { $set: { lives: 3 } });
     songEnd();
   },
 
