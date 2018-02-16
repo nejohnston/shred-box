@@ -4,9 +4,9 @@ import { withTracker } from "meteor/react-meteor-data";
 import { Meteor } from "meteor/meteor";
 import { ReactiveVar } from "meteor/reactive-var";
 import { Session } from "meteor/session";
-
 import { Score } from "../../api/score";
 import { Songs } from "../../api/songs";
+
 import BlueButton from "../components/BlueButton";
 import GreenButton from "../components/GreenButton";
 import PurpleButton from "../components/PurpleButton";
@@ -14,14 +14,6 @@ import RedButton from "../components/RedButton";
 import NextUpDisplay from "../components/NextUpDisplay";
 import AccountsWrapper from "../components/AccountsWrapper";
 import ScoreBoard from "../components/ScoreBoard";
-
-import {
-  buttonClicked,
-  startClicked,
-  resetClicked,
-  turnUp,
-  onClick
-} from "../../lib/buttonFunctions.js";
 import "./styles.css";
 
 let turn = 0;
@@ -33,6 +25,10 @@ const snd1 = new Audio("BaiscKick2.wav");
 const errorsnd = new Audio("record-scratch.mp3");
 
 Session.set("started", false);
+
+Streamy.on("endgame", (d, s) => {
+  console.log(d.data.end);
+});
 
 Streamy.on("challenge-result", (d, s) => {
   challengeResult.set(d.data);
@@ -52,71 +48,69 @@ class App extends Component {
 
     Streamy.on("challenge", (d, s) => {
       if (d.data.userid === this.props.currentUserId) {
-        //      challenge.set(d.data.challenge)
         this.setState({ turn: 0, challenge: d.data.challenge });
       } else {
         this.setState({ challenge: [] });
       }
-      console.log(this.state.challenge);
     });
   }
+  buttonClicked = id => {
+    if (Session.get("started")) {
+      console.log("Button to emit: ", id);
+      Streamy.emit("note", { data: id });
+    }
+  };
+  startClicked = e => {
+    Session.set("started", true);
+    Meteor.call("songs.createChallengeArray");
+    Meteor.call("songs.start");
+    console.log("Started");
+    setTimeout(function() {
+      snd.play();
+    }, 800);
+    setTimeout(function() {
+      snd1.play();
+    }, 1200);
+    setTimeout(function() {
+      snd2.play();
+    }, 1600);
+    setTimeout(function() {
+      snd3.play();
+    }, 2000);
+    setTimeout(function() {
+      errorsnd.play();
+    }, 2400);
+  };
 
-  // buttonClicked = id => {
-  //   if (Session.get("started")) {
-  //     console.log("Button to emit: ", id);
-  //     Streamy.emit("note", { data: id });
-  //   }
-  // };
+  resetClicked = e => {
+    Session.set("started", false);
+    Meteor.call("songs.reset");
+    this.setState({ turn: 0 });
+    this.setState({ challenge: [] });
+  };
 
-  // startClicked = e => {
-  //   Session.set("started", true);
-  //   Meteor.call("songs.createChallengeArray");
-  //   Meteor.call("songs.start");
-  //   console.log("Started");
-  //   setTimeout(function() {
-  //     snd.play();
-  //   }, 800);
-  //   setTimeout(function() {
-  //     snd1.play();
-  //   }, 1200);
-  //   setTimeout(function() {
-  //     snd2.play();
-  //   }, 1600);
-  //   setTimeout(function() {
-  //     snd3.play();
-  //   }, 2000);
-  //   setTimeout(function() {
-  //     errorsnd.play();
-  //   }, 2400);
-  // };
+  turnUp = () => {
+    if (this.state.turn > 2) {
+      let restartTurn = 0;
+      this.setState({ turn: restartTurn });
+    } else {
+      let nextTurn = this.state.turn + 1;
+      this.setState({ turn: nextTurn });
+    }
+  };
 
-  // resetClicked = e => {
-  //   Session.set("started", false);
-  //   Meteor.call("songs.reset");
-  //   this.setState({ turn: 0 });
-  //   this.setState({ challenge: [] });
-  // };
-
-  // turnUp = () => {
-  //   if (this.state.turn > 2) {
-  //     let restartTurn = 0;
-  //     this.setState({ turn: restartTurn });
-  //   } else {
-  //     let nextTurn = this.state.turn + 1;
-  //     this.setState({ turn: nextTurn });
-  //   }
-  //   // console.log("Turn: ", this.state.turn);
-  // };
-
-  // onClick = (id, turn) => {
-  //   this.buttonClicked(id);
-  //   this.turnUp(turn);
-  // };
+  onClick = (id, turn) => {
+    this.buttonClicked(id);
+    this.turnUp(turn);
+  };
 
   render() {
-    if (this.props.score.length) {
-      console.log(this.props.score[0]);
-    }
+    //   if (this.props.lives[0].lives.length) {
+    //     if (this.props.lives[0].lives === 0) {
+    //     <div className="lose">You have Lost!</div>
+    //   }
+    // }
+
     if (this.state.challenge.length) {
       buttons = (
         <div className="bottom-wrapper">
