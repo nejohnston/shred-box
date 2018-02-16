@@ -18,25 +18,18 @@ import "./styles.css";
 
 let turn = 0;
 const challengeResult = new ReactiveVar("");
-const snd = new Audio("ThunderKick.wav");
-const snd3 = new Audio("GreenPerc2.wav");
-const snd2 = new Audio("BlueHat.wav");
-const snd1 = new Audio("BaiscKick2.wav");
-const errorsnd = new Audio("record-scratch.mp3");
 
 Session.set("started", false);
-
 Streamy.on("endgame", (d,s)=>{
   console.log(d.data.end);
 })
-
 Streamy.on("challenge-result", (d, s) => {
   challengeResult.set(d.data);
-
   Meteor.setTimeout(() => {
     challengeResult.set("");
   }, 1500);
 });
+
 
 
 class App extends Component {
@@ -44,7 +37,7 @@ class App extends Component {
     super();
     this.state = {
       turn: 0,
-      challenge: []
+      challenge: [],
     };
 
     Streamy.on("challenge", (d, s) => {
@@ -55,6 +48,25 @@ class App extends Component {
       }
     });
   }
+    drum1 = () => {
+      drum1 = new Audio('drum-loop.mp3'); 
+      drum1.play();
+      }
+    
+    drum2 = () => {
+      drum2= new Audio('drum-loop2.mp3'); 
+      drum2.play();
+      }
+      
+    synth1 = () => {
+      synth1 = new Audio('synth-loop.mp3'); 
+      synth1.play();
+      }
+      
+    synth2 = ()=>{
+      synth2= new Audio('synth-loop2.mp3'); 
+      synth2.play();
+      }
   buttonClicked = id => {
     if (Session.get("started")) {
       console.log("Button to emit: ", id);
@@ -65,24 +77,15 @@ class App extends Component {
     Session.set("started", true);
     Meteor.call("songs.createChallengeArray");
     Meteor.call("songs.start");
-    console.log("Started");
-    setTimeout(function() {snd.play();}, 800);
-    setTimeout(function() {snd1.play();}, 1200);
-    setTimeout(function() {snd2.play();}, 1600);
-    setTimeout(function() {snd3.play();
-    }, 2000);
-    setTimeout(function() {
-      errorsnd.play();
-    }, 2400);
+    this.drum1();
   };
-
   resetClicked = e => {
     Session.set("started", false);
     Meteor.call("songs.reset");
     this.setState({ turn: 0 });
     this.setState({ challenge: [] });
+    this.drum2();
   };
-
   turnUp = () => {
     if (this.state.turn > 2) {
       let restartTurn = 0;
@@ -92,28 +95,17 @@ class App extends Component {
       this.setState({ turn: nextTurn });
     }
   };
-
   onClick = (id, turn) => {
     this.buttonClicked(id);
     this.turnUp(turn);
   };
 
   render() {
-  //   if (this.props.lives[0].lives.length) {
-  //     if (this.props.lives[0].lives === 0) {
-  //     <div className="lose">You have Lost!</div>
-  //   }
-  // }
-  
     if (this.state.challenge.length) {
       buttons = (
         <div className="bottom-wrapper">
-          <div
-            className="red-div"
-            onClick={() => {
-              this.onClick(0, turn);
-            }}
-          >
+        
+          <div className="red-div" onClick={() => { this.onClick(0, turn);}}>
             <RedButton
               id={0}
               noteChoice={this.state.challenge[this.state.turn]}
@@ -122,12 +114,7 @@ class App extends Component {
             />
           </div>
 
-          <div
-            className="blue-div"
-            onClick={() => {
-              this.onClick(1, turn);
-            }}
-          >
+          <div className="blue-div" onClick={() => {this.onClick(1, turn);}}>
             <BlueButton
               id={1}
               noteChoice={this.state.challenge[this.state.turn]}
@@ -136,12 +123,7 @@ class App extends Component {
             />
           </div>
 
-          <div
-            className="green-div"
-            onClick={() => {
-              this.onClick(2, turn);
-            }}
-          >
+          <div className="green-div" onClick={() => {this.onClick(2, turn);}}>
             <GreenButton
               id={2}
               noteChoice={this.state.challenge[this.state.turn]}
@@ -149,12 +131,8 @@ class App extends Component {
               lives={this.props.lives[0].lives}
             />
           </div>
-          <div
-            className="purple-div"
-            onClick={() => {
-              this.onClick(3, turn);
-            }}
-          >
+
+          <div className="purple-div" onClick={() => {this.onClick(3, turn);}}>
             <PurpleButton
               id={3}
               noteChoice={this.state.challenge[this.state.turn]}
@@ -164,6 +142,7 @@ class App extends Component {
           </div>
         </div>
       );
+
     } else {
       buttons = <div className="bottom-wrapper" />;
     }
@@ -176,25 +155,17 @@ class App extends Component {
     return (
       <div className="background">
         <div className="app-wrapper">
+
           <div className="login-wrapper">
             <AccountsWrapper />
           </div>
+
           <div className="button-wrapper">
-            <button
-              className="start-button"
-              onClick={() => {
-                this.startClicked();
-              }}
-            >
+            <button className="start-button" onClick={() => { this.startClicked();}}>
               Start
             </button>
 
-            <button
-              className="reset-button"
-              onClick={() => {
-                this.resetClicked();
-              }}
-            >
+            <button className="reset-button" onClick={() => { this.resetClicked();}}>
               Reset
             </button>
           </div>
@@ -202,26 +173,26 @@ class App extends Component {
           <div className="input-wrapper">
             <div className="top-wrapper">
               <div className="top-left-header">
+
                 {logo}
-                {/* what to render? */}
+    
                 <div className="answer-box">
                   <NextUpDisplay nextNote={this.state.challenge[0]} />
                   <NextUpDisplay nextNote={this.state.challenge[1]} />
                   <NextUpDisplay nextNote={this.state.challenge[2]} />
                   <NextUpDisplay nextNote={this.state.challenge[3]} />
                 </div>
+
               </div>
+
               <div className="top-right-header">
                 {this.props.score.length ? (
-                  <ScoreBoard
-                    lives={0}
-                    score={this.props.score[0].score}
-                    lives={this.props.lives[0].lives}
-                  />
+                  <ScoreBoard lives={0} score={this.props.score[0].score} lives={this.props.lives[0].lives}/>
                 ) : (
                   <ScoreBoard lives={0} score={0} />
                 )}
               </div>
+
             </div>
             {buttons}
           </div>
