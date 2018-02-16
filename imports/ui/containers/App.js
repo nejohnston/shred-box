@@ -108,7 +108,11 @@ class App extends Component {
 
   render() {
     if (this.state.end) {
-      buttons = <div className="lose-screen">You lost!</div>;
+      buttons = (
+        <div className="lose-screen">
+          You lost! Your score is {this.props.score[0].score}
+        </div>
+      );
     } else {
       if (this.state.challenge.length) {
         buttons = (
