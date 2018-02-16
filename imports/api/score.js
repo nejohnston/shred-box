@@ -10,7 +10,6 @@ if (Meteor.isServer) {
     return Score.find({});
   });
 }
-
 // const initScore = 3;
 
 Meteor.methods({
