@@ -20,11 +20,11 @@ import "./styles.css";
 
 let turn = 0;
 const challengeResult = new ReactiveVar("");
-const snd = new Audio("ThunderKick.wav");
-const snd3 = new Audio("GreenPerc2.wav");
-const snd2 = new Audio("BlueHat.wav");
-const snd1 = new Audio("BaiscKick2.wav");
-const errorsnd = new Audio("record-scratch.mp3");
+// const snd = new Audio("ThunderKick.wav");
+// const snd3 = new Audio("GreenPerc2.wav");
+// const snd2 = new Audio("BlueHat.wav");
+// const snd1 = new Audio("BaiscKick2.wav");
+// const errorsnd = new Audio("record-scratch.mp3");
 
 Session.set("started", false);
 
@@ -120,7 +120,7 @@ class App extends Component {
           <div
             className="red-div"
             onClick={() => {
-              this.onClick(0, turn);
+             onClick(0, turn);
             }}
           >
             <RedButton
@@ -134,7 +134,7 @@ class App extends Component {
           <div
             className="blue-div"
             onClick={() => {
-              this.onClick(1, turn);
+             onClick(1, turn);
             }}
           >
             <BlueButton
@@ -148,7 +148,7 @@ class App extends Component {
           <div
             className="green-div"
             onClick={() => {
-              this.onClick(2, turn);
+              onClick(2, turn);
             }}
           >
             <GreenButton
@@ -161,7 +161,7 @@ class App extends Component {
           <div
             className="purple-div"
             onClick={() => {
-              this.onClick(3, turn);
+              onClick(3, turn);
             }}
           >
             <PurpleButton
@@ -201,7 +201,7 @@ class App extends Component {
             <button
               className="reset-button"
               onClick={() => {
-                this.resetClicked();
+                resetClicked();
               }}
             >
               Reset
