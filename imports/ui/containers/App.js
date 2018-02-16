@@ -20,17 +20,15 @@ let turn = 0;
 const challengeResult = new ReactiveVar("");
 
 Session.set("started", false);
-Streamy.on("endgame", (d,s)=>{
+Streamy.on("endgame", (d, s) => {
   console.log(d.data.end);
-})
+});
 Streamy.on("challenge-result", (d, s) => {
   challengeResult.set(d.data);
   Meteor.setTimeout(() => {
     challengeResult.set("");
   }, 1500);
 });
-
-
 
 class App extends Component {
   constructor() {
@@ -56,25 +54,25 @@ class App extends Component {
       }
     });
   }
-    drum1 = () => {
-      drum1 = new Audio('drum-loop.mp3'); 
-      drum1.play();
-      }
-    
-    drum2 = () => {
-      drum2= new Audio('drum-loop2.mp3'); 
-      drum2.play();
-      }
-      
-    synth1 = () => {
-      synth1 = new Audio('synth-loop.mp3'); 
-      synth1.play();
-      }
-      
-    synth2 = ()=>{
-      synth2= new Audio('synth-loop2.mp3'); 
-      synth2.play();
-      }
+  drum1 = () => {
+    drum1 = new Audio("drum-loop.mp3");
+    drum1.play();
+  };
+
+  drum2 = () => {
+    drum2 = new Audio("drum-loop2.mp3");
+    drum2.play();
+  };
+
+  synth1 = () => {
+    synth1 = new Audio("synth-loop.mp3");
+    synth1.play();
+  };
+
+  synth2 = () => {
+    synth2 = new Audio("synth-loop2.mp3");
+    synth2.play();
+  };
   buttonClicked = id => {
     if (Session.get("started")) {
       console.log("Button to emit: ", id);
@@ -109,48 +107,8 @@ class App extends Component {
   };
 
   render() {
-    if (this.state.challenge.length) {
-      buttons = (
-        <div className="bottom-wrapper">
-        
-          <div className="red-div" onClick={() => { this.onClick(0, turn);}}>
-            <RedButton
-              id={0}
-              noteChoice={this.state.challenge[this.state.turn]}
-              score={this.props.score[0].score}
-              lives={this.props.lives[0].lives}
-            />
-          </div>
-
-          <div className="blue-div" onClick={() => {this.onClick(1, turn);}}>
-            <BlueButton
-              id={1}
-              noteChoice={this.state.challenge[this.state.turn]}
-              score={this.props.score[0].score}
-              lives={this.props.lives[0].lives}
-            />
-          </div>
-
-          <div className="green-div" onClick={() => {this.onClick(2, turn);}}>
-            <GreenButton
-              id={2}
-              noteChoice={this.state.challenge[this.state.turn]}
-              score={this.props.score[0].score}
-              lives={this.props.lives[0].lives}
-            />
-          </div>
-
-          <div className="purple-div" onClick={() => {this.onClick(3, turn);}}>
-            <PurpleButton
-              id={3}
-              noteChoice={this.state.challenge[this.state.turn]}
-              score={this.props.score[0].score}
-              lives={this.props.lives[0].lives}
-            />
-          </div>
-        </div>
-      );
-
+    if (this.state.end) {
+      buttons = <div className="lose-screen">You lost!</div>;
     } else {
       if (this.state.challenge.length) {
         buttons = (
@@ -196,6 +154,7 @@ class App extends Component {
                 lives={this.props.lives[0].lives}
               />
             </div>
+
             <div
               className="purple-div"
               onClick={() => {
@@ -212,29 +171,98 @@ class App extends Component {
           </div>
         );
       } else {
-        buttons = <div className="bottom-wrapper" />;
-      }
-      if (this.state.challenge.length) {
-        logo = <div />;
-      } else {
-        logo = <img className="logo" src="./logo.png" />;
+        if (this.state.challenge.length) {
+          buttons = (
+            <div className="bottom-wrapper">
+              <div
+                className="red-div"
+                onClick={() => {
+                  this.onClick(0, turn);
+                }}
+              >
+                <RedButton
+                  id={0}
+                  noteChoice={this.state.challenge[this.state.turn]}
+                  score={this.props.score[0].score}
+                  lives={this.props.lives[0].lives}
+                />
+              </div>
+
+              <div
+                className="blue-div"
+                onClick={() => {
+                  this.onClick(1, turn);
+                }}
+              >
+                <BlueButton
+                  id={1}
+                  noteChoice={this.state.challenge[this.state.turn]}
+                  score={this.props.score[0].score}
+                  lives={this.props.lives[0].lives}
+                />
+              </div>
+
+              <div
+                className="green-div"
+                onClick={() => {
+                  this.onClick(2, turn);
+                }}
+              >
+                <GreenButton
+                  id={2}
+                  noteChoice={this.state.challenge[this.state.turn]}
+                  score={this.props.score[0].score}
+                  lives={this.props.lives[0].lives}
+                />
+              </div>
+              <div
+                className="purple-div"
+                onClick={() => {
+                  this.onClick(3, turn);
+                }}
+              >
+                <PurpleButton
+                  id={3}
+                  noteChoice={this.state.challenge[this.state.turn]}
+                  score={this.props.score[0].score}
+                  lives={this.props.lives[0].lives}
+                />
+              </div>
+            </div>
+          );
+        } else {
+          buttons = <div className="bottom-wrapper" />;
+        }
+        if (this.state.challenge.length) {
+          logo = <div />;
+        } else {
+          logo = <img className="logo" src="./logo.png" />;
+        }
       }
     }
-
     return (
       <div className="background">
         <div className="app-wrapper">
-
           <div className="login-wrapper">
             <AccountsWrapper />
           </div>
 
           <div className="button-wrapper">
-            <button className="start-button" onClick={() => { this.startClicked();}}>
+            <button
+              className="start-button"
+              onClick={() => {
+                this.startClicked();
+              }}
+            >
               Start
             </button>
 
-            <button className="reset-button" onClick={() => { this.resetClicked();}}>
+            <button
+              className="reset-button"
+              onClick={() => {
+                this.resetClicked();
+              }}
+            >
               Reset
             </button>
           </div>
@@ -242,26 +270,27 @@ class App extends Component {
           <div className="input-wrapper">
             <div className="top-wrapper">
               <div className="top-left-header">
-
                 {logo}
-    
+
                 <div className="answer-box">
                   <NextUpDisplay nextNote={this.state.challenge[0]} />
                   <NextUpDisplay nextNote={this.state.challenge[1]} />
                   <NextUpDisplay nextNote={this.state.challenge[2]} />
                   <NextUpDisplay nextNote={this.state.challenge[3]} />
                 </div>
-
               </div>
 
               <div className="top-right-header">
                 {this.props.score.length ? (
-                  <ScoreBoard lives={0} score={this.props.score[0].score} lives={this.props.lives[0].lives}/>
+                  <ScoreBoard
+                    lives={0}
+                    score={this.props.score[0].score}
+                    lives={this.props.lives[0].lives}
+                  />
                 ) : (
                   <ScoreBoard lives={0} score={0} />
                 )}
               </div>
-
             </div>
             {buttons}
           </div>

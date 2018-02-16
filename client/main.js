@@ -3,8 +3,15 @@ import { Meteor } from "meteor/meteor";
 import React from "react";
 import ReactDOM from "react-dom";
 
-import App from "../imports/ui/containers/App";
+// import App from "../imports/ui/containers/App";
+// import Login from "../imports/ui/components/AccountsWrapper";
+// import NotFound from '../imports/ui/components/NotFound';
+
+import {renderRoutes} from '../imports/startup/client/routes';
+
 import "./main.css";
+// import '/imports/startup/client';
+
 
 Meteor._debug = (function(super_meteor_debug) {
   return function(error, info) {
@@ -14,62 +21,17 @@ Meteor._debug = (function(super_meteor_debug) {
   };
 })(Meteor._debug);
 
-Meteor.startup(() => ReactDOM.render(<App />, document.getElementById("root")));
+// const browserHistory = createBrowserHistory();
 
-// import { Template } from 'meteor/templating';
-// import { ReactiveVar } from 'meteor/reactive-var';
-// import { Session } from 'meteor/session';
+// const renderRoutes = () => {
+//   <Router history={browserHistory}>
+//     <div>
+//       <Route exact path="/" component={App} />
+//       <Route path="/login" component={Login} />
+//     </div>
+//   </Router>;
+// };
 
-// import './head.html';
-
-// const challenge = new ReactiveVar([])
-// const challengeResult = new ReactiveVar("")
-
-// Streamy.on('challenge',(d, s) => {
-//   console.log('>>>>>>>>>>>>>>', d)
-//   console.log(Meteor.userId());
-//   if(d.data.userid === Meteor.userId()){
-//      challenge.set(d.data.challenge)
-//   }
-//   else{
-//     challenge.set("");
-//   }
-//   // challenge.set("");
-//   // challenge.set(d.data.challenge)
-// });
-
-// Streamy.on('challenge-result',(d, s) => {
-//   challengeResult.set(d.data)
-
-//   Meteor.setTimeout(() => {
-//     challengeResult.set("")
-//   }, 1500)
-// });
-
-// Template.challenge.helpers({
-//   challenge() {
-//     return challenge.get()
-//   },
-//   challengeResult() {
-//     return challengeResult.get();
-//   }
-// })
-
-// Session.set('started', false)
-// Template.typer.events({
-//   'click li'(e) {
-//     if(Session.get('started')) {
-//       Streamy.emit('note', { data: e.target.id })
-//     }
-//   },
-//   'click #start'(e) {
-//     Session.set('started', true)
-//     Meteor.call("songs.createChallengeArray");
-//     Meteor.call('songs.start')
-//   },
-//   'click #reset'(e) {
-//     Session.set('started', false)
-//     challenge.set([])
-//     Meteor.call('songs.reset')
-//   }
-// })
+Meteor.startup(() =>
+  ReactDOM.render(renderRoutes(), document.getElementById("root"))
+);
