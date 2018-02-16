@@ -2,15 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const purpleClicked = (noteChoice, score, lives) => {
-  // if (!this.props.lives===0){
-  if (noteChoice === 3) {
-    const snd1 = new Audio("BaiscKick2.wav");
-    snd1.play();
-    Meteor.call("score.updateScore", score);
+  if (!lives == 0) {
+    if (noteChoice === 3) {
+      const snd1 = new Audio("BaiscKick2.wav");
+      snd1.play();
+      Meteor.call("score.updateScore", score);
+    } else {
+      const errorsnd = new Audio("record-scratch.mp3");
+      errorsnd.play();
+      Meteor.call("score.updateLives", lives);
+    }
   } else {
-    const errorsnd = new Audio("record-scratch.mp3");
-    errorsnd.play();
-    Meteor.call("score.updateLives", lives);
+    alert("You lost, your score is :" + score);
+    Meteor.call("songs.reset");
   }
 };
 

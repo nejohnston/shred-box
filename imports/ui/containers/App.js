@@ -110,10 +110,14 @@ class App extends Component {
   };
 
   render() {
-    if(this.props.score.length){
+    if (this.props.score.length) {
       console.log(this.props.score[0]);
     }
+<<<<<<< HEAD
+    if (this.state.challenge.length ) {
+=======
     if (this.state.challenge.length) {
+>>>>>>> 861819ac9a574921527652bbf3172e7504588104
       buttons = (
         <div className="bottom-wrapper">
           <div
@@ -184,10 +188,10 @@ class App extends Component {
     return (
       <div className="background">
         <div className="app-wrapper">
+          <div className="login-wrapper">
+            <AccountsWrapper />
+          </div>
           <div className="button-wrapper">
-            <div className="login-wrapper">
-              <AccountsWrapper />
-            </div>
             <button
               className="start-button"
               onClick={() => {
