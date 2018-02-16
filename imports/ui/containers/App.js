@@ -15,22 +15,25 @@ import NextUpDisplay from "../components/NextUpDisplay";
 import AccountsWrapper from "../components/AccountsWrapper";
 import ScoreBoard from "../components/ScoreBoard";
 
-import {buttonClicked , startClicked, resetClicked, turnUp, onClick} from "../lib/buttonFunctions.js"
+import {
+  buttonClicked,
+  startClicked,
+  resetClicked,
+  turnUp,
+  onClick
+} from "../../lib/buttonFunctions.js";
 import "./styles.css";
 
 let turn = 0;
 const challengeResult = new ReactiveVar("");
-// const snd = new Audio("ThunderKick.wav");
-// const snd3 = new Audio("GreenPerc2.wav");
-// const snd2 = new Audio("BlueHat.wav");
-// const snd1 = new Audio("BaiscKick2.wav");
-// const errorsnd = new Audio("record-scratch.mp3");
+const snd = new Audio("ThunderKick.wav");
+const snd3 = new Audio("GreenPerc2.wav");
+const snd2 = new Audio("BlueHat.wav");
+const snd1 = new Audio("BaiscKick2.wav");
+const errorsnd = new Audio("record-scratch.mp3");
 
 Session.set("started", false);
 
-Streamy.on("endgame", (d,s)=>{
-  console.log(d.data.end);
-})
 Streamy.on("challenge-result", (d, s) => {
   challengeResult.set(d.data);
 
@@ -120,7 +123,7 @@ class App extends Component {
           <div
             className="red-div"
             onClick={() => {
-             onClick(0, turn);
+              this.onClick(0, turn);
             }}
           >
             <RedButton
@@ -134,7 +137,7 @@ class App extends Component {
           <div
             className="blue-div"
             onClick={() => {
-             onClick(1, turn);
+              this.onClick(1, turn);
             }}
           >
             <BlueButton
@@ -148,7 +151,7 @@ class App extends Component {
           <div
             className="green-div"
             onClick={() => {
-              onClick(2, turn);
+              this.onClick(2, turn);
             }}
           >
             <GreenButton
@@ -161,7 +164,7 @@ class App extends Component {
           <div
             className="purple-div"
             onClick={() => {
-              onClick(3, turn);
+              this.onClick(3, turn);
             }}
           >
             <PurpleButton
@@ -192,7 +195,7 @@ class App extends Component {
             <button
               className="start-button"
               onClick={() => {
-                startClicked();
+                this.startClicked();
               }}
             >
               Start
@@ -201,7 +204,7 @@ class App extends Component {
             <button
               className="reset-button"
               onClick={() => {
-                resetClicked();
+                this.resetClicked();
               }}
             >
               Reset
