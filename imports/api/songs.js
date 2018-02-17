@@ -57,7 +57,7 @@ Meteor.methods({
       );
     }
     //TODO: CHANGE TO DYNAMIC VAR
-    const length = 5;
+    const length = 20;
 
     // if (Songs.find({}).count() !== length * users.length) {
     if (Songs.find({}).count() !== 0) {
