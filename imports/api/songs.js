@@ -19,7 +19,7 @@ let win = true;
 let challenge = Songs.find().fetch();
 // let challenge = [{challenge: [0,1,2,3]}]
 let users = new ReactiveVar([]);
-console.log(users.get());
+// console.log(users.get());
 
 users.set(
   Meteor.users
@@ -28,7 +28,7 @@ users.set(
     .map(user => user._id)
 );
 
-console.log(users.get());
+// console.log(users.get());
 
 const challengeArray = () => {
   return Array.from({ length: 4 }, () => Math.floor(Math.random() * 4));
@@ -70,7 +70,7 @@ Meteor.methods({
       }
     }
 
-    console.log(Songs.find().fetch());
+    // console.log(Songs.find().fetch());
   },
 
   "songs.reset"() {
@@ -81,7 +81,7 @@ Meteor.methods({
 
   "songs.start"() {
     challenge = Songs.find({}).fetch();
-    console.log("challenge", challenge);
+    // console.log("challenge", challenge);
     if (!this.isSimulation) {
       interval = Meteor.setInterval(() => {
         playedNotes = [];
@@ -90,7 +90,7 @@ Meteor.methods({
           Streamy.broadcast("challenge", { data: { challenge: "Done!" } });
           return songEnd();
         }
-        console.log(challenge.length);
+        // console.log(challenge.length);
 
         // if(challenge.length !== 0 && challenge[curr].userid === this.userId){
         // }
@@ -105,12 +105,17 @@ Meteor.methods({
 });
 
 Streamy.on("note", ({ data }) => {
-  if (interval && playedNotes.length < challenge[prev].challenge.length) {
+  console.log({ data });
+  if (interval && playedNotes.length <= challenge[prev].challenge.length) {
     const currentChallenge = challenge[prev].challenge;
 
     if (playedNotes.length < currentChallenge.length) {
       playedNotes.push(data);
     }
+
+    // if (playedNotes.length !== ) {
+
+    // }
 
     if (
       Number(playedNotes[playedNotes.length - 1]) !==

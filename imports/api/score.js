@@ -1,5 +1,5 @@
 import { Mongo } from "meteor/mongo";
-import { Songs } from "./songs";
+import { Songs, songsEnd } from "./songs";
 export const Score = new Mongo.Collection("score");
 
 // const updateScore = 0;
