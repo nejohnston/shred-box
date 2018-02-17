@@ -41,7 +41,6 @@ class App extends Component {
     Streamy.on("endgame", (d, s) => {
       if (d.data.end) {
         this.setState({ end: true });
-        console.log(d.data.end);
       } else {
         this.setState({ end: false });
       }
@@ -80,6 +79,7 @@ class App extends Component {
     }
   };
   startClicked = e => {
+    this.resetClicked();
     Session.set("started", true);
     Meteor.call("songs.createChallengeArray");
     Meteor.call("songs.start");
@@ -279,7 +279,7 @@ class App extends Component {
                 this.resetClicked();
               }}
             >
-              Reset
+              Stop
             </button>
           </div>
 
