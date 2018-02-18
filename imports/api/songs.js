@@ -1,5 +1,4 @@
 import { Mongo } from "meteor/mongo";
-// import { gameInterval } from "./helpers.js";
 import { Score } from "./score";
 
 export const Songs = new Mongo.Collection("songs");
@@ -17,9 +16,7 @@ let playedNotes = [];
 let win = true;
 
 let challenge = Songs.find().fetch();
-// let challenge = [{challenge: [0,1,2,3]}]
 let users = new ReactiveVar([]);
-// console.log(users.get());
 
 users.set(
   Meteor.users
@@ -27,8 +24,6 @@ users.set(
     .fetch()
     .map(user => user._id)
 );
-
-// console.log(users.get());
 
 const challengeArray = () => {
   return Array.from({ length: 4 }, () => Math.floor(Math.random() * 4));
@@ -59,7 +54,6 @@ Meteor.methods({
     //TODO: CHANGE TO DYNAMIC VAR
     const length = 20;
 
-    // if (Songs.find({}).count() !== length * users.length) {
     if (Songs.find({}).count() !== 0) {
       Songs.remove({});
     }
@@ -69,8 +63,6 @@ Meteor.methods({
         Songs.insert({ userid: users.get()[k], challenge: challengeArray() });
       }
     }
-
-    // console.log(Songs.find().fetch());
   },
 
   "songs.reset"() {
@@ -90,10 +82,6 @@ Meteor.methods({
           Streamy.broadcast("challenge", { data: { challenge: "Done!" } });
           return songEnd();
         }
-        // console.log(challenge.length);
-
-        // if(challenge.length !== 0 && challenge[curr].userid === this.userId){
-        // }
         if (challenge.length) {
           Streamy.broadcast("challenge", { data: challenge[curr] });
         }
@@ -105,25 +93,18 @@ Meteor.methods({
 });
 
 Streamy.on("note", ({ data }) => {
-  console.log({ data });
   if (interval && playedNotes.length <= challenge[prev].challenge.length) {
     const currentChallenge = challenge[prev].challenge;
 
     if (playedNotes.length < currentChallenge.length) {
       playedNotes.push(data);
     }
-
-    // if (playedNotes.length !== ) {
-
-    // }
-
     if (
       Number(playedNotes[playedNotes.length - 1]) !==
       Number(currentChallenge[playedNotes.length - 1])
     ) {
       win = false;
     }
-
     if (playedNotes.length === currentChallenge.length) {
       Streamy.broadcast("challenge-result", {
         data: win
