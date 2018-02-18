@@ -12,7 +12,7 @@ import GreenButton from "../components/GreenButton";
 import PurpleButton from "../components/PurpleButton";
 import RedButton from "../components/RedButton";
 import NextUpDisplay from "../components/NextUpDisplay";
-import AccountsWrapper from "../components/AccountsWrapper";
+import Login from "../components/Login/Login";
 import ScoreBoard from "../components/ScoreBoard";
 import "./styles.css";
 
@@ -260,13 +260,13 @@ class App extends Component {
       <div className="background">
         <div className="app-wrapper">
           <div className="login-wrapper">
-            <AccountsWrapper />
+            <Login />
           </div>
 
           <div className="button-wrapper">
-            <div className="login-wrapper">
-              <AccountsWrapper />
-            </div>
+            {/* <div className="login-wrapper">
+              <Login />
+            </div> */}
             <button
               className="start-button"
               onClick={() => {
