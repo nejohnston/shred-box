@@ -30,7 +30,6 @@ const challengeArray = () => {
 };
 
 const songEnd = () => {
-  console.log("Song is done....");
   curr = 0;
   playedNotes = [];
   Meteor.clearInterval(interval);
@@ -73,21 +72,25 @@ Meteor.methods({
 
   "songs.start"() {
     challenge = Songs.find({}).fetch();
+    const countdown = new ReactiveCountdown(3);
     // console.log("challenge", challenge);
+
     if (!this.isSimulation) {
-      interval = Meteor.setInterval(() => {
-        playedNotes = [];
-        win = true;
-        if (challenge.length !== 0 && curr === challenge.length) {
-          Streamy.broadcast("challenge", { data: { challenge: "Done!" } });
-          return songEnd();
-        }
-        if (challenge.length) {
-          Streamy.broadcast("challenge", { data: challenge[curr] });
-        }
-        prev = curr;
-        curr++;
-      }, 4000);
+      countdown.start(function() {
+        interval = countdown.start(() => {
+          playedNotes = [];
+          win = true;
+          if (challenge.length !== 0 && curr === challenge.length) {
+            Streamy.broadcast("challenge", { data: { challenge: "Done!" } });
+            return songEnd();
+          }
+          if (challenge.length) {
+            Streamy.broadcast("challenge", { data: challenge[curr] });
+          }
+          prev = curr;
+          curr++;
+        }, 4000);
+      });
     }
   }
 });
