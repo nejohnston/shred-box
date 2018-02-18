@@ -76,7 +76,7 @@ Meteor.methods({
   "songs.reset"() {
     Score.update({ id: 1 }, { $set: { score: 0 } });
     Score.update({ id: 2 }, { $set: { lives: 3 } });
-    songEnd();
+    return songEnd();
   },
 
   "songs.start"() {
