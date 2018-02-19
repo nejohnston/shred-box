@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 
 import App from "../../ui/containers/App";
 import Login from "../../ui/components/AccountsWrapper";
@@ -13,6 +18,7 @@ export const renderRoutes = () => (
         <Route exact path="/" component={App} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/endgame" component={EndGame} />
+        <Redirect from="/" to="/endgame" />;
         <Route path="*" component={NotFound} />
       </Switch>
     </div>

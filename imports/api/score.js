@@ -1,5 +1,7 @@
 import { Mongo } from "meteor/mongo";
 import { Songs, songsEnd } from "./songs";
+import { Redirect, Switch } from "react-router-dom";
+import EndGame from "../ui/containers/EndGame";
 export const Score = new Mongo.Collection("score");
 
 // const updateScore = 0;

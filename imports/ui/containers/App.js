@@ -41,8 +41,6 @@ class App extends Component {
     Streamy.on("endgame", (d, s) => {
       if (d.data.end) {
         this.setState({ end: true });
-      } else {
-        this.setState({ end: false });
       }
     });
     Streamy.on("challenge", (d, s) => {
@@ -53,7 +51,6 @@ class App extends Component {
       }
     });
   }
-
   drum1 = () => {
     drum1 = new Audio("drum-loop.mp3");
     drum1.play();
