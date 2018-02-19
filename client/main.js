@@ -2,15 +2,16 @@
 import { Meteor } from "meteor/meteor";
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-// import App from "../imports/ui/containers/App";
-// import Login from "../imports/ui/components/AccountsWrapper";
-// import NotFound from '../imports/ui/components/NotFound';
+import App from "../imports/ui/containers/App";
+import Login from "../imports/ui/components/Login";
+import NotFound from '../imports/ui/components/NotFound';
+import PrivateRoute from '../imports/ui/components/PrivateRoute/';
 
-import {renderRoutes} from '../imports/startup/client/routes';
 
 import "./main.css";
-// import '/imports/startup/client';
+
 
 
 Meteor._debug = (function(super_meteor_debug) {
@@ -21,16 +22,19 @@ Meteor._debug = (function(super_meteor_debug) {
   };
 })(Meteor._debug);
 
-// const browserHistory = createBrowserHistory();
 
-// const renderRoutes = () => {
-//   <Router history={browserHistory}>
-//     <div>
-//       <Route exact path="/" component={App} />
-//       <Route path="/login" component={Login} />
-//     </div>
-//   </Router>;
-// };
+const renderRoutes = () => (
+  <Router>
+    <div>
+      <Switch>
+        <PrivateRoute exact path="/" component={App} currentUserId={Meteor.userId()}/>
+        <Route exact path="/login" component={Login} 
+        />
+        <Route path="*" component={NotFound} />
+      </Switch>
+    </div>
+  </Router>
+);
 
 Meteor.startup(() =>
   ReactDOM.render(renderRoutes(), document.getElementById("root"))

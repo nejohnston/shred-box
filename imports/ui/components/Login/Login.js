@@ -5,7 +5,7 @@ import { Blaze } from "meteor/blaze";
 
 import "./style.css";
 
-export default class AccountsWrapper extends Component {
+export default class Login extends Component {
   componentDidMount() {
     // Use Meteor Blaze to render login buttons
     this.view = Blaze.render(
