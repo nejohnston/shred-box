@@ -1,19 +1,21 @@
 import React from "react";
 import { withRouter } from "react-router";
 import { Route, Redirect } from "react-router-dom";
+import { withTracker } from "meteor/react-meteor-data";
 
-const PrivateRoute = ({ authenticated, component: Component, ...rest }) => {
-  if (Meteor.isClient)
+const PrivateRoute = ({ component: Component, currentUserId, ...rest }) => {
+  // if (Meteor.isClient){
+    console.log(currentUserId);
     return (
       <Route
         {...rest} // set props with the rest of the parent props
         // path={path}
         render={props =>
-          !authenticated ? (
+          !(currentUserId ||Meteor.userId()) ? (
             <Redirect
               to={{
                 pathname: "/login",
-                state: { from: props.location }
+                // state: { from: props.location }
               }}
             />
           ) : (
@@ -23,6 +25,12 @@ const PrivateRoute = ({ authenticated, component: Component, ...rest }) => {
         }
       />
     );
+  // }
 };
 
-export default withRouter(PrivateRoute);
+export default withTracker(() => {
+    return { 
+      currentUserId: Meteor.userId() 
+    };
+  })
+(PrivateRoute);
