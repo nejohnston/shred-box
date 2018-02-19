@@ -35,10 +35,6 @@
   },
   "settings": {
       "import/core-modules": ["meteor/meteor"],
-      "import/resolver": {
-          "node": {
-              "paths": ["meteor"]
-          }
-      }
+      "import/resolver": "meteor"
   }
 }
