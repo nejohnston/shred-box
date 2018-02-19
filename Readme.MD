@@ -30,6 +30,10 @@ Click 'Start'
 Wait for the intro song to play, and wait for the preview icons to appear in the upper left corner. You will have 4 seconds to repeat the input before it changes! Click the drum pad buttons in the correct order. Dont miss and dont click twice! Find your rhythm and try to set a new high score.
 If you love, click reset, then start to try again.
 
+### Future goals
+
+Moving forward we plan on hosting this app online so it can be played without a git download. We are also interested in a decreasing time interval per turn. A function to highlight the current correct choice is also under works.
+
 ## Built With
 
 * [Meteor]
@@ -47,6 +51,7 @@ If you love, click reset, then start to try again.
 * **Michael Kim**
 
 ## Acknowledgments
+
 
 * Thanks to our instructors for their guidance
 * Streamy author Yuukan00 and his/her github repo at https://github.com/YuukanOO/streamy
