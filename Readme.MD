@@ -1,7 +1,9 @@
 # SHRED-BOX
 
 Multiplayer music game, that displays random array of four colour, waits for input, then updates lives and score accordingly. This game designed to test memory and accuracy. 
+This game uses a component based React framework. The application uses Streamy.js in conjunction with Meteor to allow users to recieve async data and play simultaneously.
 ![Alt text](/public/Screenshot.png "Preview Picture")
+
 ## Getting Started
 
 Download or clone github files.
@@ -47,4 +49,5 @@ If you love, click reset, then start to try again.
 ## Acknowledgments
 
 * Thanks to our instructors for their guidance
-
+* Streamy author Yuukan00 and his/her github repo at https://github.com/YuukanOO/streamy
+* Thank you to the React and Meteor teams for their continued hard work
