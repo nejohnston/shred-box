@@ -1,24 +1,41 @@
 # SHRED-BOX
 
-Multiplayer music game, that displays random array of four colour, waits for input, then updates lives and score accordingly.
-
+Multiplayer music game, that displays random array of four colour, waits for input, then updates lives and score accordingly. This game designed to test memory and accuracy. 
+![Alt text](/public/Screenshot.png "Preview Picture")
 ## Getting Started
 
-Download or clone github files. run in terminal "npm install" then "meteor"
+Download or clone github files.
+Run:
+* npm install 
+* meteor
+* meteor npm install --save @babel/runtime
+* localhost:3000 in your browser
+Click 'sign in' and enter your email and password
 
-### Prerequisites
+## Playing Multiplayer
 
-up to date computer, internet access
+Locally: Open a regular browser window and an icognito window. Go to localhost 3000 on each window. Click start on both. The screens will update seperatly and share the same score and lives.
+Seperate computers: 
+Install localtunnel:
+* npm install -g localtunnel
+* lt --port 8000
+Follow the url given you you and sign in on multiple clients.
+Click start and play together.
 
-### Installing
+### Playing
 
-open "shred-box" in the terminal, run "npm install" and then "meteor" open a browser window and access localhost:3000
+Click 'Start'
+Wait for the intro song to play, and wait for the preview icons to appear in the upper left corner. You will have 4 seconds to repeat the input before it changes! Click the drum pad buttons in the correct order. Dont miss and dont click twice! Find your rhythm and try to set a new high score.
+If you love, click reset, then start to try again.
 
 ## Built With
 
 * [Meteor]
 * [React]
 * [javascript]
+* [streamy]
+* [CSS]
+* [HTML]
 
 ## Authors
 
@@ -29,6 +46,5 @@ open "shred-box" in the terminal, run "npm install" and then "meteor" open a bro
 
 ## Acknowledgments
 
-* Thanks to Mack for providing, basicc skeleton of code
-* Thanks to RED
-* etc
+* Thanks to our instructors for their guidance
+
