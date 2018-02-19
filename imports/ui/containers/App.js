@@ -53,21 +53,19 @@ class App extends Component {
       }
     });
   }
+
   drum1 = () => {
     drum1 = new Audio("drum-loop.mp3");
     drum1.play();
   };
-
   drum2 = () => {
     drum2 = new Audio("drum-loop2.mp3");
     drum2.play();
   };
-
   synth1 = () => {
     synth1 = new Audio("synth-loop.mp3");
     synth1.play();
   };
-
   synth2 = () => {
     synth2 = new Audio("synth-loop2.mp3");
     synth2.play();
@@ -79,10 +77,12 @@ class App extends Component {
     }
   };
   startClicked = e => {
+    event.preventDefault();
     this.resetClicked();
     Session.set("started", true);
     Meteor.call("songs.createChallengeArray");
     Meteor.call("songs.start");
+    Meteor.call("songs.countdown");
     this.drum1();
   };
   resetClicked = e => {

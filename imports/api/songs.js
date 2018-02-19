@@ -70,27 +70,33 @@ Meteor.methods({
     return songEnd();
   },
 
+  "songs.countdown"() {
+    if (!this.isSimulation) {
+      var countdown = new ReactiveCountdown(1);
+      countdown.start(() => {
+        return countdown.get();
+      });
+    }
+  },
+
   "songs.start"() {
     challenge = Songs.find({}).fetch();
-    const countdown = new ReactiveCountdown(3);
+    console.log(Songs.find({}).fetch());
     // console.log("challenge", challenge);
-
     if (!this.isSimulation) {
-      countdown.start(function() {
-        interval = countdown.start(() => {
-          playedNotes = [];
-          win = true;
-          if (challenge.length !== 0 && curr === challenge.length) {
-            Streamy.broadcast("challenge", { data: { challenge: "Done!" } });
-            return songEnd();
-          }
-          if (challenge.length) {
-            Streamy.broadcast("challenge", { data: challenge[curr] });
-          }
-          prev = curr;
-          curr++;
-        }, 4000);
-      });
+      interval = Meteor.setInterval(() => {
+        playedNotes = [];
+        win = true;
+        if (challenge.length !== 0 && curr === challenge.length) {
+          Streamy.broadcast("challenge", { data: { challenge: "Done!" } });
+          return songEnd();
+        }
+        if (challenge.length) {
+          Streamy.broadcast("challenge", { data: challenge[curr] });
+        }
+        prev = curr;
+        curr++;
+      }, 4000);
     }
   }
 });
